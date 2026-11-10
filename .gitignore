@@ -22,13 +22,13 @@ frontend/coverage/
 !.env.example
 
 # --- Downloaded models and generated runtime data
-models/
+/models/
 data/*.db
 data/*.db-journal
 data/cache/
 data/recordings/
 # User recordings must never be committed (privacy)
-recordings/
+/recordings/
 *.webm
 
 # --- Playwright / test artefacts
