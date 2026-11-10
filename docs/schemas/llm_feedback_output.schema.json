@@ -1,0 +1,44 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "encouragement": {
+      "type": "string"
+    },
+    "progress_note": {
+      "type": "string"
+    },
+    "recommendations": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "articulation": {
+            "type": "string"
+          },
+          "issue_id": {
+            "type": "string"
+          },
+          "tip": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "issue_id",
+          "tip",
+          "articulation"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "summary": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "summary",
+    "recommendations",
+    "encouragement",
+    "progress_note"
+  ],
+  "type": "object"
+}

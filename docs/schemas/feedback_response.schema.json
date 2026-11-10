@@ -1,0 +1,82 @@
+{
+  "$defs": {
+    "Recommendation": {
+      "properties": {
+        "articulation": {
+          "default": "",
+          "description": "Tongue / lip / jaw guidance, empty if not applicable.",
+          "title": "Articulation",
+          "type": "string"
+        },
+        "issue_id": {
+          "description": "ID of the measured issue this tip addresses, or 'general'.",
+          "title": "Issue Id",
+          "type": "string"
+        },
+        "tip": {
+          "title": "Tip",
+          "type": "string"
+        }
+      },
+      "required": [
+        "issue_id",
+        "tip"
+      ],
+      "title": "Recommendation",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "disclaimer": {
+      "default": "This feedback is generated automatically for practice. It is not a diagnosis or a clinical assessment.",
+      "title": "Disclaimer",
+      "type": "string"
+    },
+    "encouragement": {
+      "default": "",
+      "title": "Encouragement",
+      "type": "string"
+    },
+    "grounded": {
+      "default": true,
+      "description": "All recommendations cite issues measured by the analysis.",
+      "title": "Grounded",
+      "type": "boolean"
+    },
+    "guardrail_notes": {
+      "description": "What validation removed or changed.",
+      "items": {
+        "type": "string"
+      },
+      "title": "Guardrail Notes",
+      "type": "array"
+    },
+    "progress_note": {
+      "default": "",
+      "title": "Progress Note",
+      "type": "string"
+    },
+    "recommendations": {
+      "items": {
+        "$ref": "#/$defs/Recommendation"
+      },
+      "title": "Recommendations",
+      "type": "array"
+    },
+    "source": {
+      "description": "'llm:<provider>:<model>' or 'rule_based'",
+      "title": "Source",
+      "type": "string"
+    },
+    "summary": {
+      "title": "Summary",
+      "type": "string"
+    }
+  },
+  "required": [
+    "summary",
+    "source"
+  ],
+  "title": "FeedbackResponse",
+  "type": "object"
+}

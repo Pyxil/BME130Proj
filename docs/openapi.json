@@ -1,0 +1,3674 @@
+{
+  "components": {
+    "schemas": {
+      "AnalysisResult": {
+        "properties": {
+          "acoustic_similarity": {
+            "anyOf": [
+              {
+                "maximum": 1.0,
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Acoustic Similarity"
+          },
+          "analysis_id": {
+            "title": "Analysis Id",
+            "type": "string"
+          },
+          "components": {
+            "items": {
+              "$ref": "#/components/schemas/ComponentScore"
+            },
+            "title": "Components",
+            "type": "array"
+          },
+          "confidence": {
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Confidence",
+            "type": "number"
+          },
+          "confidence_factors": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Confidence Factors",
+            "type": "object"
+          },
+          "confidence_label": {
+            "enum": [
+              "high",
+              "medium",
+              "low"
+            ],
+            "title": "Confidence Label",
+            "type": "string"
+          },
+          "contract_version": {
+            "default": "1.0.0",
+            "title": "Contract Version",
+            "type": "string"
+          },
+          "disclaimer": {
+            "default": "Scores are automated estimates intended for practice feedback. They are not a clinical assessment or diagnosis and have not been clinically validated.",
+            "title": "Disclaimer",
+            "type": "string"
+          },
+          "engine": {
+            "$ref": "#/components/schemas/EngineInfo"
+          },
+          "identified_issues": {
+            "items": {
+              "$ref": "#/components/schemas/Issue"
+            },
+            "title": "Identified Issues",
+            "type": "array"
+          },
+          "matched_variant": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/MatchedVariant"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "needs_retry": {
+            "title": "Needs Retry",
+            "type": "boolean"
+          },
+          "overall_score": {
+            "anyOf": [
+              {
+                "maximum": 100.0,
+                "minimum": 0.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Overall Score"
+          },
+          "phoneme_scores": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/PhonemeScore"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Phoneme Scores"
+          },
+          "phonetically_accurate": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "True only if every phoneme scored 'good' and the overall score meets the mastery threshold.",
+            "title": "Phonetically Accurate"
+          },
+          "processing_ms": {
+            "default": 0,
+            "title": "Processing Ms",
+            "type": "integer"
+          },
+          "quality": {
+            "$ref": "#/components/schemas/QualityReport"
+          },
+          "rating": {
+            "anyOf": [
+              {
+                "enum": [
+                  "mastered",
+                  "satisfactory",
+                  "needs_practice"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rating"
+          },
+          "recognition": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/WordRecognition"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "recognized_word": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Recognized Word"
+          },
+          "retry_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Retry Reason"
+          },
+          "status": {
+            "enum": [
+              "assessed",
+              "retry_required",
+              "inconclusive"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "strengths": {
+            "items": {
+              "$ref": "#/components/schemas/Strength"
+            },
+            "title": "Strengths",
+            "type": "array"
+          },
+          "syllables": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SyllableReport"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "timing": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TimingReport"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "word": {
+            "title": "Word",
+            "type": "string"
+          },
+          "word_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Word Id"
+          },
+          "word_recognized": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Whether the decoded sounds match the target word better than other practice words.",
+            "title": "Word Recognized"
+          }
+        },
+        "required": [
+          "analysis_id",
+          "word",
+          "status",
+          "confidence",
+          "confidence_label",
+          "needs_retry",
+          "quality",
+          "engine"
+        ],
+        "title": "AnalysisResult",
+        "type": "object"
+      },
+      "AttemptList": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/AttemptSummary"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "total",
+          "items"
+        ],
+        "title": "AttemptList",
+        "type": "object"
+      },
+      "AttemptOut": {
+        "properties": {
+          "analysis": {
+            "$ref": "#/components/schemas/AnalysisResult"
+          },
+          "attempt_id": {
+            "title": "Attempt Id",
+            "type": "string"
+          },
+          "attempt_number": {
+            "title": "Attempt Number",
+            "type": "integer"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "feedback": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/FeedbackResponse"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "has_recording": {
+            "default": false,
+            "title": "Has Recording",
+            "type": "boolean"
+          },
+          "session_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Session Id"
+          },
+          "word_best_score": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Word Best Score"
+          },
+          "word_id": {
+            "title": "Word Id",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "attempt_id",
+          "attempt_number",
+          "word_id",
+          "session_id",
+          "created_at",
+          "analysis"
+        ],
+        "title": "AttemptOut",
+        "type": "object"
+      },
+      "AttemptSummary": {
+        "properties": {
+          "attempt_number": {
+            "title": "Attempt Number",
+            "type": "integer"
+          },
+          "confidence": {
+            "title": "Confidence",
+            "type": "number"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "feedback_summary": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Feedback Summary"
+          },
+          "has_recording": {
+            "title": "Has Recording",
+            "type": "boolean"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "overall_score": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Overall Score"
+          },
+          "rating": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rating"
+          },
+          "session_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Session Id"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "word": {
+            "title": "Word",
+            "type": "string"
+          },
+          "word_id": {
+            "title": "Word Id",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "word_id",
+          "word",
+          "session_id",
+          "created_at",
+          "attempt_number",
+          "status",
+          "overall_score",
+          "rating",
+          "confidence",
+          "has_recording"
+        ],
+        "title": "AttemptSummary",
+        "type": "object"
+      },
+      "Body_analyze_pronunciation_api_pronunciation_analyze_post": {
+        "properties": {
+          "audio": {
+            "contentMediaType": "application/octet-stream",
+            "description": "Recording (16 kHz mono WAV preferred)",
+            "title": "Audio",
+            "type": "string"
+          },
+          "session_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Session Id"
+          },
+          "store_recording": {
+            "default": false,
+            "description": "Keep the audio (only if the user has consented)",
+            "title": "Store Recording",
+            "type": "boolean"
+          },
+          "word_id": {
+            "title": "Word Id",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "audio",
+          "word_id"
+        ],
+        "title": "Body_analyze_pronunciation_api_pronunciation_analyze_post",
+        "type": "object"
+      },
+      "ComponentScore": {
+        "properties": {
+          "available": {
+            "title": "Available",
+            "type": "boolean"
+          },
+          "details": {
+            "additionalProperties": true,
+            "title": "Details",
+            "type": "object"
+          },
+          "name": {
+            "enum": [
+              "phoneme_accuracy",
+              "acoustic_similarity",
+              "syllable_completeness",
+              "temporal"
+            ],
+            "title": "Name",
+            "type": "string"
+          },
+          "score": {
+            "anyOf": [
+              {
+                "maximum": 100.0,
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score"
+          },
+          "weight": {
+            "description": "Configured weight (renormalised over available components).",
+            "title": "Weight",
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "weight",
+          "available"
+        ],
+        "title": "ComponentScore",
+        "type": "object"
+      },
+      "EngineInfo": {
+        "properties": {
+          "calibration": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Calibration"
+          },
+          "model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          },
+          "phoneme_level": {
+            "description": "True if the engine produced genuine phoneme-level scores.",
+            "title": "Phoneme Level",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name",
+          "phoneme_level"
+        ],
+        "title": "EngineInfo",
+        "type": "object"
+      },
+      "ErrorResponse": {
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "string"
+          }
+        },
+        "required": [
+          "detail"
+        ],
+        "title": "ErrorResponse",
+        "type": "object"
+      },
+      "EvaluationFeature": {
+        "properties": {
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "phonemes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Phonemes",
+            "type": "array"
+          },
+          "positions": {
+            "items": {
+              "type": "integer"
+            },
+            "title": "Positions",
+            "type": "array"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          }
+        },
+        "required": [
+          "type",
+          "positions",
+          "phonemes",
+          "description"
+        ],
+        "title": "EvaluationFeature",
+        "type": "object"
+      },
+      "FeedbackRequestIn": {
+        "properties": {
+          "analysis": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AnalysisResult"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Or pass an analysis result directly (stateless)."
+          },
+          "attempt_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Generate (and store) feedback for a saved attempt.",
+            "title": "Attempt Id"
+          }
+        },
+        "title": "FeedbackRequestIn",
+        "type": "object"
+      },
+      "FeedbackResponse": {
+        "properties": {
+          "disclaimer": {
+            "default": "This feedback is generated automatically for practice. It is not a diagnosis or a clinical assessment.",
+            "title": "Disclaimer",
+            "type": "string"
+          },
+          "encouragement": {
+            "default": "",
+            "title": "Encouragement",
+            "type": "string"
+          },
+          "grounded": {
+            "default": true,
+            "description": "All recommendations cite issues measured by the analysis.",
+            "title": "Grounded",
+            "type": "boolean"
+          },
+          "guardrail_notes": {
+            "description": "What validation removed or changed.",
+            "items": {
+              "type": "string"
+            },
+            "title": "Guardrail Notes",
+            "type": "array"
+          },
+          "progress_note": {
+            "default": "",
+            "title": "Progress Note",
+            "type": "string"
+          },
+          "recommendations": {
+            "items": {
+              "$ref": "#/components/schemas/Recommendation"
+            },
+            "title": "Recommendations",
+            "type": "array"
+          },
+          "source": {
+            "description": "'llm:<provider>:<model>' or 'rule_based'",
+            "title": "Source",
+            "type": "string"
+          },
+          "summary": {
+            "title": "Summary",
+            "type": "string"
+          }
+        },
+        "required": [
+          "summary",
+          "source"
+        ],
+        "title": "FeedbackResponse",
+        "type": "object"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "title": "Detail",
+            "type": "array"
+          }
+        },
+        "title": "HTTPValidationError",
+        "type": "object"
+      },
+      "Issue": {
+        "properties": {
+          "evidence": {
+            "additionalProperties": true,
+            "title": "Evidence",
+            "type": "object"
+          },
+          "id": {
+            "description": "Stable identifier within this result; AI feedback must cite these.",
+            "title": "Id",
+            "type": "string"
+          },
+          "message": {
+            "description": "Plain-language description generated from measured data.",
+            "title": "Message",
+            "type": "string"
+          },
+          "phoneme": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Phoneme"
+          },
+          "position": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Position"
+          },
+          "realized_as": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Realized As"
+          },
+          "severity": {
+            "enum": [
+              "minor",
+              "moderate",
+              "major"
+            ],
+            "title": "Severity",
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "substitution",
+              "deletion",
+              "unclear_articulation",
+              "insertion",
+              "syllable_missing",
+              "extra_syllable",
+              "too_fast",
+              "too_slow",
+              "low_acoustic_similarity"
+            ],
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "severity",
+          "message"
+        ],
+        "title": "Issue",
+        "type": "object"
+      },
+      "LoginRequest": {
+        "properties": {
+          "email": {
+            "title": "Email",
+            "type": "string"
+          },
+          "password": {
+            "title": "Password",
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ],
+        "title": "LoginRequest",
+        "type": "object"
+      },
+      "MatchedVariant": {
+        "properties": {
+          "accent": {
+            "title": "Accent",
+            "type": "string"
+          },
+          "arpabet": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Arpabet",
+            "type": "array"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "ipa": {
+            "title": "Ipa",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "accent",
+          "ipa",
+          "arpabet"
+        ],
+        "title": "MatchedVariant",
+        "type": "object"
+      },
+      "PhonemeOption": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "vowel",
+              "consonant"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "phoneme": {
+            "title": "Phoneme",
+            "type": "string"
+          },
+          "word_count": {
+            "title": "Word Count",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "phoneme",
+          "label",
+          "kind",
+          "word_count"
+        ],
+        "title": "PhonemeOption",
+        "type": "object"
+      },
+      "PhonemeScore": {
+        "properties": {
+          "accepted_variant": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Accepted allophone/accent realisation that explained the audio better, if any.",
+            "title": "Accepted Variant"
+          },
+          "arpabet": {
+            "description": "Expected phoneme (ARPAbet with stress).",
+            "title": "Arpabet",
+            "type": "string"
+          },
+          "deletion_probability": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Deletion Probability"
+          },
+          "end_s": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End S"
+          },
+          "index": {
+            "description": "Position in the expected phoneme sequence of the matched variant.",
+            "title": "Index",
+            "type": "integer"
+          },
+          "likely_realization": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Most likely competing sound (IPA) when the expected one scored low.",
+            "title": "Likely Realization"
+          },
+          "likely_realization_probability": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Likely Realization Probability"
+          },
+          "phoneme": {
+            "description": "Expected phoneme (broad IPA).",
+            "title": "Phoneme",
+            "type": "string"
+          },
+          "posterior": {
+            "anyOf": [
+              {
+                "maximum": 1.0,
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Model probability that the expected sound (or an accepted variant of it) was produced.",
+            "title": "Posterior"
+          },
+          "score": {
+            "anyOf": [
+              {
+                "maximum": 100.0,
+                "minimum": 0.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Calibrated 0-100 phoneme score.",
+            "title": "Score"
+          },
+          "start_s": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Approximate start time (seconds, trimmed audio).",
+            "title": "Start S"
+          },
+          "status": {
+            "enum": [
+              "good",
+              "fair",
+              "poor",
+              "missing",
+              "unscored"
+            ],
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "index",
+          "phoneme",
+          "arpabet",
+          "status"
+        ],
+        "title": "PhonemeScore",
+        "type": "object"
+      },
+      "PhonemeStat": {
+        "properties": {
+          "attempts": {
+            "title": "Attempts",
+            "type": "integer"
+          },
+          "average_score": {
+            "title": "Average Score",
+            "type": "number"
+          },
+          "common_substitution": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Common Substitution"
+          },
+          "phoneme": {
+            "title": "Phoneme",
+            "type": "string"
+          },
+          "poor_count": {
+            "title": "Poor Count",
+            "type": "integer"
+          },
+          "poor_rate": {
+            "title": "Poor Rate",
+            "type": "number"
+          }
+        },
+        "required": [
+          "phoneme",
+          "attempts",
+          "average_score",
+          "poor_count",
+          "poor_rate"
+        ],
+        "title": "PhonemeStat",
+        "type": "object"
+      },
+      "ProgressOut": {
+        "properties": {
+          "assessed_attempts": {
+            "title": "Assessed Attempts",
+            "type": "integer"
+          },
+          "average_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Average Score"
+          },
+          "improvement": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Average of the last 10 scored attempts minus the first 10.",
+            "title": "Improvement"
+          },
+          "most_mispronounced": {
+            "items": {
+              "$ref": "#/components/schemas/PhonemeStat"
+            },
+            "title": "Most Mispronounced",
+            "type": "array"
+          },
+          "phoneme_stats": {
+            "items": {
+              "$ref": "#/components/schemas/PhonemeStat"
+            },
+            "title": "Phoneme Stats",
+            "type": "array"
+          },
+          "recent_attempts": {
+            "items": {
+              "$ref": "#/components/schemas/AttemptSummary"
+            },
+            "title": "Recent Attempts",
+            "type": "array"
+          },
+          "recent_sessions": {
+            "items": {
+              "$ref": "#/components/schemas/SessionSummary"
+            },
+            "title": "Recent Sessions",
+            "type": "array"
+          },
+          "score_over_time": {
+            "items": {
+              "$ref": "#/components/schemas/ScorePoint"
+            },
+            "title": "Score Over Time",
+            "type": "array"
+          },
+          "total_attempts": {
+            "title": "Total Attempts",
+            "type": "integer"
+          },
+          "total_sessions": {
+            "title": "Total Sessions",
+            "type": "integer"
+          },
+          "words_attempted": {
+            "title": "Words Attempted",
+            "type": "integer"
+          },
+          "words_completed": {
+            "description": "Distinct words with at least one scored attempt.",
+            "title": "Words Completed",
+            "type": "integer"
+          },
+          "words_mastered": {
+            "title": "Words Mastered",
+            "type": "integer"
+          },
+          "words_needing_practice": {
+            "items": {
+              "$ref": "#/components/schemas/WordProgress"
+            },
+            "title": "Words Needing Practice",
+            "type": "array"
+          }
+        },
+        "required": [
+          "average_score",
+          "total_attempts",
+          "assessed_attempts",
+          "words_attempted",
+          "words_completed",
+          "words_mastered",
+          "total_sessions",
+          "score_over_time",
+          "phoneme_stats",
+          "most_mispronounced",
+          "words_needing_practice",
+          "recent_sessions",
+          "recent_attempts"
+        ],
+        "title": "ProgressOut",
+        "type": "object"
+      },
+      "QualityIssue": {
+        "properties": {
+          "blocking": {
+            "description": "If true the recording is rejected and the user is asked to record again.",
+            "title": "Blocking",
+            "type": "boolean"
+          },
+          "code": {
+            "enum": [
+              "too_short",
+              "too_long",
+              "no_speech",
+              "too_quiet",
+              "clipping",
+              "noisy",
+              "truncated_start",
+              "truncated_end",
+              "decode_error"
+            ],
+            "title": "Code",
+            "type": "string"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "blocking"
+        ],
+        "title": "QualityIssue",
+        "type": "object"
+      },
+      "QualityReport": {
+        "properties": {
+          "clipping_ratio": {
+            "default": 0.0,
+            "title": "Clipping Ratio",
+            "type": "number"
+          },
+          "duration_s": {
+            "title": "Duration S",
+            "type": "number"
+          },
+          "issues": {
+            "items": {
+              "$ref": "#/components/schemas/QualityIssue"
+            },
+            "title": "Issues",
+            "type": "array"
+          },
+          "peak_dbfs": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Peak Dbfs"
+          },
+          "rms_dbfs": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rms Dbfs"
+          },
+          "snr_db": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Estimated speech-to-background level difference in dB.",
+            "title": "Snr Db"
+          },
+          "speech_duration_s": {
+            "title": "Speech Duration S",
+            "type": "number"
+          },
+          "speech_end_s": {
+            "title": "Speech End S",
+            "type": "number"
+          },
+          "speech_start_s": {
+            "title": "Speech Start S",
+            "type": "number"
+          },
+          "usable": {
+            "title": "Usable",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "usable",
+          "duration_s",
+          "speech_duration_s",
+          "speech_start_s",
+          "speech_end_s"
+        ],
+        "title": "QualityReport",
+        "type": "object"
+      },
+      "Recommendation": {
+        "properties": {
+          "articulation": {
+            "default": "",
+            "description": "Tongue / lip / jaw guidance, empty if not applicable.",
+            "title": "Articulation",
+            "type": "string"
+          },
+          "issue_id": {
+            "description": "ID of the measured issue this tip addresses, or 'general'.",
+            "title": "Issue Id",
+            "type": "string"
+          },
+          "tip": {
+            "title": "Tip",
+            "type": "string"
+          }
+        },
+        "required": [
+          "issue_id",
+          "tip"
+        ],
+        "title": "Recommendation",
+        "type": "object"
+      },
+      "RegisterRequest": {
+        "properties": {
+          "display_name": {
+            "default": "",
+            "maxLength": 100,
+            "title": "Display Name",
+            "type": "string"
+          },
+          "email": {
+            "maxLength": 255,
+            "title": "Email",
+            "type": "string"
+          },
+          "password": {
+            "maxLength": 128,
+            "minLength": 8,
+            "title": "Password",
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ],
+        "title": "RegisterRequest",
+        "type": "object"
+      },
+      "ScorePoint": {
+        "properties": {
+          "attempts": {
+            "title": "Attempts",
+            "type": "integer"
+          },
+          "average_score": {
+            "title": "Average Score",
+            "type": "number"
+          },
+          "date": {
+            "title": "Date",
+            "type": "string"
+          }
+        },
+        "required": [
+          "date",
+          "average_score",
+          "attempts"
+        ],
+        "title": "ScorePoint",
+        "type": "object"
+      },
+      "SessionAdvance": {
+        "properties": {
+          "current_index": {
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Jump to an index; omit to move to the next word.",
+            "title": "Current Index"
+          }
+        },
+        "title": "SessionAdvance",
+        "type": "object"
+      },
+      "SessionCreate": {
+        "properties": {
+          "mode": {
+            "default": "adaptive",
+            "enum": [
+              "adaptive",
+              "random",
+              "easy",
+              "medium",
+              "hard",
+              "phoneme",
+              "missed"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "phoneme": {
+            "anyOf": [
+              {
+                "maxLength": 8,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "IPA symbol for mode='phoneme'",
+            "title": "Phoneme"
+          },
+          "size": {
+            "default": 10,
+            "maximum": 30.0,
+            "minimum": 3.0,
+            "title": "Size",
+            "type": "integer"
+          }
+        },
+        "title": "SessionCreate",
+        "type": "object"
+      },
+      "SessionOut": {
+        "properties": {
+          "average_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Average Score"
+          },
+          "completed_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Completed At"
+          },
+          "current_index": {
+            "title": "Current Index",
+            "type": "integer"
+          },
+          "focus_phonemes": {
+            "description": "Sounds the adaptive planner is prioritising.",
+            "items": {
+              "type": "string"
+            },
+            "title": "Focus Phonemes",
+            "type": "array"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "mode": {
+            "enum": [
+              "adaptive",
+              "random",
+              "easy",
+              "medium",
+              "hard",
+              "phoneme",
+              "missed"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "started_at": {
+            "format": "date-time",
+            "title": "Started At",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "active",
+              "completed"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "target_phoneme": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Target Phoneme"
+          },
+          "total_words": {
+            "title": "Total Words",
+            "type": "integer"
+          },
+          "words": {
+            "items": {
+              "$ref": "#/components/schemas/SessionWordProgress"
+            },
+            "title": "Words",
+            "type": "array"
+          },
+          "words_attempted": {
+            "title": "Words Attempted",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "mode",
+          "target_phoneme",
+          "status",
+          "started_at",
+          "completed_at",
+          "current_index",
+          "total_words",
+          "words_attempted",
+          "average_score",
+          "words"
+        ],
+        "title": "SessionOut",
+        "type": "object"
+      },
+      "SessionSummary": {
+        "properties": {
+          "attempts": {
+            "title": "Attempts",
+            "type": "integer"
+          },
+          "average_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Average Score"
+          },
+          "completed_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Completed At"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "mode": {
+            "enum": [
+              "adaptive",
+              "random",
+              "easy",
+              "medium",
+              "hard",
+              "phoneme",
+              "missed"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "started_at": {
+            "format": "date-time",
+            "title": "Started At",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "total_words": {
+            "title": "Total Words",
+            "type": "integer"
+          },
+          "words_attempted": {
+            "title": "Words Attempted",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "mode",
+          "status",
+          "started_at",
+          "completed_at",
+          "total_words",
+          "words_attempted",
+          "attempts",
+          "average_score"
+        ],
+        "title": "SessionSummary",
+        "type": "object"
+      },
+      "SessionWordProgress": {
+        "properties": {
+          "attempts": {
+            "title": "Attempts",
+            "type": "integer"
+          },
+          "best_score": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Best Score"
+          },
+          "last_rating": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Rating"
+          },
+          "last_score": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Score"
+          },
+          "position": {
+            "title": "Position",
+            "type": "integer"
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "attempted",
+              "mastered"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "word": {
+            "$ref": "#/components/schemas/WordSummary"
+          }
+        },
+        "required": [
+          "position",
+          "word",
+          "attempts",
+          "best_score",
+          "last_score",
+          "last_rating",
+          "status"
+        ],
+        "title": "SessionWordProgress",
+        "type": "object"
+      },
+      "Strength": {
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "phoneme": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Phoneme"
+          },
+          "position": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Position"
+          }
+        },
+        "required": [
+          "id",
+          "message"
+        ],
+        "title": "Strength",
+        "type": "object"
+      },
+      "SyllableReport": {
+        "properties": {
+          "completeness": {
+            "anyOf": [
+              {
+                "maximum": 1.0,
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Completeness"
+          },
+          "detected_nuclei": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Detected Nuclei"
+          },
+          "expected": {
+            "title": "Expected",
+            "type": "integer"
+          },
+          "vowels_present": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vowels Present"
+          }
+        },
+        "required": [
+          "expected"
+        ],
+        "title": "SyllableReport",
+        "type": "object"
+      },
+      "SystemStatus": {
+        "properties": {
+          "analysis_engine": {
+            "additionalProperties": true,
+            "title": "Analysis Engine",
+            "type": "object"
+          },
+          "contract_version": {
+            "title": "Contract Version",
+            "type": "string"
+          },
+          "environment": {
+            "title": "Environment",
+            "type": "string"
+          },
+          "feedback": {
+            "additionalProperties": true,
+            "title": "Feedback",
+            "type": "object"
+          },
+          "reference_audio": {
+            "additionalProperties": true,
+            "title": "Reference Audio",
+            "type": "object"
+          },
+          "status": {
+            "const": "ok",
+            "title": "Status",
+            "type": "string"
+          },
+          "words": {
+            "title": "Words",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "status",
+          "environment",
+          "contract_version",
+          "analysis_engine",
+          "feedback",
+          "reference_audio",
+          "words"
+        ],
+        "title": "SystemStatus",
+        "type": "object"
+      },
+      "TimingReport": {
+        "properties": {
+          "rate_ratio": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "User duration / reference duration.",
+            "title": "Rate Ratio"
+          },
+          "reference_duration_s": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reference Duration S"
+          },
+          "rhythm_deviation": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Mean |log| ratio of relative phone durations.",
+            "title": "Rhythm Deviation"
+          },
+          "speech_duration_s": {
+            "title": "Speech Duration S",
+            "type": "number"
+          }
+        },
+        "required": [
+          "speech_duration_s"
+        ],
+        "title": "TimingReport",
+        "type": "object"
+      },
+      "TokenResponse": {
+        "properties": {
+          "access_token": {
+            "title": "Access Token",
+            "type": "string"
+          },
+          "expires_in": {
+            "title": "Expires In",
+            "type": "integer"
+          },
+          "token_type": {
+            "const": "bearer",
+            "default": "bearer",
+            "title": "Token Type",
+            "type": "string"
+          },
+          "user": {
+            "$ref": "#/components/schemas/UserOut"
+          }
+        },
+        "required": [
+          "access_token",
+          "expires_in",
+          "user"
+        ],
+        "title": "TokenResponse",
+        "type": "object"
+      },
+      "UserOut": {
+        "properties": {
+          "audience": {
+            "enum": [
+              "adult",
+              "child"
+            ],
+            "title": "Audience",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "display_name": {
+            "title": "Display Name",
+            "type": "string"
+          },
+          "email": {
+            "title": "Email",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "preferred_accent": {
+            "enum": [
+              "us",
+              "gb"
+            ],
+            "title": "Preferred Accent",
+            "type": "string"
+          },
+          "store_recordings_consent": {
+            "title": "Store Recordings Consent",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "email",
+          "display_name",
+          "audience",
+          "preferred_accent",
+          "store_recordings_consent",
+          "created_at"
+        ],
+        "title": "UserOut",
+        "type": "object"
+      },
+      "UserUpdate": {
+        "properties": {
+          "audience": {
+            "anyOf": [
+              {
+                "enum": [
+                  "adult",
+                  "child"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Audience"
+          },
+          "display_name": {
+            "anyOf": [
+              {
+                "maxLength": 100,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Display Name"
+          },
+          "preferred_accent": {
+            "anyOf": [
+              {
+                "enum": [
+                  "us",
+                  "gb"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Preferred Accent"
+          },
+          "store_recordings_consent": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Store Recordings Consent"
+          }
+        },
+        "title": "UserUpdate",
+        "type": "object"
+      },
+      "ValidationError": {
+        "properties": {
+          "ctx": {
+            "title": "Context",
+            "type": "object"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "title": "Location",
+            "type": "array"
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError",
+        "type": "object"
+      },
+      "WordDetail": {
+        "properties": {
+          "arpabet": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Arpabet",
+            "type": "array"
+          },
+          "category": {
+            "title": "Category",
+            "type": "string"
+          },
+          "category_label": {
+            "title": "Category Label",
+            "type": "string"
+          },
+          "difficulty": {
+            "enum": [
+              "easy",
+              "medium",
+              "hard"
+            ],
+            "title": "Difficulty",
+            "type": "string"
+          },
+          "evaluation_features": {
+            "items": {
+              "$ref": "#/components/schemas/EvaluationFeature"
+            },
+            "title": "Evaluation Features",
+            "type": "array"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "ipa": {
+            "title": "Ipa",
+            "type": "string"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          },
+          "phonemes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Phonemes",
+            "type": "array"
+          },
+          "stress_pattern": {
+            "items": {
+              "type": "integer"
+            },
+            "title": "Stress Pattern",
+            "type": "array"
+          },
+          "syllable_breakdown": {
+            "items": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "title": "Syllable Breakdown",
+            "type": "array"
+          },
+          "syllables": {
+            "title": "Syllables",
+            "type": "integer"
+          },
+          "target_sounds": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Target Sounds",
+            "type": "array"
+          },
+          "variants": {
+            "items": {
+              "$ref": "#/components/schemas/WordVariantOut"
+            },
+            "title": "Variants",
+            "type": "array"
+          },
+          "word": {
+            "title": "Word",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "word",
+          "ipa",
+          "phonemes",
+          "syllables",
+          "difficulty",
+          "category",
+          "category_label",
+          "target_sounds",
+          "arpabet",
+          "variants",
+          "evaluation_features",
+          "stress_pattern",
+          "syllable_breakdown"
+        ],
+        "title": "WordDetail",
+        "type": "object"
+      },
+      "WordList": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/WordSummary"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "total",
+          "items"
+        ],
+        "title": "WordList",
+        "type": "object"
+      },
+      "WordProgress": {
+        "properties": {
+          "attempts": {
+            "title": "Attempts",
+            "type": "integer"
+          },
+          "best_score": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Best Score"
+          },
+          "last_attempt_at": {
+            "format": "date-time",
+            "title": "Last Attempt At",
+            "type": "string"
+          },
+          "last_rating": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Rating"
+          },
+          "last_score": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Score"
+          },
+          "word": {
+            "title": "Word",
+            "type": "string"
+          },
+          "word_id": {
+            "title": "Word Id",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "word_id",
+          "word",
+          "attempts",
+          "best_score",
+          "last_score",
+          "last_rating",
+          "last_attempt_at"
+        ],
+        "title": "WordProgress",
+        "type": "object"
+      },
+      "WordRecognition": {
+        "properties": {
+          "closest_word": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Practice word whose pronunciation best matches the decoding.",
+            "title": "Closest Word"
+          },
+          "matches_target": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Matches Target"
+          },
+          "phoneme_error_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Edit distance between the free decoding and the matched variant, divided by its length.",
+            "title": "Phoneme Error Rate"
+          },
+          "recognized_phonemes": {
+            "description": "Free phone decoding (IPA).",
+            "items": {
+              "type": "string"
+            },
+            "title": "Recognized Phonemes",
+            "type": "array"
+          }
+        },
+        "title": "WordRecognition",
+        "type": "object"
+      },
+      "WordSummary": {
+        "properties": {
+          "category": {
+            "title": "Category",
+            "type": "string"
+          },
+          "category_label": {
+            "title": "Category Label",
+            "type": "string"
+          },
+          "difficulty": {
+            "enum": [
+              "easy",
+              "medium",
+              "hard"
+            ],
+            "title": "Difficulty",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "ipa": {
+            "title": "Ipa",
+            "type": "string"
+          },
+          "phonemes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Phonemes",
+            "type": "array"
+          },
+          "syllables": {
+            "title": "Syllables",
+            "type": "integer"
+          },
+          "target_sounds": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Target Sounds",
+            "type": "array"
+          },
+          "word": {
+            "title": "Word",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "word",
+          "ipa",
+          "phonemes",
+          "syllables",
+          "difficulty",
+          "category",
+          "category_label",
+          "target_sounds"
+        ],
+        "title": "WordSummary",
+        "type": "object"
+      },
+      "WordVariantOut": {
+        "properties": {
+          "accent": {
+            "title": "Accent",
+            "type": "string"
+          },
+          "arpabet": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Arpabet",
+            "type": "array"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "ipa": {
+            "title": "Ipa",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "accent",
+          "ipa",
+          "arpabet"
+        ],
+        "title": "WordVariantOut",
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "HTTPBearer": {
+        "scheme": "bearer",
+        "type": "http"
+      }
+    }
+  },
+  "info": {
+    "description": "Speech and pronunciation practice: word database, audio analysis with phoneme-level scoring, AI feedback, adaptive sessions and progress tracking. Scores are automated practice estimates, not clinical assessments.",
+    "title": "Pronunciation Practice API",
+    "version": "1.0.0"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/api/attempts": {
+      "get": {
+        "operationId": "list_attempts_api_attempts_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "word_id",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Word Id"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 200,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttemptList"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "List Attempts",
+        "tags": [
+          "pronunciation"
+        ]
+      }
+    },
+    "/api/attempts/{attempt_id}": {
+      "get": {
+        "operationId": "get_attempt_api_attempts__attempt_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "attempt_id",
+            "required": true,
+            "schema": {
+              "title": "Attempt Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttemptOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Attempt",
+        "tags": [
+          "pronunciation"
+        ]
+      }
+    },
+    "/api/attempts/{attempt_id}/recording": {
+      "delete": {
+        "operationId": "delete_recording_api_attempts__attempt_id__recording_delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "attempt_id",
+            "required": true,
+            "schema": {
+              "title": "Attempt Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Delete Recording",
+        "tags": [
+          "pronunciation"
+        ]
+      },
+      "get": {
+        "operationId": "get_recording_api_attempts__attempt_id__recording_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "attempt_id",
+            "required": true,
+            "schema": {
+              "title": "Attempt Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "audio/wav": {}
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Recording",
+        "tags": [
+          "pronunciation"
+        ]
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "operationId": "login_api_auth_login_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Login",
+        "tags": [
+          "auth & users"
+        ]
+      }
+    },
+    "/api/auth/register": {
+      "post": {
+        "operationId": "register_api_auth_register_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Register",
+        "tags": [
+          "auth & users"
+        ]
+      }
+    },
+    "/api/feedback": {
+      "post": {
+        "operationId": "generate_feedback_api_feedback_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeedbackRequestIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Generate Feedback",
+        "tags": [
+          "feedback"
+        ]
+      }
+    },
+    "/api/health": {
+      "get": {
+        "operationId": "health_api_health_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Health Api Health Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Health",
+        "tags": [
+          "system & progress"
+        ]
+      }
+    },
+    "/api/pronunciation/analyze": {
+      "post": {
+        "operationId": "analyze_pronunciation_api_pronunciation_analyze_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_analyze_pronunciation_api_pronunciation_analyze_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttemptOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Content Too Large"
+          },
+          "415": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unsupported Media Type"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Analyze Pronunciation",
+        "tags": [
+          "pronunciation"
+        ]
+      }
+    },
+    "/api/sessions": {
+      "get": {
+        "operationId": "list_sessions_api_sessions_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SessionSummary"
+                  },
+                  "title": "Response List Sessions Api Sessions Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "List Sessions",
+        "tags": [
+          "sessions"
+        ]
+      },
+      "post": {
+        "operationId": "create_session_api_sessions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Session",
+        "tags": [
+          "sessions"
+        ]
+      }
+    },
+    "/api/sessions/{session_id}": {
+      "get": {
+        "operationId": "get_session_api_sessions__session_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "title": "Session Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Session",
+        "tags": [
+          "sessions"
+        ]
+      }
+    },
+    "/api/sessions/{session_id}/advance": {
+      "post": {
+        "description": "Move to the next word (or a given index).  Past the last word the session completes.",
+        "operationId": "advance_api_sessions__session_id__advance_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "title": "Session Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionAdvance"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Advance",
+        "tags": [
+          "sessions"
+        ]
+      }
+    },
+    "/api/sessions/{session_id}/complete": {
+      "post": {
+        "operationId": "complete_api_sessions__session_id__complete_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "title": "Session Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Complete",
+        "tags": [
+          "sessions"
+        ]
+      }
+    },
+    "/api/system/status": {
+      "get": {
+        "operationId": "system_status_api_system_status_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SystemStatus"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "System Status",
+        "tags": [
+          "system & progress"
+        ]
+      }
+    },
+    "/api/users/me": {
+      "delete": {
+        "description": "Delete the account and everything linked to it.",
+        "operationId": "delete_account_api_users_me_delete",
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Delete Account",
+        "tags": [
+          "auth & users"
+        ]
+      },
+      "get": {
+        "operationId": "me_api_users_me_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Me",
+        "tags": [
+          "auth & users"
+        ]
+      },
+      "patch": {
+        "operationId": "update_me_api_users_me_patch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Update Me",
+        "tags": [
+          "auth & users"
+        ]
+      }
+    },
+    "/api/users/me/data": {
+      "delete": {
+        "description": "Delete all practice data (attempts, sessions, recordings) but keep the account.",
+        "operationId": "delete_my_data_api_users_me_data_delete",
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Delete My Data",
+        "tags": [
+          "auth & users"
+        ]
+      }
+    },
+    "/api/users/me/export": {
+      "get": {
+        "description": "Machine-readable export of everything stored about the user (recordings listed, not embedded).",
+        "operationId": "export_my_data_api_users_me_export_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Export My Data Api Users Me Export Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Export My Data",
+        "tags": [
+          "auth & users"
+        ]
+      }
+    },
+    "/api/users/me/progress": {
+      "get": {
+        "operationId": "my_progress_api_users_me_progress_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgressOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "My Progress",
+        "tags": [
+          "system & progress"
+        ]
+      }
+    },
+    "/api/users/me/recordings": {
+      "delete": {
+        "operationId": "delete_my_recordings_api_users_me_recordings_delete",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Delete My Recordings Api Users Me Recordings Delete",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Delete My Recordings",
+        "tags": [
+          "auth & users"
+        ]
+      }
+    },
+    "/api/words": {
+      "get": {
+        "operationId": "list_words_api_words_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "difficulty",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "pattern": "^(easy|medium|hard)$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Difficulty"
+            }
+          },
+          {
+            "in": "query",
+            "name": "category",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Category"
+            }
+          },
+          {
+            "description": "IPA symbol the word must contain",
+            "in": "query",
+            "name": "phoneme",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 8,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "IPA symbol the word must contain",
+              "title": "Phoneme"
+            }
+          },
+          {
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 64,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Q"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 200,
+              "maximum": 500,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WordList"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "List Words",
+        "tags": [
+          "words"
+        ]
+      }
+    },
+    "/api/words/categories": {
+      "get": {
+        "operationId": "list_categories_api_words_categories_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "additionalProperties": true,
+                    "type": "object"
+                  },
+                  "title": "Response List Categories Api Words Categories Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "List Categories",
+        "tags": [
+          "words"
+        ]
+      }
+    },
+    "/api/words/phonemes": {
+      "get": {
+        "description": "Sounds available for targeted practice, with how many words contain each.",
+        "operationId": "list_phonemes_api_words_phonemes_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PhonemeOption"
+                  },
+                  "title": "Response List Phonemes Api Words Phonemes Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "List Phonemes",
+        "tags": [
+          "words"
+        ]
+      }
+    },
+    "/api/words/{word_id}": {
+      "get": {
+        "operationId": "get_word_api_words__word_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "word_id",
+            "required": true,
+            "schema": {
+              "title": "Word Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WordDetail"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Word",
+        "tags": [
+          "words"
+        ]
+      }
+    },
+    "/api/words/{word_id}/audio": {
+      "get": {
+        "description": "Reference pronunciation (human recording > Piper neural TTS > espeak-ng).",
+        "operationId": "word_audio_api_words__word_id__audio_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "word_id",
+            "required": true,
+            "schema": {
+              "title": "Word Id",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "variant",
+            "required": false,
+            "schema": {
+              "default": "us",
+              "maxLength": 8,
+              "title": "Variant",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "speed",
+            "required": false,
+            "schema": {
+              "default": "normal",
+              "pattern": "^(normal|slow)$",
+              "title": "Speed",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "audio/wav": {}
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Word Audio",
+        "tags": [
+          "words"
+        ]
+      }
+    }
+  }
+}

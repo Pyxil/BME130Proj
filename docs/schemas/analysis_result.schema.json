@@ -1,0 +1,947 @@
+{
+  "$defs": {
+    "ComponentScore": {
+      "properties": {
+        "available": {
+          "title": "Available",
+          "type": "boolean"
+        },
+        "details": {
+          "additionalProperties": true,
+          "title": "Details",
+          "type": "object"
+        },
+        "name": {
+          "enum": [
+            "phoneme_accuracy",
+            "acoustic_similarity",
+            "syllable_completeness",
+            "temporal"
+          ],
+          "title": "Name",
+          "type": "string"
+        },
+        "score": {
+          "anyOf": [
+            {
+              "maximum": 100,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Score"
+        },
+        "weight": {
+          "description": "Configured weight (renormalised over available components).",
+          "title": "Weight",
+          "type": "number"
+        }
+      },
+      "required": [
+        "name",
+        "weight",
+        "available"
+      ],
+      "title": "ComponentScore",
+      "type": "object"
+    },
+    "EngineInfo": {
+      "properties": {
+        "calibration": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Calibration"
+        },
+        "model": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "notes": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Notes"
+        },
+        "phoneme_level": {
+          "description": "True if the engine produced genuine phoneme-level scores.",
+          "title": "Phoneme Level",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name",
+        "phoneme_level"
+      ],
+      "title": "EngineInfo",
+      "type": "object"
+    },
+    "Issue": {
+      "properties": {
+        "evidence": {
+          "additionalProperties": true,
+          "title": "Evidence",
+          "type": "object"
+        },
+        "id": {
+          "description": "Stable identifier within this result; AI feedback must cite these.",
+          "title": "Id",
+          "type": "string"
+        },
+        "message": {
+          "description": "Plain-language description generated from measured data.",
+          "title": "Message",
+          "type": "string"
+        },
+        "phoneme": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Phoneme"
+        },
+        "position": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Position"
+        },
+        "realized_as": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Realized As"
+        },
+        "severity": {
+          "enum": [
+            "minor",
+            "moderate",
+            "major"
+          ],
+          "title": "Severity",
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "substitution",
+            "deletion",
+            "unclear_articulation",
+            "insertion",
+            "syllable_missing",
+            "extra_syllable",
+            "too_fast",
+            "too_slow",
+            "low_acoustic_similarity"
+          ],
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "severity",
+        "message"
+      ],
+      "title": "Issue",
+      "type": "object"
+    },
+    "MatchedVariant": {
+      "properties": {
+        "accent": {
+          "title": "Accent",
+          "type": "string"
+        },
+        "arpabet": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Arpabet",
+          "type": "array"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "ipa": {
+          "title": "Ipa",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "accent",
+        "ipa",
+        "arpabet"
+      ],
+      "title": "MatchedVariant",
+      "type": "object"
+    },
+    "PhonemeScore": {
+      "properties": {
+        "accepted_variant": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Accepted allophone/accent realisation that explained the audio better, if any.",
+          "title": "Accepted Variant"
+        },
+        "arpabet": {
+          "description": "Expected phoneme (ARPAbet with stress).",
+          "title": "Arpabet",
+          "type": "string"
+        },
+        "deletion_probability": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Deletion Probability"
+        },
+        "end_s": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End S"
+        },
+        "index": {
+          "description": "Position in the expected phoneme sequence of the matched variant.",
+          "title": "Index",
+          "type": "integer"
+        },
+        "likely_realization": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Most likely competing sound (IPA) when the expected one scored low.",
+          "title": "Likely Realization"
+        },
+        "likely_realization_probability": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Likely Realization Probability"
+        },
+        "phoneme": {
+          "description": "Expected phoneme (broad IPA).",
+          "title": "Phoneme",
+          "type": "string"
+        },
+        "posterior": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Model probability that the expected sound (or an accepted variant of it) was produced.",
+          "title": "Posterior"
+        },
+        "score": {
+          "anyOf": [
+            {
+              "maximum": 100,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Calibrated 0-100 phoneme score.",
+          "title": "Score"
+        },
+        "start_s": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Approximate start time (seconds, trimmed audio).",
+          "title": "Start S"
+        },
+        "status": {
+          "enum": [
+            "good",
+            "fair",
+            "poor",
+            "missing",
+            "unscored"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "index",
+        "phoneme",
+        "arpabet",
+        "status"
+      ],
+      "title": "PhonemeScore",
+      "type": "object"
+    },
+    "QualityIssue": {
+      "properties": {
+        "blocking": {
+          "description": "If true the recording is rejected and the user is asked to record again.",
+          "title": "Blocking",
+          "type": "boolean"
+        },
+        "code": {
+          "enum": [
+            "too_short",
+            "too_long",
+            "no_speech",
+            "too_quiet",
+            "clipping",
+            "noisy",
+            "truncated_start",
+            "truncated_end",
+            "decode_error"
+          ],
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "blocking"
+      ],
+      "title": "QualityIssue",
+      "type": "object"
+    },
+    "QualityReport": {
+      "properties": {
+        "clipping_ratio": {
+          "default": 0.0,
+          "title": "Clipping Ratio",
+          "type": "number"
+        },
+        "duration_s": {
+          "title": "Duration S",
+          "type": "number"
+        },
+        "issues": {
+          "items": {
+            "$ref": "#/$defs/QualityIssue"
+          },
+          "title": "Issues",
+          "type": "array"
+        },
+        "peak_dbfs": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Peak Dbfs"
+        },
+        "rms_dbfs": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rms Dbfs"
+        },
+        "snr_db": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Estimated speech-to-background level difference in dB.",
+          "title": "Snr Db"
+        },
+        "speech_duration_s": {
+          "title": "Speech Duration S",
+          "type": "number"
+        },
+        "speech_end_s": {
+          "title": "Speech End S",
+          "type": "number"
+        },
+        "speech_start_s": {
+          "title": "Speech Start S",
+          "type": "number"
+        },
+        "usable": {
+          "title": "Usable",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "usable",
+        "duration_s",
+        "speech_duration_s",
+        "speech_start_s",
+        "speech_end_s"
+      ],
+      "title": "QualityReport",
+      "type": "object"
+    },
+    "Strength": {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "phoneme": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Phoneme"
+        },
+        "position": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Position"
+        }
+      },
+      "required": [
+        "id",
+        "message"
+      ],
+      "title": "Strength",
+      "type": "object"
+    },
+    "SyllableReport": {
+      "properties": {
+        "completeness": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Completeness"
+        },
+        "detected_nuclei": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Detected Nuclei"
+        },
+        "expected": {
+          "title": "Expected",
+          "type": "integer"
+        },
+        "vowels_present": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Vowels Present"
+        }
+      },
+      "required": [
+        "expected"
+      ],
+      "title": "SyllableReport",
+      "type": "object"
+    },
+    "TimingReport": {
+      "properties": {
+        "rate_ratio": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "User duration / reference duration.",
+          "title": "Rate Ratio"
+        },
+        "reference_duration_s": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reference Duration S"
+        },
+        "rhythm_deviation": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Mean |log| ratio of relative phone durations.",
+          "title": "Rhythm Deviation"
+        },
+        "speech_duration_s": {
+          "title": "Speech Duration S",
+          "type": "number"
+        }
+      },
+      "required": [
+        "speech_duration_s"
+      ],
+      "title": "TimingReport",
+      "type": "object"
+    },
+    "WordRecognition": {
+      "properties": {
+        "closest_word": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Practice word whose pronunciation best matches the decoding.",
+          "title": "Closest Word"
+        },
+        "matches_target": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Matches Target"
+        },
+        "phoneme_error_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Edit distance between the free decoding and the matched variant, divided by its length.",
+          "title": "Phoneme Error Rate"
+        },
+        "recognized_phonemes": {
+          "description": "Free phone decoding (IPA).",
+          "items": {
+            "type": "string"
+          },
+          "title": "Recognized Phonemes",
+          "type": "array"
+        }
+      },
+      "title": "WordRecognition",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "acoustic_similarity": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Acoustic Similarity"
+    },
+    "analysis_id": {
+      "title": "Analysis Id",
+      "type": "string"
+    },
+    "components": {
+      "items": {
+        "$ref": "#/$defs/ComponentScore"
+      },
+      "title": "Components",
+      "type": "array"
+    },
+    "confidence": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Confidence",
+      "type": "number"
+    },
+    "confidence_factors": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "title": "Confidence Factors",
+      "type": "object"
+    },
+    "confidence_label": {
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "title": "Confidence Label",
+      "type": "string"
+    },
+    "contract_version": {
+      "default": "1.0.0",
+      "title": "Contract Version",
+      "type": "string"
+    },
+    "disclaimer": {
+      "default": "Scores are automated estimates intended for practice feedback. They are not a clinical assessment or diagnosis and have not been clinically validated.",
+      "title": "Disclaimer",
+      "type": "string"
+    },
+    "engine": {
+      "$ref": "#/$defs/EngineInfo"
+    },
+    "identified_issues": {
+      "items": {
+        "$ref": "#/$defs/Issue"
+      },
+      "title": "Identified Issues",
+      "type": "array"
+    },
+    "matched_variant": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/MatchedVariant"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "needs_retry": {
+      "title": "Needs Retry",
+      "type": "boolean"
+    },
+    "overall_score": {
+      "anyOf": [
+        {
+          "maximum": 100,
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Overall Score"
+    },
+    "phoneme_scores": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/PhonemeScore"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Phoneme Scores"
+    },
+    "phonetically_accurate": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "True only if every phoneme scored 'good' and the overall score meets the mastery threshold.",
+      "title": "Phonetically Accurate"
+    },
+    "processing_ms": {
+      "default": 0,
+      "title": "Processing Ms",
+      "type": "integer"
+    },
+    "quality": {
+      "$ref": "#/$defs/QualityReport"
+    },
+    "rating": {
+      "anyOf": [
+        {
+          "enum": [
+            "mastered",
+            "satisfactory",
+            "needs_practice"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Rating"
+    },
+    "recognition": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/WordRecognition"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "recognized_word": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Recognized Word"
+    },
+    "retry_reason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Retry Reason"
+    },
+    "status": {
+      "enum": [
+        "assessed",
+        "retry_required",
+        "inconclusive"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "strengths": {
+      "items": {
+        "$ref": "#/$defs/Strength"
+      },
+      "title": "Strengths",
+      "type": "array"
+    },
+    "syllables": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SyllableReport"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "timing": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/TimingReport"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "word": {
+      "title": "Word",
+      "type": "string"
+    },
+    "word_id": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Word Id"
+    },
+    "word_recognized": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Whether the decoded sounds match the target word better than other practice words.",
+      "title": "Word Recognized"
+    }
+  },
+  "required": [
+    "analysis_id",
+    "word",
+    "status",
+    "confidence",
+    "confidence_label",
+    "needs_retry",
+    "quality",
+    "engine"
+  ],
+  "title": "AnalysisResult",
+  "type": "object"
+}
