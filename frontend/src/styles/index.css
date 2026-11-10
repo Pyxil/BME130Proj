@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+/* Design tokens. Colours meet WCAG AA contrast for text on their intended backgrounds. */
+@theme {
+  --font-sans: "Atkinson Hyperlegible", "Noto Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-ipa: "Noto Sans", "Charis SIL", "Doulos SIL", "Lucida Sans Unicode", ui-sans-serif, sans-serif;
+
+  --color-brand-50: #f0fdfa;
+  --color-brand-100: #ccfbf1;
+  --color-brand-200: #99f6e4;
+  --color-brand-500: #14b8a6;
+  --color-brand-600: #0d9488;
+  --color-brand-700: #0f766e;
+  --color-brand-800: #115e59;
+  --color-brand-900: #134e4a;
+
+  --color-good: #047857;
+  --color-fair: #b45309;
+  --color-poor: #be123c;
+  --color-record: #e11d48;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+  /* Highly visible keyboard focus for accessibility */
+  :focus-visible {
+    outline: 3px solid var(--color-brand-500);
+    outline-offset: 3px;
+    border-radius: 0.5rem;
+  }
+  .ipa {
+    font-family: var(--font-ipa);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.55; }
+  100% { transform: scale(1.45); opacity: 0; }
+}
+.animate-pulse-ring {
+  animation: pulse-ring 1.4s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+}
+
+/* Chart tokens (validated with the dataviz palette validator: accent vs de-emphasis gray
+   light ΔE 18.1 CVD / 23.1 normal; dark ΔE 21.4 / 24.0). The gray sits below 3:1 by design,
+   so charts ship direct labels, tooltips and a table view. */
+:root {
+  --chart-accent: #0d9488;
+  --chart-muted: #b6c2d1;
+  --chart-grid: #e2e8f0;
+  --chart-axis: #475569;
+  --chart-surface: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --chart-accent: #13a898;
+    --chart-muted: #475569;
+    --chart-grid: #1e293b;
+    --chart-axis: #94a3b8;
+    --chart-surface: #0f172a;
+  }
+}

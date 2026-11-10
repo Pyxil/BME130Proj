@@ -1,0 +1,6440 @@
+{
+ "_note": "Recorded from the real backend by backend/scripts/generate_frontend_fixtures.py. Do not edit.",
+ "words": [
+  {
+   "id": 1,
+   "word": "cat",
+   "ipa": "/kæt/",
+   "phonemes": [
+    "k",
+    "æ",
+    "t"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "simple_words",
+   "category_label": "Simple words",
+   "target_sounds": [
+    "k"
+   ]
+  },
+  {
+   "id": 2,
+   "word": "dog",
+   "ipa": "/dɔɡ/",
+   "phonemes": [
+    "d",
+    "ɔ",
+    "ɡ"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "simple_words",
+   "category_label": "Simple words",
+   "target_sounds": [
+    "d",
+    "ɡ"
+   ]
+  },
+  {
+   "id": 3,
+   "word": "sun",
+   "ipa": "/sʌn/",
+   "phonemes": [
+    "s",
+    "ʌ",
+    "n"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "s_sound",
+   "category_label": "S and Z sounds",
+   "target_sounds": [
+    "s"
+   ]
+  },
+  {
+   "id": 4,
+   "word": "map",
+   "ipa": "/mæp/",
+   "phonemes": [
+    "m",
+    "æ",
+    "p"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "simple_words",
+   "category_label": "Simple words",
+   "target_sounds": [
+    "m",
+    "p"
+   ]
+  },
+  {
+   "id": 5,
+   "word": "cup",
+   "ipa": "/kʌp/",
+   "phonemes": [
+    "k",
+    "ʌ",
+    "p"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "simple_words",
+   "category_label": "Simple words",
+   "target_sounds": [
+    "k",
+    "p"
+   ]
+  },
+  {
+   "id": 6,
+   "word": "bed",
+   "ipa": "/bɛd/",
+   "phonemes": [
+    "b",
+    "ɛ",
+    "d"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "simple_words",
+   "category_label": "Simple words",
+   "target_sounds": [
+    "b",
+    "d"
+   ]
+  },
+  {
+   "id": 7,
+   "word": "pig",
+   "ipa": "/pɪɡ/",
+   "phonemes": [
+    "p",
+    "ɪ",
+    "ɡ"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "simple_words",
+   "category_label": "Simple words",
+   "target_sounds": [
+    "p",
+    "ɡ"
+   ]
+  },
+  {
+   "id": 8,
+   "word": "hat",
+   "ipa": "/hæt/",
+   "phonemes": [
+    "h",
+    "æ",
+    "t"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "simple_words",
+   "category_label": "Simple words",
+   "target_sounds": [
+    "h"
+   ]
+  },
+  {
+   "id": 9,
+   "word": "bus",
+   "ipa": "/bʌs/",
+   "phonemes": [
+    "b",
+    "ʌ",
+    "s"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "s_sound",
+   "category_label": "S and Z sounds",
+   "target_sounds": [
+    "s"
+   ]
+  },
+  {
+   "id": 10,
+   "word": "fish",
+   "ipa": "/fɪʃ/",
+   "phonemes": [
+    "f",
+    "ɪ",
+    "ʃ"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "sh_ch_j",
+   "category_label": "SH, CH and J sounds",
+   "target_sounds": [
+    "ʃ"
+   ]
+  },
+  {
+   "id": 11,
+   "word": "book",
+   "ipa": "/bʊk/",
+   "phonemes": [
+    "b",
+    "ʊ",
+    "k"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "simple_words",
+   "category_label": "Simple words",
+   "target_sounds": [
+    "b",
+    "k"
+   ]
+  },
+  {
+   "id": 12,
+   "word": "ball",
+   "ipa": "/bɔl/",
+   "phonemes": [
+    "b",
+    "ɔ",
+    "l"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "l_sound",
+   "category_label": "L sounds",
+   "target_sounds": [
+    "l"
+   ]
+  },
+  {
+   "id": 13,
+   "word": "top",
+   "ipa": "/tɑp/",
+   "phonemes": [
+    "t",
+    "ɑ",
+    "p"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "simple_words",
+   "category_label": "Simple words",
+   "target_sounds": [
+    "t",
+    "p"
+   ]
+  },
+  {
+   "id": 14,
+   "word": "man",
+   "ipa": "/mæn/",
+   "phonemes": [
+    "m",
+    "æ",
+    "n"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "simple_words",
+   "category_label": "Simple words",
+   "target_sounds": [
+    "m",
+    "n"
+   ]
+  },
+  {
+   "id": 15,
+   "word": "moon",
+   "ipa": "/mun/",
+   "phonemes": [
+    "m",
+    "u",
+    "n"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "simple_words",
+   "category_label": "Simple words",
+   "target_sounds": [
+    "m",
+    "u"
+   ]
+  },
+  {
+   "id": 16,
+   "word": "key",
+   "ipa": "/ki/",
+   "phonemes": [
+    "k",
+    "i"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "k_g_sound",
+   "category_label": "K and G sounds",
+   "target_sounds": [
+    "k"
+   ]
+  },
+  {
+   "id": 17,
+   "word": "bee",
+   "ipa": "/bi/",
+   "phonemes": [
+    "b",
+    "i"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "simple_words",
+   "category_label": "Simple words",
+   "target_sounds": [
+    "b",
+    "i"
+   ]
+  },
+  {
+   "id": 18,
+   "word": "go",
+   "ipa": "/ɡoʊ/",
+   "phonemes": [
+    "ɡ",
+    "oʊ"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "k_g_sound",
+   "category_label": "K and G sounds",
+   "target_sounds": [
+    "ɡ"
+   ]
+  },
+  {
+   "id": 19,
+   "word": "shoe",
+   "ipa": "/ʃu/",
+   "phonemes": [
+    "ʃ",
+    "u"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "sh_ch_j",
+   "category_label": "SH, CH and J sounds",
+   "target_sounds": [
+    "ʃ"
+   ]
+  },
+  {
+   "id": 20,
+   "word": "five",
+   "ipa": "/faɪv/",
+   "phonemes": [
+    "f",
+    "aɪ",
+    "v"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "f_v_sound",
+   "category_label": "F and V sounds",
+   "target_sounds": [
+    "f",
+    "v"
+   ]
+  },
+  {
+   "id": 21,
+   "word": "nose",
+   "ipa": "/noʊz/",
+   "phonemes": [
+    "n",
+    "oʊ",
+    "z"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "simple_words",
+   "category_label": "Simple words",
+   "target_sounds": [
+    "n",
+    "z"
+   ]
+  },
+  {
+   "id": 22,
+   "word": "duck",
+   "ipa": "/dʌk/",
+   "phonemes": [
+    "d",
+    "ʌ",
+    "k"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "k_g_sound",
+   "category_label": "K and G sounds",
+   "target_sounds": [
+    "d",
+    "k"
+   ]
+  },
+  {
+   "id": 23,
+   "word": "pen",
+   "ipa": "/pɛn/",
+   "phonemes": [
+    "p",
+    "ɛ",
+    "n"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "simple_words",
+   "category_label": "Simple words",
+   "target_sounds": [
+    "p",
+    "ɛ"
+   ]
+  },
+  {
+   "id": 24,
+   "word": "web",
+   "ipa": "/wɛb/",
+   "phonemes": [
+    "w",
+    "ɛ",
+    "b"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "simple_words",
+   "category_label": "Simple words",
+   "target_sounds": [
+    "w",
+    "b"
+   ]
+  },
+  {
+   "id": 25,
+   "word": "yes",
+   "ipa": "/jɛs/",
+   "phonemes": [
+    "j",
+    "ɛ",
+    "s"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "simple_words",
+   "category_label": "Simple words",
+   "target_sounds": [
+    "j",
+    "s"
+   ]
+  },
+  {
+   "id": 26,
+   "word": "zoo",
+   "ipa": "/zu/",
+   "phonemes": [
+    "z",
+    "u"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "s_sound",
+   "category_label": "S and Z sounds",
+   "target_sounds": [
+    "z"
+   ]
+  },
+  {
+   "id": 27,
+   "word": "van",
+   "ipa": "/væn/",
+   "phonemes": [
+    "v",
+    "æ",
+    "n"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "f_v_sound",
+   "category_label": "F and V sounds",
+   "target_sounds": [
+    "v"
+   ]
+  },
+  {
+   "id": 28,
+   "word": "home",
+   "ipa": "/hoʊm/",
+   "phonemes": [
+    "h",
+    "oʊ",
+    "m"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "simple_words",
+   "category_label": "Simple words",
+   "target_sounds": [
+    "h",
+    "m"
+   ]
+  },
+  {
+   "id": 29,
+   "word": "cake",
+   "ipa": "/keɪk/",
+   "phonemes": [
+    "k",
+    "eɪ",
+    "k"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "k_g_sound",
+   "category_label": "K and G sounds",
+   "target_sounds": [
+    "k"
+   ]
+  },
+  {
+   "id": 30,
+   "word": "boat",
+   "ipa": "/boʊt/",
+   "phonemes": [
+    "b",
+    "oʊ",
+    "t"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "simple_words",
+   "category_label": "Simple words",
+   "target_sounds": [
+    "b",
+    "oʊ"
+   ]
+  },
+  {
+   "id": 31,
+   "word": "fan",
+   "ipa": "/fæn/",
+   "phonemes": [
+    "f",
+    "æ",
+    "n"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "f_v_sound",
+   "category_label": "F and V sounds",
+   "target_sounds": [
+    "f"
+   ]
+  },
+  {
+   "id": 32,
+   "word": "ship",
+   "ipa": "/ʃɪp/",
+   "phonemes": [
+    "ʃ",
+    "ɪ",
+    "p"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "vowel_contrast",
+   "category_label": "Vowel contrasts",
+   "target_sounds": [
+    "ʃ",
+    "ɪ"
+   ]
+  },
+  {
+   "id": 33,
+   "word": "sheep",
+   "ipa": "/ʃip/",
+   "phonemes": [
+    "ʃ",
+    "i",
+    "p"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "vowel_contrast",
+   "category_label": "Vowel contrasts",
+   "target_sounds": [
+    "ʃ",
+    "i"
+   ]
+  },
+  {
+   "id": 34,
+   "word": "baby",
+   "ipa": "/ˈbeɪbi/",
+   "phonemes": [
+    "b",
+    "eɪ",
+    "b",
+    "i"
+   ],
+   "syllables": 2,
+   "difficulty": "easy",
+   "category": "simple_words",
+   "category_label": "Simple words",
+   "target_sounds": [
+    "b"
+   ]
+  },
+  {
+   "id": 35,
+   "word": "happy",
+   "ipa": "/ˈhæpi/",
+   "phonemes": [
+    "h",
+    "æ",
+    "p",
+    "i"
+   ],
+   "syllables": 2,
+   "difficulty": "easy",
+   "category": "simple_words",
+   "category_label": "Simple words",
+   "target_sounds": [
+    "h",
+    "p"
+   ]
+  },
+  {
+   "id": 36,
+   "word": "cookie",
+   "ipa": "/ˈkʊki/",
+   "phonemes": [
+    "k",
+    "ʊ",
+    "k",
+    "i"
+   ],
+   "syllables": 2,
+   "difficulty": "easy",
+   "category": "k_g_sound",
+   "category_label": "K and G sounds",
+   "target_sounds": [
+    "k"
+   ]
+  },
+  {
+   "id": 37,
+   "word": "puppy",
+   "ipa": "/ˈpʌpi/",
+   "phonemes": [
+    "p",
+    "ʌ",
+    "p",
+    "i"
+   ],
+   "syllables": 2,
+   "difficulty": "easy",
+   "category": "simple_words",
+   "category_label": "Simple words",
+   "target_sounds": [
+    "p"
+   ]
+  },
+  {
+   "id": 38,
+   "word": "monkey",
+   "ipa": "/ˈmʌŋki/",
+   "phonemes": [
+    "m",
+    "ʌ",
+    "ŋ",
+    "k",
+    "i"
+   ],
+   "syllables": 2,
+   "difficulty": "easy",
+   "category": "k_g_sound",
+   "category_label": "K and G sounds",
+   "target_sounds": [
+    "ŋ",
+    "k"
+   ]
+  },
+  {
+   "id": 39,
+   "word": "bit",
+   "ipa": "/bɪt/",
+   "phonemes": [
+    "b",
+    "ɪ",
+    "t"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "vowel_contrast",
+   "category_label": "Vowel contrasts",
+   "target_sounds": [
+    "ɪ"
+   ]
+  },
+  {
+   "id": 40,
+   "word": "beat",
+   "ipa": "/bit/",
+   "phonemes": [
+    "b",
+    "i",
+    "t"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "vowel_contrast",
+   "category_label": "Vowel contrasts",
+   "target_sounds": [
+    "i"
+   ]
+  },
+  {
+   "id": 41,
+   "word": "pool",
+   "ipa": "/pul/",
+   "phonemes": [
+    "p",
+    "u",
+    "l"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "vowel_contrast",
+   "category_label": "Vowel contrasts",
+   "target_sounds": [
+    "u",
+    "l"
+   ]
+  },
+  {
+   "id": 42,
+   "word": "pull",
+   "ipa": "/pʊl/",
+   "phonemes": [
+    "p",
+    "ʊ",
+    "l"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "vowel_contrast",
+   "category_label": "Vowel contrasts",
+   "target_sounds": [
+    "ʊ",
+    "l"
+   ]
+  },
+  {
+   "id": 43,
+   "word": "mouse",
+   "ipa": "/maʊs/",
+   "phonemes": [
+    "m",
+    "aʊ",
+    "s"
+   ],
+   "syllables": 1,
+   "difficulty": "easy",
+   "category": "s_sound",
+   "category_label": "S and Z sounds",
+   "target_sounds": [
+    "aʊ",
+    "s"
+   ]
+  },
+  {
+   "id": 44,
+   "word": "red",
+   "ipa": "/rɛd/",
+   "phonemes": [
+    "r",
+    "ɛ",
+    "d"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "r_sound",
+   "category_label": "R sounds",
+   "target_sounds": [
+    "r"
+   ]
+  },
+  {
+   "id": 45,
+   "word": "rabbit",
+   "ipa": "/ˈræbət/",
+   "phonemes": [
+    "r",
+    "æ",
+    "b",
+    "ə",
+    "t"
+   ],
+   "syllables": 2,
+   "difficulty": "medium",
+   "category": "r_sound",
+   "category_label": "R sounds",
+   "target_sounds": [
+    "r"
+   ]
+  },
+  {
+   "id": 46,
+   "word": "road",
+   "ipa": "/roʊd/",
+   "phonemes": [
+    "r",
+    "oʊ",
+    "d"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "r_sound",
+   "category_label": "R sounds",
+   "target_sounds": [
+    "r"
+   ]
+  },
+  {
+   "id": 47,
+   "word": "rain",
+   "ipa": "/reɪn/",
+   "phonemes": [
+    "r",
+    "eɪ",
+    "n"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "r_sound",
+   "category_label": "R sounds",
+   "target_sounds": [
+    "r"
+   ]
+  },
+  {
+   "id": 48,
+   "word": "rocket",
+   "ipa": "/ˈrɑkət/",
+   "phonemes": [
+    "r",
+    "ɑ",
+    "k",
+    "ə",
+    "t"
+   ],
+   "syllables": 2,
+   "difficulty": "medium",
+   "category": "r_sound",
+   "category_label": "R sounds",
+   "target_sounds": [
+    "r",
+    "k"
+   ]
+  },
+  {
+   "id": 49,
+   "word": "carrot",
+   "ipa": "/ˈkærət/",
+   "phonemes": [
+    "k",
+    "æ",
+    "r",
+    "ə",
+    "t"
+   ],
+   "syllables": 2,
+   "difficulty": "medium",
+   "category": "r_sound",
+   "category_label": "R sounds",
+   "target_sounds": [
+    "r"
+   ]
+  },
+  {
+   "id": 50,
+   "word": "mirror",
+   "ipa": "/ˈmɪrər/",
+   "phonemes": [
+    "m",
+    "ɪ",
+    "r",
+    "ər"
+   ],
+   "syllables": 2,
+   "difficulty": "medium",
+   "category": "r_sound",
+   "category_label": "R sounds",
+   "target_sounds": [
+    "r",
+    "ər"
+   ]
+  },
+  {
+   "id": 51,
+   "word": "around",
+   "ipa": "/əˈraʊnd/",
+   "phonemes": [
+    "ə",
+    "r",
+    "aʊ",
+    "n",
+    "d"
+   ],
+   "syllables": 2,
+   "difficulty": "medium",
+   "category": "r_sound",
+   "category_label": "R sounds",
+   "target_sounds": [
+    "r"
+   ]
+  },
+  {
+   "id": 52,
+   "word": "car",
+   "ipa": "/kɑr/",
+   "phonemes": [
+    "k",
+    "ɑ",
+    "r"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "r_sound",
+   "category_label": "R sounds",
+   "target_sounds": [
+    "ɑ",
+    "r"
+   ]
+  },
+  {
+   "id": 53,
+   "word": "tree",
+   "ipa": "/tri/",
+   "phonemes": [
+    "t",
+    "r",
+    "i"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "t",
+    "r"
+   ]
+  },
+  {
+   "id": 54,
+   "word": "frog",
+   "ipa": "/frɑɡ/",
+   "phonemes": [
+    "f",
+    "r",
+    "ɑ",
+    "ɡ"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "f",
+    "r"
+   ]
+  },
+  {
+   "id": 55,
+   "word": "green",
+   "ipa": "/ɡrin/",
+   "phonemes": [
+    "ɡ",
+    "r",
+    "i",
+    "n"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "ɡ",
+    "r"
+   ]
+  },
+  {
+   "id": 56,
+   "word": "bread",
+   "ipa": "/brɛd/",
+   "phonemes": [
+    "b",
+    "r",
+    "ɛ",
+    "d"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "b",
+    "r"
+   ]
+  },
+  {
+   "id": 57,
+   "word": "snake",
+   "ipa": "/sneɪk/",
+   "phonemes": [
+    "s",
+    "n",
+    "eɪ",
+    "k"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "s",
+    "n"
+   ]
+  },
+  {
+   "id": 58,
+   "word": "spoon",
+   "ipa": "/spun/",
+   "phonemes": [
+    "s",
+    "p",
+    "u",
+    "n"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "s",
+    "p"
+   ]
+  },
+  {
+   "id": 59,
+   "word": "star",
+   "ipa": "/stɑr/",
+   "phonemes": [
+    "s",
+    "t",
+    "ɑ",
+    "r"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "s",
+    "t"
+   ]
+  },
+  {
+   "id": 60,
+   "word": "sleep",
+   "ipa": "/slip/",
+   "phonemes": [
+    "s",
+    "l",
+    "i",
+    "p"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "s",
+    "l"
+   ]
+  },
+  {
+   "id": 61,
+   "word": "house",
+   "ipa": "/haʊs/",
+   "phonemes": [
+    "h",
+    "aʊ",
+    "s"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "s_sound",
+   "category_label": "S and Z sounds",
+   "target_sounds": [
+    "h",
+    "s"
+   ]
+  },
+  {
+   "id": 62,
+   "word": "glass",
+   "ipa": "/ɡlæs/",
+   "phonemes": [
+    "ɡ",
+    "l",
+    "æ",
+    "s"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "ɡ",
+    "l",
+    "s"
+   ]
+  },
+  {
+   "id": 63,
+   "word": "seven",
+   "ipa": "/ˈsɛvən/",
+   "phonemes": [
+    "s",
+    "ɛ",
+    "v",
+    "ə",
+    "n"
+   ],
+   "syllables": 2,
+   "difficulty": "medium",
+   "category": "s_sound",
+   "category_label": "S and Z sounds",
+   "target_sounds": [
+    "s",
+    "v"
+   ]
+  },
+  {
+   "id": 64,
+   "word": "leaf",
+   "ipa": "/lif/",
+   "phonemes": [
+    "l",
+    "i",
+    "f"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "l_sound",
+   "category_label": "L sounds",
+   "target_sounds": [
+    "l"
+   ]
+  },
+  {
+   "id": 65,
+   "word": "lamp",
+   "ipa": "/læmp/",
+   "phonemes": [
+    "l",
+    "æ",
+    "m",
+    "p"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "l_sound",
+   "category_label": "L sounds",
+   "target_sounds": [
+    "l",
+    "m",
+    "p"
+   ]
+  },
+  {
+   "id": 66,
+   "word": "yellow",
+   "ipa": "/ˈjɛloʊ/",
+   "phonemes": [
+    "j",
+    "ɛ",
+    "l",
+    "oʊ"
+   ],
+   "syllables": 2,
+   "difficulty": "medium",
+   "category": "l_sound",
+   "category_label": "L sounds",
+   "target_sounds": [
+    "j",
+    "l"
+   ]
+  },
+  {
+   "id": 67,
+   "word": "balloon",
+   "ipa": "/bəˈlun/",
+   "phonemes": [
+    "b",
+    "ə",
+    "l",
+    "u",
+    "n"
+   ],
+   "syllables": 2,
+   "difficulty": "medium",
+   "category": "l_sound",
+   "category_label": "L sounds",
+   "target_sounds": [
+    "l"
+   ]
+  },
+  {
+   "id": 68,
+   "word": "lion",
+   "ipa": "/ˈlaɪən/",
+   "phonemes": [
+    "l",
+    "aɪ",
+    "ə",
+    "n"
+   ],
+   "syllables": 2,
+   "difficulty": "medium",
+   "category": "l_sound",
+   "category_label": "L sounds",
+   "target_sounds": [
+    "l"
+   ]
+  },
+  {
+   "id": 69,
+   "word": "plane",
+   "ipa": "/pleɪn/",
+   "phonemes": [
+    "p",
+    "l",
+    "eɪ",
+    "n"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "p",
+    "l"
+   ]
+  },
+  {
+   "id": 70,
+   "word": "flower",
+   "ipa": "/ˈflaʊər/",
+   "phonemes": [
+    "f",
+    "l",
+    "aʊ",
+    "ər"
+   ],
+   "syllables": 2,
+   "difficulty": "medium",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "f",
+    "l"
+   ]
+  },
+  {
+   "id": 71,
+   "word": "thumb",
+   "ipa": "/θʌm/",
+   "phonemes": [
+    "θ",
+    "ʌ",
+    "m"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "th_sound",
+   "category_label": "TH sounds",
+   "target_sounds": [
+    "θ"
+   ]
+  },
+  {
+   "id": 72,
+   "word": "think",
+   "ipa": "/θɪŋk/",
+   "phonemes": [
+    "θ",
+    "ɪ",
+    "ŋ",
+    "k"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "th_sound",
+   "category_label": "TH sounds",
+   "target_sounds": [
+    "θ",
+    "ŋ",
+    "k"
+   ]
+  },
+  {
+   "id": 73,
+   "word": "mother",
+   "ipa": "/ˈmʌðər/",
+   "phonemes": [
+    "m",
+    "ʌ",
+    "ð",
+    "ər"
+   ],
+   "syllables": 2,
+   "difficulty": "medium",
+   "category": "th_sound",
+   "category_label": "TH sounds",
+   "target_sounds": [
+    "ð"
+   ]
+  },
+  {
+   "id": 74,
+   "word": "feather",
+   "ipa": "/ˈfɛðər/",
+   "phonemes": [
+    "f",
+    "ɛ",
+    "ð",
+    "ər"
+   ],
+   "syllables": 2,
+   "difficulty": "medium",
+   "category": "th_sound",
+   "category_label": "TH sounds",
+   "target_sounds": [
+    "ð"
+   ]
+  },
+  {
+   "id": 75,
+   "word": "teeth",
+   "ipa": "/tiθ/",
+   "phonemes": [
+    "t",
+    "i",
+    "θ"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "th_sound",
+   "category_label": "TH sounds",
+   "target_sounds": [
+    "θ"
+   ]
+  },
+  {
+   "id": 76,
+   "word": "this",
+   "ipa": "/ðɪs/",
+   "phonemes": [
+    "ð",
+    "ɪ",
+    "s"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "th_sound",
+   "category_label": "TH sounds",
+   "target_sounds": [
+    "ð"
+   ]
+  },
+  {
+   "id": 77,
+   "word": "bath",
+   "ipa": "/bæθ/",
+   "phonemes": [
+    "b",
+    "æ",
+    "θ"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "th_sound",
+   "category_label": "TH sounds",
+   "target_sounds": [
+    "θ"
+   ]
+  },
+  {
+   "id": 78,
+   "word": "chair",
+   "ipa": "/tʃɛr/",
+   "phonemes": [
+    "tʃ",
+    "ɛ",
+    "r"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "sh_ch_j",
+   "category_label": "SH, CH and J sounds",
+   "target_sounds": [
+    "tʃ"
+   ]
+  },
+  {
+   "id": 79,
+   "word": "cheese",
+   "ipa": "/tʃiz/",
+   "phonemes": [
+    "tʃ",
+    "i",
+    "z"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "sh_ch_j",
+   "category_label": "SH, CH and J sounds",
+   "target_sounds": [
+    "tʃ",
+    "z"
+   ]
+  },
+  {
+   "id": 80,
+   "word": "jump",
+   "ipa": "/dʒʌmp/",
+   "phonemes": [
+    "dʒ",
+    "ʌ",
+    "m",
+    "p"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "sh_ch_j",
+   "category_label": "SH, CH and J sounds",
+   "target_sounds": [
+    "dʒ"
+   ]
+  },
+  {
+   "id": 81,
+   "word": "giraffe",
+   "ipa": "/dʒəˈræf/",
+   "phonemes": [
+    "dʒ",
+    "ə",
+    "r",
+    "æ",
+    "f"
+   ],
+   "syllables": 2,
+   "difficulty": "medium",
+   "category": "sh_ch_j",
+   "category_label": "SH, CH and J sounds",
+   "target_sounds": [
+    "dʒ",
+    "r",
+    "f"
+   ]
+  },
+  {
+   "id": 82,
+   "word": "watch",
+   "ipa": "/wɑtʃ/",
+   "phonemes": [
+    "w",
+    "ɑ",
+    "tʃ"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "sh_ch_j",
+   "category_label": "SH, CH and J sounds",
+   "target_sounds": [
+    "tʃ"
+   ]
+  },
+  {
+   "id": 83,
+   "word": "orange",
+   "ipa": "/ˈɔrəndʒ/",
+   "phonemes": [
+    "ɔ",
+    "r",
+    "ə",
+    "n",
+    "dʒ"
+   ],
+   "syllables": 2,
+   "difficulty": "medium",
+   "category": "sh_ch_j",
+   "category_label": "SH, CH and J sounds",
+   "target_sounds": [
+    "r",
+    "dʒ"
+   ]
+  },
+  {
+   "id": 84,
+   "word": "kitchen",
+   "ipa": "/ˈkɪtʃən/",
+   "phonemes": [
+    "k",
+    "ɪ",
+    "tʃ",
+    "ə",
+    "n"
+   ],
+   "syllables": 2,
+   "difficulty": "medium",
+   "category": "k_g_sound",
+   "category_label": "K and G sounds",
+   "target_sounds": [
+    "k",
+    "tʃ"
+   ]
+  },
+  {
+   "id": 85,
+   "word": "glove",
+   "ipa": "/ɡlʌv/",
+   "phonemes": [
+    "ɡ",
+    "l",
+    "ʌ",
+    "v"
+   ],
+   "syllables": 1,
+   "difficulty": "medium",
+   "category": "f_v_sound",
+   "category_label": "F and V sounds",
+   "target_sounds": [
+    "ɡ",
+    "l",
+    "v"
+   ]
+  },
+  {
+   "id": 86,
+   "word": "banana",
+   "ipa": "/bəˈnænə/",
+   "phonemes": [
+    "b",
+    "ə",
+    "n",
+    "æ",
+    "n",
+    "ə"
+   ],
+   "syllables": 3,
+   "difficulty": "medium",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "b",
+    "n"
+   ]
+  },
+  {
+   "id": 87,
+   "word": "elephant",
+   "ipa": "/ˈɛləfənt/",
+   "phonemes": [
+    "ɛ",
+    "l",
+    "ə",
+    "f",
+    "ə",
+    "n",
+    "t"
+   ],
+   "syllables": 3,
+   "difficulty": "medium",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "l",
+    "f"
+   ]
+  },
+  {
+   "id": 88,
+   "word": "umbrella",
+   "ipa": "/əmˈbrɛlə/",
+   "phonemes": [
+    "ə",
+    "m",
+    "b",
+    "r",
+    "ɛ",
+    "l",
+    "ə"
+   ],
+   "syllables": 3,
+   "difficulty": "medium",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "m",
+    "b",
+    "r",
+    "l"
+   ]
+  },
+  {
+   "id": 89,
+   "word": "butterfly",
+   "ipa": "/ˈbʌtərˌflaɪ/",
+   "phonemes": [
+    "b",
+    "ʌ",
+    "t",
+    "ər",
+    "f",
+    "l",
+    "aɪ"
+   ],
+   "syllables": 3,
+   "difficulty": "medium",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "b",
+    "t",
+    "f",
+    "l"
+   ]
+  },
+  {
+   "id": 90,
+   "word": "tomato",
+   "ipa": "/təˈmeɪˌtoʊ/",
+   "phonemes": [
+    "t",
+    "ə",
+    "m",
+    "eɪ",
+    "t",
+    "oʊ"
+   ],
+   "syllables": 3,
+   "difficulty": "medium",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "t",
+    "m"
+   ]
+  },
+  {
+   "id": 91,
+   "word": "dinosaur",
+   "ipa": "/ˈdaɪnəˌsɔr/",
+   "phonemes": [
+    "d",
+    "aɪ",
+    "n",
+    "ə",
+    "s",
+    "ɔ",
+    "r"
+   ],
+   "syllables": 3,
+   "difficulty": "medium",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "d",
+    "n",
+    "s"
+   ]
+  },
+  {
+   "id": 92,
+   "word": "computer",
+   "ipa": "/kəmˈpjutər/",
+   "phonemes": [
+    "k",
+    "ə",
+    "m",
+    "p",
+    "j",
+    "u",
+    "t",
+    "ər"
+   ],
+   "syllables": 3,
+   "difficulty": "medium",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "k",
+    "m",
+    "p",
+    "j"
+   ]
+  },
+  {
+   "id": 93,
+   "word": "pencil",
+   "ipa": "/ˈpɛnsəl/",
+   "phonemes": [
+    "p",
+    "ɛ",
+    "n",
+    "s",
+    "ə",
+    "l"
+   ],
+   "syllables": 2,
+   "difficulty": "medium",
+   "category": "s_sound",
+   "category_label": "S and Z sounds",
+   "target_sounds": [
+    "n",
+    "s",
+    "l"
+   ]
+  },
+  {
+   "id": 94,
+   "word": "water",
+   "ipa": "/ˈwɔtər/",
+   "phonemes": [
+    "w",
+    "ɔ",
+    "t",
+    "ər"
+   ],
+   "syllables": 2,
+   "difficulty": "medium",
+   "category": "r_sound",
+   "category_label": "R sounds",
+   "target_sounds": [
+    "w",
+    "ər"
+   ]
+  },
+  {
+   "id": 95,
+   "word": "spider",
+   "ipa": "/ˈspaɪdər/",
+   "phonemes": [
+    "s",
+    "p",
+    "aɪ",
+    "d",
+    "ər"
+   ],
+   "syllables": 2,
+   "difficulty": "medium",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "s",
+    "p"
+   ]
+  },
+  {
+   "id": 96,
+   "word": "sandwich",
+   "ipa": "/ˈsændwɪtʃ/",
+   "phonemes": [
+    "s",
+    "æ",
+    "n",
+    "d",
+    "w",
+    "ɪ",
+    "tʃ"
+   ],
+   "syllables": 2,
+   "difficulty": "medium",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "n",
+    "d",
+    "w",
+    "tʃ"
+   ]
+  },
+  {
+   "id": 97,
+   "word": "strawberry",
+   "ipa": "/ˈstrɔˌbɛri/",
+   "phonemes": [
+    "s",
+    "t",
+    "r",
+    "ɔ",
+    "b",
+    "ɛ",
+    "r",
+    "i"
+   ],
+   "syllables": 3,
+   "difficulty": "hard",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "s",
+    "t",
+    "r"
+   ]
+  },
+  {
+   "id": 98,
+   "word": "street",
+   "ipa": "/strit/",
+   "phonemes": [
+    "s",
+    "t",
+    "r",
+    "i",
+    "t"
+   ],
+   "syllables": 1,
+   "difficulty": "hard",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "s",
+    "t",
+    "r"
+   ]
+  },
+  {
+   "id": 99,
+   "word": "squirrel",
+   "ipa": "/ˈskwɜrəl/",
+   "phonemes": [
+    "s",
+    "k",
+    "w",
+    "ɜr",
+    "ə",
+    "l"
+   ],
+   "syllables": 2,
+   "difficulty": "hard",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "s",
+    "k",
+    "w",
+    "l"
+   ]
+  },
+  {
+   "id": 100,
+   "word": "splash",
+   "ipa": "/splæʃ/",
+   "phonemes": [
+    "s",
+    "p",
+    "l",
+    "æ",
+    "ʃ"
+   ],
+   "syllables": 1,
+   "difficulty": "hard",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "s",
+    "p",
+    "l",
+    "ʃ"
+   ]
+  },
+  {
+   "id": 101,
+   "word": "scratch",
+   "ipa": "/skrætʃ/",
+   "phonemes": [
+    "s",
+    "k",
+    "r",
+    "æ",
+    "tʃ"
+   ],
+   "syllables": 1,
+   "difficulty": "hard",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "s",
+    "k",
+    "r",
+    "tʃ"
+   ]
+  },
+  {
+   "id": 102,
+   "word": "sixth",
+   "ipa": "/sɪksθ/",
+   "phonemes": [
+    "s",
+    "ɪ",
+    "k",
+    "s",
+    "θ"
+   ],
+   "syllables": 1,
+   "difficulty": "hard",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "k",
+    "s",
+    "θ"
+   ]
+  },
+  {
+   "id": 103,
+   "word": "months",
+   "ipa": "/mʌnθs/",
+   "phonemes": [
+    "m",
+    "ʌ",
+    "n",
+    "θ",
+    "s"
+   ],
+   "syllables": 1,
+   "difficulty": "hard",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "n",
+    "θ",
+    "s"
+   ]
+  },
+  {
+   "id": 104,
+   "word": "strengths",
+   "ipa": "/strɛŋkθs/",
+   "phonemes": [
+    "s",
+    "t",
+    "r",
+    "ɛ",
+    "ŋ",
+    "k",
+    "θ",
+    "s"
+   ],
+   "syllables": 1,
+   "difficulty": "hard",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "s",
+    "t",
+    "r",
+    "ŋ",
+    "k",
+    "θ"
+   ]
+  },
+  {
+   "id": 105,
+   "word": "rural",
+   "ipa": "/ˈrʊrəl/",
+   "phonemes": [
+    "r",
+    "ʊ",
+    "r",
+    "ə",
+    "l"
+   ],
+   "syllables": 2,
+   "difficulty": "hard",
+   "category": "r_sound",
+   "category_label": "R sounds",
+   "target_sounds": [
+    "r",
+    "l"
+   ]
+  },
+  {
+   "id": 106,
+   "word": "library",
+   "ipa": "/ˈlaɪˌbrɛri/",
+   "phonemes": [
+    "l",
+    "aɪ",
+    "b",
+    "r",
+    "ɛ",
+    "r",
+    "i"
+   ],
+   "syllables": 3,
+   "difficulty": "hard",
+   "category": "r_sound",
+   "category_label": "R sounds",
+   "target_sounds": [
+    "l",
+    "b",
+    "r"
+   ]
+  },
+  {
+   "id": 107,
+   "word": "February",
+   "ipa": "/ˈfɛbruˌɛri/",
+   "phonemes": [
+    "f",
+    "ɛ",
+    "b",
+    "r",
+    "u",
+    "ɛ",
+    "r",
+    "i"
+   ],
+   "syllables": 4,
+   "difficulty": "hard",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "f",
+    "b",
+    "r"
+   ]
+  },
+  {
+   "id": 108,
+   "word": "specific",
+   "ipa": "/spəˈsɪfɪk/",
+   "phonemes": [
+    "s",
+    "p",
+    "ə",
+    "s",
+    "ɪ",
+    "f",
+    "ɪ",
+    "k"
+   ],
+   "syllables": 3,
+   "difficulty": "hard",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "s",
+    "p",
+    "f",
+    "k"
+   ]
+  },
+  {
+   "id": 109,
+   "word": "statistics",
+   "ipa": "/stəˈtɪstɪks/",
+   "phonemes": [
+    "s",
+    "t",
+    "ə",
+    "t",
+    "ɪ",
+    "s",
+    "t",
+    "ɪ",
+    "k",
+    "s"
+   ],
+   "syllables": 3,
+   "difficulty": "hard",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "s",
+    "t",
+    "k"
+   ]
+  },
+  {
+   "id": 110,
+   "word": "thermometer",
+   "ipa": "/θərˈmɑmətər/",
+   "phonemes": [
+    "θ",
+    "ər",
+    "m",
+    "ɑ",
+    "m",
+    "ə",
+    "t",
+    "ər"
+   ],
+   "syllables": 4,
+   "difficulty": "hard",
+   "category": "th_sound",
+   "category_label": "TH sounds",
+   "target_sounds": [
+    "θ",
+    "m"
+   ]
+  },
+  {
+   "id": 111,
+   "word": "caterpillar",
+   "ipa": "/ˈkætəˌpɪlər/",
+   "phonemes": [
+    "k",
+    "æ",
+    "t",
+    "ə",
+    "p",
+    "ɪ",
+    "l",
+    "ər"
+   ],
+   "syllables": 4,
+   "difficulty": "hard",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "k",
+    "t",
+    "p",
+    "l"
+   ]
+  },
+  {
+   "id": 112,
+   "word": "helicopter",
+   "ipa": "/ˈhɛlɪˌkɑptər/",
+   "phonemes": [
+    "h",
+    "ɛ",
+    "l",
+    "ɪ",
+    "k",
+    "ɑ",
+    "p",
+    "t",
+    "ər"
+   ],
+   "syllables": 4,
+   "difficulty": "hard",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "h",
+    "l",
+    "k",
+    "p",
+    "t"
+   ]
+  },
+  {
+   "id": 113,
+   "word": "refrigerator",
+   "ipa": "/rɪˈfrɪdʒəˌreɪtər/",
+   "phonemes": [
+    "r",
+    "ɪ",
+    "f",
+    "r",
+    "ɪ",
+    "dʒ",
+    "ə",
+    "r",
+    "eɪ",
+    "t",
+    "ər"
+   ],
+   "syllables": 5,
+   "difficulty": "hard",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "r",
+    "f",
+    "dʒ"
+   ]
+  },
+  {
+   "id": 114,
+   "word": "hippopotamus",
+   "ipa": "/ˌhɪpəˈpɑtəməs/",
+   "phonemes": [
+    "h",
+    "ɪ",
+    "p",
+    "ə",
+    "p",
+    "ɑ",
+    "t",
+    "ə",
+    "m",
+    "ə",
+    "s"
+   ],
+   "syllables": 5,
+   "difficulty": "hard",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "p",
+    "t",
+    "m",
+    "s"
+   ]
+  },
+  {
+   "id": 115,
+   "word": "vegetable",
+   "ipa": "/ˈvɛdʒtəbəl/",
+   "phonemes": [
+    "v",
+    "ɛ",
+    "dʒ",
+    "t",
+    "ə",
+    "b",
+    "ə",
+    "l"
+   ],
+   "syllables": 3,
+   "difficulty": "hard",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "v",
+    "dʒ",
+    "t",
+    "b",
+    "l"
+   ]
+  },
+  {
+   "id": 116,
+   "word": "rhinoceros",
+   "ipa": "/raɪˈnɑsərəs/",
+   "phonemes": [
+    "r",
+    "aɪ",
+    "n",
+    "ɑ",
+    "s",
+    "ər",
+    "ə",
+    "s"
+   ],
+   "syllables": 4,
+   "difficulty": "hard",
+   "category": "r_sound",
+   "category_label": "R sounds",
+   "target_sounds": [
+    "r",
+    "n",
+    "s"
+   ]
+  },
+  {
+   "id": 117,
+   "word": "thoroughly",
+   "ipa": "/ˈθɜroʊli/",
+   "phonemes": [
+    "θ",
+    "ɜr",
+    "oʊ",
+    "l",
+    "i"
+   ],
+   "syllables": 3,
+   "difficulty": "hard",
+   "category": "th_sound",
+   "category_label": "TH sounds",
+   "target_sounds": [
+    "θ",
+    "l"
+   ]
+  },
+  {
+   "id": 118,
+   "word": "particularly",
+   "ipa": "/ˌpɑrˈtɪkjələrli/",
+   "phonemes": [
+    "p",
+    "ɑ",
+    "r",
+    "t",
+    "ɪ",
+    "k",
+    "j",
+    "ə",
+    "l",
+    "ər",
+    "l",
+    "i"
+   ],
+   "syllables": 5,
+   "difficulty": "hard",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "p",
+    "r",
+    "t",
+    "k",
+    "l"
+   ]
+  },
+  {
+   "id": 119,
+   "word": "vulnerable",
+   "ipa": "/ˈvʌlnərəbəl/",
+   "phonemes": [
+    "v",
+    "ʌ",
+    "l",
+    "n",
+    "ər",
+    "ə",
+    "b",
+    "ə",
+    "l"
+   ],
+   "syllables": 4,
+   "difficulty": "hard",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "v",
+    "l",
+    "n",
+    "b"
+   ]
+  },
+  {
+   "id": 120,
+   "word": "rhythm",
+   "ipa": "/ˈrɪðəm/",
+   "phonemes": [
+    "r",
+    "ɪ",
+    "ð",
+    "ə",
+    "m"
+   ],
+   "syllables": 2,
+   "difficulty": "hard",
+   "category": "th_sound",
+   "category_label": "TH sounds",
+   "target_sounds": [
+    "r",
+    "ð",
+    "m"
+   ]
+  },
+  {
+   "id": 121,
+   "word": "phenomenon",
+   "ipa": "/fəˈnɑməˌnɑn/",
+   "phonemes": [
+    "f",
+    "ə",
+    "n",
+    "ɑ",
+    "m",
+    "ə",
+    "n",
+    "ɑ",
+    "n"
+   ],
+   "syllables": 4,
+   "difficulty": "hard",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "f",
+    "n",
+    "m"
+   ]
+  },
+  {
+   "id": 122,
+   "word": "environment",
+   "ipa": "/ɪnˈvaɪrənmənt/",
+   "phonemes": [
+    "ɪ",
+    "n",
+    "v",
+    "aɪ",
+    "r",
+    "ə",
+    "n",
+    "m",
+    "ə",
+    "n",
+    "t"
+   ],
+   "syllables": 4,
+   "difficulty": "hard",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "n",
+    "v",
+    "r",
+    "m"
+   ]
+  },
+  {
+   "id": 123,
+   "word": "temperature",
+   "ipa": "/ˈtɛmprətʃər/",
+   "phonemes": [
+    "t",
+    "ɛ",
+    "m",
+    "p",
+    "r",
+    "ə",
+    "tʃ",
+    "ər"
+   ],
+   "syllables": 3,
+   "difficulty": "hard",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "t",
+    "m",
+    "p",
+    "r",
+    "tʃ"
+   ]
+  },
+  {
+   "id": 124,
+   "word": "toothbrush",
+   "ipa": "/ˈtuθbrəʃ/",
+   "phonemes": [
+    "t",
+    "u",
+    "θ",
+    "b",
+    "r",
+    "ə",
+    "ʃ"
+   ],
+   "syllables": 2,
+   "difficulty": "hard",
+   "category": "th_sound",
+   "category_label": "TH sounds",
+   "target_sounds": [
+    "θ",
+    "b",
+    "r",
+    "ʃ"
+   ]
+  },
+  {
+   "id": 125,
+   "word": "pronunciation",
+   "ipa": "/proʊˌnʌnsiˈeɪʃən/",
+   "phonemes": [
+    "p",
+    "r",
+    "oʊ",
+    "n",
+    "ʌ",
+    "n",
+    "s",
+    "i",
+    "eɪ",
+    "ʃ",
+    "ə",
+    "n"
+   ],
+   "syllables": 5,
+   "difficulty": "hard",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "p",
+    "r",
+    "n",
+    "s",
+    "ʃ"
+   ]
+  },
+  {
+   "id": 126,
+   "word": "remember",
+   "ipa": "/rɪˈmɛmbər/",
+   "phonemes": [
+    "r",
+    "ɪ",
+    "m",
+    "ɛ",
+    "m",
+    "b",
+    "ər"
+   ],
+   "syllables": 3,
+   "difficulty": "hard",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "r",
+    "m",
+    "b"
+   ]
+  },
+  {
+   "id": 127,
+   "word": "electricity",
+   "ipa": "/ɪˌlɛkˈtrɪsəti/",
+   "phonemes": [
+    "ɪ",
+    "l",
+    "ɛ",
+    "k",
+    "t",
+    "r",
+    "ɪ",
+    "s",
+    "ə",
+    "t",
+    "i"
+   ],
+   "syllables": 5,
+   "difficulty": "hard",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "l",
+    "k",
+    "t",
+    "r",
+    "s"
+   ]
+  },
+  {
+   "id": 128,
+   "word": "spaghetti",
+   "ipa": "/spəˈɡɛti/",
+   "phonemes": [
+    "s",
+    "p",
+    "ə",
+    "ɡ",
+    "ɛ",
+    "t",
+    "i"
+   ],
+   "syllables": 3,
+   "difficulty": "hard",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "s",
+    "p",
+    "ɡ",
+    "t"
+   ]
+  },
+  {
+   "id": 129,
+   "word": "ambulance",
+   "ipa": "/ˈæmbjələns/",
+   "phonemes": [
+    "æ",
+    "m",
+    "b",
+    "j",
+    "ə",
+    "l",
+    "ə",
+    "n",
+    "s"
+   ],
+   "syllables": 3,
+   "difficulty": "hard",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "m",
+    "b",
+    "j",
+    "l",
+    "n",
+    "s"
+   ]
+  },
+  {
+   "id": 130,
+   "word": "crocodile",
+   "ipa": "/ˈkrɑkəˌdaɪl/",
+   "phonemes": [
+    "k",
+    "r",
+    "ɑ",
+    "k",
+    "ə",
+    "d",
+    "aɪ",
+    "l"
+   ],
+   "syllables": 3,
+   "difficulty": "hard",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "k",
+    "r",
+    "d",
+    "l"
+   ]
+  },
+  {
+   "id": 131,
+   "word": "kangaroo",
+   "ipa": "/ˌkæŋɡəˈru/",
+   "phonemes": [
+    "k",
+    "æ",
+    "ŋ",
+    "ɡ",
+    "ə",
+    "r",
+    "u"
+   ],
+   "syllables": 3,
+   "difficulty": "hard",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "k",
+    "ŋ",
+    "ɡ",
+    "r"
+   ]
+  },
+  {
+   "id": 132,
+   "word": "triangle",
+   "ipa": "/ˈtraɪˌæŋɡəl/",
+   "phonemes": [
+    "t",
+    "r",
+    "aɪ",
+    "æ",
+    "ŋ",
+    "ɡ",
+    "ə",
+    "l"
+   ],
+   "syllables": 3,
+   "difficulty": "hard",
+   "category": "clusters",
+   "category_label": "Consonant clusters",
+   "target_sounds": [
+    "t",
+    "r",
+    "ŋ",
+    "ɡ",
+    "l"
+   ]
+  },
+  {
+   "id": 133,
+   "word": "scissors",
+   "ipa": "/ˈsɪzərz/",
+   "phonemes": [
+    "s",
+    "ɪ",
+    "z",
+    "ər",
+    "z"
+   ],
+   "syllables": 2,
+   "difficulty": "hard",
+   "category": "s_sound",
+   "category_label": "S and Z sounds",
+   "target_sounds": [
+    "s",
+    "z"
+   ]
+  },
+  {
+   "id": 134,
+   "word": "Wednesday",
+   "ipa": "/ˈwɛnzdi/",
+   "phonemes": [
+    "w",
+    "ɛ",
+    "n",
+    "z",
+    "d",
+    "i"
+   ],
+   "syllables": 2,
+   "difficulty": "hard",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "w",
+    "n",
+    "z",
+    "d"
+   ]
+  },
+  {
+   "id": 135,
+   "word": "probably",
+   "ipa": "/ˈprɑbəbli/",
+   "phonemes": [
+    "p",
+    "r",
+    "ɑ",
+    "b",
+    "ə",
+    "b",
+    "l",
+    "i"
+   ],
+   "syllables": 3,
+   "difficulty": "hard",
+   "category": "multisyllabic",
+   "category_label": "Multisyllabic words",
+   "target_sounds": [
+    "p",
+    "r",
+    "b",
+    "l"
+   ]
+  }
+ ],
+ "word_variants": {
+  "1": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/kæt/",
+    "arpabet": [
+     "K",
+     "AE1",
+     "T"
+    ]
+   }
+  ],
+  "2": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/dɔɡ/",
+    "arpabet": [
+     "D",
+     "AO1",
+     "G"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/dɑɡ/",
+    "arpabet": [
+     "D",
+     "AA1",
+     "G"
+    ]
+   }
+  ],
+  "3": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/sʌn/",
+    "arpabet": [
+     "S",
+     "AH1",
+     "N"
+    ]
+   }
+  ],
+  "4": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/mæp/",
+    "arpabet": [
+     "M",
+     "AE1",
+     "P"
+    ]
+   }
+  ],
+  "5": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/kʌp/",
+    "arpabet": [
+     "K",
+     "AH1",
+     "P"
+    ]
+   }
+  ],
+  "6": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/bɛd/",
+    "arpabet": [
+     "B",
+     "EH1",
+     "D"
+    ]
+   }
+  ],
+  "7": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/pɪɡ/",
+    "arpabet": [
+     "P",
+     "IH1",
+     "G"
+    ]
+   }
+  ],
+  "8": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/hæt/",
+    "arpabet": [
+     "HH",
+     "AE1",
+     "T"
+    ]
+   }
+  ],
+  "9": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/bʌs/",
+    "arpabet": [
+     "B",
+     "AH1",
+     "S"
+    ]
+   }
+  ],
+  "10": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/fɪʃ/",
+    "arpabet": [
+     "F",
+     "IH1",
+     "SH"
+    ]
+   }
+  ],
+  "11": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/bʊk/",
+    "arpabet": [
+     "B",
+     "UH1",
+     "K"
+    ]
+   }
+  ],
+  "12": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/bɔl/",
+    "arpabet": [
+     "B",
+     "AO1",
+     "L"
+    ]
+   }
+  ],
+  "13": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/tɑp/",
+    "arpabet": [
+     "T",
+     "AA1",
+     "P"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/tɔp/",
+    "arpabet": [
+     "T",
+     "AO1",
+     "P"
+    ]
+   }
+  ],
+  "14": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/mæn/",
+    "arpabet": [
+     "M",
+     "AE1",
+     "N"
+    ]
+   }
+  ],
+  "15": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/mun/",
+    "arpabet": [
+     "M",
+     "UW1",
+     "N"
+    ]
+   }
+  ],
+  "16": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ki/",
+    "arpabet": [
+     "K",
+     "IY1"
+    ]
+   }
+  ],
+  "17": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/bi/",
+    "arpabet": [
+     "B",
+     "IY1"
+    ]
+   }
+  ],
+  "18": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ɡoʊ/",
+    "arpabet": [
+     "G",
+     "OW1"
+    ]
+   }
+  ],
+  "19": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ʃu/",
+    "arpabet": [
+     "SH",
+     "UW1"
+    ]
+   }
+  ],
+  "20": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/faɪv/",
+    "arpabet": [
+     "F",
+     "AY1",
+     "V"
+    ]
+   }
+  ],
+  "21": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/noʊz/",
+    "arpabet": [
+     "N",
+     "OW1",
+     "Z"
+    ]
+   }
+  ],
+  "22": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/dʌk/",
+    "arpabet": [
+     "D",
+     "AH1",
+     "K"
+    ]
+   }
+  ],
+  "23": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/pɛn/",
+    "arpabet": [
+     "P",
+     "EH1",
+     "N"
+    ]
+   }
+  ],
+  "24": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/wɛb/",
+    "arpabet": [
+     "W",
+     "EH1",
+     "B"
+    ]
+   }
+  ],
+  "25": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/jɛs/",
+    "arpabet": [
+     "Y",
+     "EH1",
+     "S"
+    ]
+   }
+  ],
+  "26": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/zu/",
+    "arpabet": [
+     "Z",
+     "UW1"
+    ]
+   }
+  ],
+  "27": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/væn/",
+    "arpabet": [
+     "V",
+     "AE1",
+     "N"
+    ]
+   }
+  ],
+  "28": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/hoʊm/",
+    "arpabet": [
+     "HH",
+     "OW1",
+     "M"
+    ]
+   }
+  ],
+  "29": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/keɪk/",
+    "arpabet": [
+     "K",
+     "EY1",
+     "K"
+    ]
+   }
+  ],
+  "30": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/boʊt/",
+    "arpabet": [
+     "B",
+     "OW1",
+     "T"
+    ]
+   }
+  ],
+  "31": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/fæn/",
+    "arpabet": [
+     "F",
+     "AE1",
+     "N"
+    ]
+   }
+  ],
+  "32": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ʃɪp/",
+    "arpabet": [
+     "SH",
+     "IH1",
+     "P"
+    ]
+   }
+  ],
+  "33": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ʃip/",
+    "arpabet": [
+     "SH",
+     "IY1",
+     "P"
+    ]
+   }
+  ],
+  "34": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈbeɪbi/",
+    "arpabet": [
+     "B",
+     "EY1",
+     "B",
+     "IY0"
+    ]
+   }
+  ],
+  "35": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈhæpi/",
+    "arpabet": [
+     "HH",
+     "AE1",
+     "P",
+     "IY0"
+    ]
+   }
+  ],
+  "36": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈkʊki/",
+    "arpabet": [
+     "K",
+     "UH1",
+     "K",
+     "IY0"
+    ]
+   }
+  ],
+  "37": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈpʌpi/",
+    "arpabet": [
+     "P",
+     "AH1",
+     "P",
+     "IY0"
+    ]
+   }
+  ],
+  "38": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈmʌŋki/",
+    "arpabet": [
+     "M",
+     "AH1",
+     "NG",
+     "K",
+     "IY0"
+    ]
+   }
+  ],
+  "39": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/bɪt/",
+    "arpabet": [
+     "B",
+     "IH1",
+     "T"
+    ]
+   }
+  ],
+  "40": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/bit/",
+    "arpabet": [
+     "B",
+     "IY1",
+     "T"
+    ]
+   }
+  ],
+  "41": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/pul/",
+    "arpabet": [
+     "P",
+     "UW1",
+     "L"
+    ]
+   }
+  ],
+  "42": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/pʊl/",
+    "arpabet": [
+     "P",
+     "UH1",
+     "L"
+    ]
+   }
+  ],
+  "43": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/maʊs/",
+    "arpabet": [
+     "M",
+     "AW1",
+     "S"
+    ]
+   }
+  ],
+  "44": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/rɛd/",
+    "arpabet": [
+     "R",
+     "EH1",
+     "D"
+    ]
+   }
+  ],
+  "45": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈræbət/",
+    "arpabet": [
+     "R",
+     "AE1",
+     "B",
+     "AH0",
+     "T"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/ˈræbɪt/",
+    "arpabet": [
+     "R",
+     "AE1",
+     "B",
+     "IH0",
+     "T"
+    ]
+   }
+  ],
+  "46": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/roʊd/",
+    "arpabet": [
+     "R",
+     "OW1",
+     "D"
+    ]
+   }
+  ],
+  "47": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/reɪn/",
+    "arpabet": [
+     "R",
+     "EY1",
+     "N"
+    ]
+   }
+  ],
+  "48": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈrɑkət/",
+    "arpabet": [
+     "R",
+     "AA1",
+     "K",
+     "AH0",
+     "T"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈrɑkɪt/",
+    "arpabet": [
+     "R",
+     "AA1",
+     "K",
+     "IH0",
+     "T"
+    ]
+   }
+  ],
+  "49": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈkærət/",
+    "arpabet": [
+     "K",
+     "AE1",
+     "R",
+     "AH0",
+     "T"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/ˈkɛrət/",
+    "arpabet": [
+     "K",
+     "EH1",
+     "R",
+     "AH0",
+     "T"
+    ]
+   }
+  ],
+  "50": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈmɪrər/",
+    "arpabet": [
+     "M",
+     "IH1",
+     "R",
+     "ER0"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈmɪrə/",
+    "arpabet": [
+     "M",
+     "IH1",
+     "R",
+     "AH0"
+    ]
+   }
+  ],
+  "51": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/əˈraʊnd/",
+    "arpabet": [
+     "AH0",
+     "R",
+     "AW1",
+     "N",
+     "D"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/ərˈaʊnd/",
+    "arpabet": [
+     "ER0",
+     "AW1",
+     "N",
+     "D"
+    ]
+   }
+  ],
+  "52": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/kɑr/",
+    "arpabet": [
+     "K",
+     "AA1",
+     "R"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/kɑ/",
+    "arpabet": [
+     "K",
+     "AA1"
+    ]
+   }
+  ],
+  "53": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/tri/",
+    "arpabet": [
+     "T",
+     "R",
+     "IY1"
+    ]
+   }
+  ],
+  "54": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/frɑɡ/",
+    "arpabet": [
+     "F",
+     "R",
+     "AA1",
+     "G"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/frɔɡ/",
+    "arpabet": [
+     "F",
+     "R",
+     "AO1",
+     "G"
+    ]
+   }
+  ],
+  "55": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ɡrin/",
+    "arpabet": [
+     "G",
+     "R",
+     "IY1",
+     "N"
+    ]
+   }
+  ],
+  "56": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/brɛd/",
+    "arpabet": [
+     "B",
+     "R",
+     "EH1",
+     "D"
+    ]
+   }
+  ],
+  "57": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/sneɪk/",
+    "arpabet": [
+     "S",
+     "N",
+     "EY1",
+     "K"
+    ]
+   }
+  ],
+  "58": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/spun/",
+    "arpabet": [
+     "S",
+     "P",
+     "UW1",
+     "N"
+    ]
+   }
+  ],
+  "59": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/stɑr/",
+    "arpabet": [
+     "S",
+     "T",
+     "AA1",
+     "R"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/stɑ/",
+    "arpabet": [
+     "S",
+     "T",
+     "AA1"
+    ]
+   }
+  ],
+  "60": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/slip/",
+    "arpabet": [
+     "S",
+     "L",
+     "IY1",
+     "P"
+    ]
+   }
+  ],
+  "61": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/haʊs/",
+    "arpabet": [
+     "HH",
+     "AW1",
+     "S"
+    ]
+   }
+  ],
+  "62": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ɡlæs/",
+    "arpabet": [
+     "G",
+     "L",
+     "AE1",
+     "S"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ɡlɑs/",
+    "arpabet": [
+     "G",
+     "L",
+     "AA1",
+     "S"
+    ]
+   }
+  ],
+  "63": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈsɛvən/",
+    "arpabet": [
+     "S",
+     "EH1",
+     "V",
+     "AH0",
+     "N"
+    ]
+   }
+  ],
+  "64": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/lif/",
+    "arpabet": [
+     "L",
+     "IY1",
+     "F"
+    ]
+   }
+  ],
+  "65": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/læmp/",
+    "arpabet": [
+     "L",
+     "AE1",
+     "M",
+     "P"
+    ]
+   }
+  ],
+  "66": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈjɛloʊ/",
+    "arpabet": [
+     "Y",
+     "EH1",
+     "L",
+     "OW0"
+    ]
+   }
+  ],
+  "67": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/bəˈlun/",
+    "arpabet": [
+     "B",
+     "AH0",
+     "L",
+     "UW1",
+     "N"
+    ]
+   }
+  ],
+  "68": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈlaɪən/",
+    "arpabet": [
+     "L",
+     "AY1",
+     "AH0",
+     "N"
+    ]
+   }
+  ],
+  "69": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/pleɪn/",
+    "arpabet": [
+     "P",
+     "L",
+     "EY1",
+     "N"
+    ]
+   }
+  ],
+  "70": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈflaʊər/",
+    "arpabet": [
+     "F",
+     "L",
+     "AW1",
+     "ER0"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈflaʊə/",
+    "arpabet": [
+     "F",
+     "L",
+     "AW1",
+     "AH0"
+    ]
+   }
+  ],
+  "71": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/θʌm/",
+    "arpabet": [
+     "TH",
+     "AH1",
+     "M"
+    ]
+   }
+  ],
+  "72": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/θɪŋk/",
+    "arpabet": [
+     "TH",
+     "IH1",
+     "NG",
+     "K"
+    ]
+   }
+  ],
+  "73": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈmʌðər/",
+    "arpabet": [
+     "M",
+     "AH1",
+     "DH",
+     "ER0"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈmʌðə/",
+    "arpabet": [
+     "M",
+     "AH1",
+     "DH",
+     "AH0"
+    ]
+   }
+  ],
+  "74": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈfɛðər/",
+    "arpabet": [
+     "F",
+     "EH1",
+     "DH",
+     "ER0"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈfɛðə/",
+    "arpabet": [
+     "F",
+     "EH1",
+     "DH",
+     "AH0"
+    ]
+   }
+  ],
+  "75": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/tiθ/",
+    "arpabet": [
+     "T",
+     "IY1",
+     "TH"
+    ]
+   }
+  ],
+  "76": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ðɪs/",
+    "arpabet": [
+     "DH",
+     "IH1",
+     "S"
+    ]
+   }
+  ],
+  "77": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/bæθ/",
+    "arpabet": [
+     "B",
+     "AE1",
+     "TH"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/bɑθ/",
+    "arpabet": [
+     "B",
+     "AA1",
+     "TH"
+    ]
+   }
+  ],
+  "78": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/tʃɛr/",
+    "arpabet": [
+     "CH",
+     "EH1",
+     "R"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈtʃɛə/",
+    "arpabet": [
+     "CH",
+     "EH1",
+     "AH0"
+    ]
+   }
+  ],
+  "79": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/tʃiz/",
+    "arpabet": [
+     "CH",
+     "IY1",
+     "Z"
+    ]
+   }
+  ],
+  "80": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/dʒʌmp/",
+    "arpabet": [
+     "JH",
+     "AH1",
+     "M",
+     "P"
+    ]
+   }
+  ],
+  "81": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/dʒəˈræf/",
+    "arpabet": [
+     "JH",
+     "AH0",
+     "R",
+     "AE1",
+     "F"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/dʒərˈæf/",
+    "arpabet": [
+     "JH",
+     "ER0",
+     "AE1",
+     "F"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/dʒɪˈrɑf/",
+    "arpabet": [
+     "JH",
+     "IH0",
+     "R",
+     "AA1",
+     "F"
+    ]
+   }
+  ],
+  "82": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/wɑtʃ/",
+    "arpabet": [
+     "W",
+     "AA1",
+     "CH"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/wɔtʃ/",
+    "arpabet": [
+     "W",
+     "AO1",
+     "CH"
+    ]
+   }
+  ],
+  "83": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈɔrəndʒ/",
+    "arpabet": [
+     "AO1",
+     "R",
+     "AH0",
+     "N",
+     "JH"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/ˈɔrɪndʒ/",
+    "arpabet": [
+     "AO1",
+     "R",
+     "IH0",
+     "N",
+     "JH"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈɑrɪndʒ/",
+    "arpabet": [
+     "AA1",
+     "R",
+     "IH0",
+     "N",
+     "JH"
+    ]
+   }
+  ],
+  "84": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈkɪtʃən/",
+    "arpabet": [
+     "K",
+     "IH1",
+     "CH",
+     "AH0",
+     "N"
+    ]
+   }
+  ],
+  "85": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ɡlʌv/",
+    "arpabet": [
+     "G",
+     "L",
+     "AH1",
+     "V"
+    ]
+   }
+  ],
+  "86": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/bəˈnænə/",
+    "arpabet": [
+     "B",
+     "AH0",
+     "N",
+     "AE1",
+     "N",
+     "AH0"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/bəˈnɑnə/",
+    "arpabet": [
+     "B",
+     "AH0",
+     "N",
+     "AA1",
+     "N",
+     "AH0"
+    ]
+   }
+  ],
+  "87": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈɛləfənt/",
+    "arpabet": [
+     "EH1",
+     "L",
+     "AH0",
+     "F",
+     "AH0",
+     "N",
+     "T"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈɛlɪfənt/",
+    "arpabet": [
+     "EH1",
+     "L",
+     "IH0",
+     "F",
+     "AH0",
+     "N",
+     "T"
+    ]
+   }
+  ],
+  "88": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/əmˈbrɛlə/",
+    "arpabet": [
+     "AH0",
+     "M",
+     "B",
+     "R",
+     "EH1",
+     "L",
+     "AH0"
+    ]
+   }
+  ],
+  "89": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈbʌtərˌflaɪ/",
+    "arpabet": [
+     "B",
+     "AH1",
+     "T",
+     "ER0",
+     "F",
+     "L",
+     "AY2"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈbʌtəˌflaɪ/",
+    "arpabet": [
+     "B",
+     "AH1",
+     "T",
+     "AH0",
+     "F",
+     "L",
+     "AY2"
+    ]
+   }
+  ],
+  "90": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/təˈmeɪˌtoʊ/",
+    "arpabet": [
+     "T",
+     "AH0",
+     "M",
+     "EY1",
+     "T",
+     "OW2"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/təˈmɑˌtoʊ/",
+    "arpabet": [
+     "T",
+     "AH0",
+     "M",
+     "AA1",
+     "T",
+     "OW2"
+    ]
+   }
+  ],
+  "91": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈdaɪnəˌsɔr/",
+    "arpabet": [
+     "D",
+     "AY1",
+     "N",
+     "AH0",
+     "S",
+     "AO2",
+     "R"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈdaɪnəˌsɔ/",
+    "arpabet": [
+     "D",
+     "AY1",
+     "N",
+     "AH0",
+     "S",
+     "AO2"
+    ]
+   }
+  ],
+  "92": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/kəmˈpjutər/",
+    "arpabet": [
+     "K",
+     "AH0",
+     "M",
+     "P",
+     "Y",
+     "UW1",
+     "T",
+     "ER0"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/kəmˈpjutə/",
+    "arpabet": [
+     "K",
+     "AH0",
+     "M",
+     "P",
+     "Y",
+     "UW1",
+     "T",
+     "AH0"
+    ]
+   }
+  ],
+  "93": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈpɛnsəl/",
+    "arpabet": [
+     "P",
+     "EH1",
+     "N",
+     "S",
+     "AH0",
+     "L"
+    ]
+   }
+  ],
+  "94": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈwɔtər/",
+    "arpabet": [
+     "W",
+     "AO1",
+     "T",
+     "ER0"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈwɔtə/",
+    "arpabet": [
+     "W",
+     "AO1",
+     "T",
+     "AH0"
+    ]
+   }
+  ],
+  "95": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈspaɪdər/",
+    "arpabet": [
+     "S",
+     "P",
+     "AY1",
+     "D",
+     "ER0"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈspaɪdə/",
+    "arpabet": [
+     "S",
+     "P",
+     "AY1",
+     "D",
+     "AH0"
+    ]
+   }
+  ],
+  "96": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈsændwɪtʃ/",
+    "arpabet": [
+     "S",
+     "AE1",
+     "N",
+     "D",
+     "W",
+     "IH0",
+     "CH"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/ˈsænwɪtʃ/",
+    "arpabet": [
+     "S",
+     "AE1",
+     "N",
+     "W",
+     "IH0",
+     "CH"
+    ]
+   }
+  ],
+  "97": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈstrɔˌbɛri/",
+    "arpabet": [
+     "S",
+     "T",
+     "R",
+     "AO1",
+     "B",
+     "EH2",
+     "R",
+     "IY0"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈstrɔbəri/",
+    "arpabet": [
+     "S",
+     "T",
+     "R",
+     "AO1",
+     "B",
+     "AH0",
+     "R",
+     "IY0"
+    ]
+   }
+  ],
+  "98": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/strit/",
+    "arpabet": [
+     "S",
+     "T",
+     "R",
+     "IY1",
+     "T"
+    ]
+   }
+  ],
+  "99": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈskwɜrəl/",
+    "arpabet": [
+     "S",
+     "K",
+     "W",
+     "ER1",
+     "AH0",
+     "L"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈskwɪrəl/",
+    "arpabet": [
+     "S",
+     "K",
+     "W",
+     "IH1",
+     "R",
+     "AH0",
+     "L"
+    ]
+   }
+  ],
+  "100": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/splæʃ/",
+    "arpabet": [
+     "S",
+     "P",
+     "L",
+     "AE1",
+     "SH"
+    ]
+   }
+  ],
+  "101": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/skrætʃ/",
+    "arpabet": [
+     "S",
+     "K",
+     "R",
+     "AE1",
+     "CH"
+    ]
+   }
+  ],
+  "102": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/sɪksθ/",
+    "arpabet": [
+     "S",
+     "IH1",
+     "K",
+     "S",
+     "TH"
+    ]
+   }
+  ],
+  "103": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/mʌnθs/",
+    "arpabet": [
+     "M",
+     "AH1",
+     "N",
+     "TH",
+     "S"
+    ]
+   }
+  ],
+  "104": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/strɛŋkθs/",
+    "arpabet": [
+     "S",
+     "T",
+     "R",
+     "EH1",
+     "NG",
+     "K",
+     "TH",
+     "S"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/strɛŋθs/",
+    "arpabet": [
+     "S",
+     "T",
+     "R",
+     "EH1",
+     "NG",
+     "TH",
+     "S"
+    ]
+   }
+  ],
+  "105": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈrʊrəl/",
+    "arpabet": [
+     "R",
+     "UH1",
+     "R",
+     "AH0",
+     "L"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈrʊərəl/",
+    "arpabet": [
+     "R",
+     "UH1",
+     "AH0",
+     "R",
+     "AH0",
+     "L"
+    ]
+   }
+  ],
+  "106": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈlaɪˌbrɛri/",
+    "arpabet": [
+     "L",
+     "AY1",
+     "B",
+     "R",
+     "EH2",
+     "R",
+     "IY0"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/ˈlaɪbrəri/",
+    "arpabet": [
+     "L",
+     "AY1",
+     "B",
+     "R",
+     "ER0",
+     "IY0"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈlaɪbrəri/",
+    "arpabet": [
+     "L",
+     "AY1",
+     "B",
+     "R",
+     "AH0",
+     "R",
+     "IY0"
+    ]
+   }
+  ],
+  "107": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈfɛbruˌɛri/",
+    "arpabet": [
+     "F",
+     "EH1",
+     "B",
+     "R",
+     "UW0",
+     "EH2",
+     "R",
+     "IY0"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/ˈfɛbjuˌɛri/",
+    "arpabet": [
+     "F",
+     "EH1",
+     "B",
+     "Y",
+     "UW0",
+     "EH2",
+     "R",
+     "IY0"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈfɛbruəri/",
+    "arpabet": [
+     "F",
+     "EH1",
+     "B",
+     "R",
+     "UW0",
+     "AH0",
+     "R",
+     "IY0"
+    ]
+   }
+  ],
+  "108": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/spəˈsɪfɪk/",
+    "arpabet": [
+     "S",
+     "P",
+     "AH0",
+     "S",
+     "IH1",
+     "F",
+     "IH0",
+     "K"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/spɪˈsɪfɪk/",
+    "arpabet": [
+     "S",
+     "P",
+     "IH0",
+     "S",
+     "IH1",
+     "F",
+     "IH0",
+     "K"
+    ]
+   }
+  ],
+  "109": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/stəˈtɪstɪks/",
+    "arpabet": [
+     "S",
+     "T",
+     "AH0",
+     "T",
+     "IH1",
+     "S",
+     "T",
+     "IH0",
+     "K",
+     "S"
+    ]
+   }
+  ],
+  "110": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/θərˈmɑmətər/",
+    "arpabet": [
+     "TH",
+     "ER0",
+     "M",
+     "AA1",
+     "M",
+     "AH0",
+     "T",
+     "ER0"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/θərˈmɑmɪtə/",
+    "arpabet": [
+     "TH",
+     "ER0",
+     "M",
+     "AA1",
+     "M",
+     "IH0",
+     "T",
+     "AH0"
+    ]
+   }
+  ],
+  "111": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈkætəˌpɪlər/",
+    "arpabet": [
+     "K",
+     "AE1",
+     "T",
+     "AH0",
+     "P",
+     "IH2",
+     "L",
+     "ER0"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/ˈkætərˌpɪlər/",
+    "arpabet": [
+     "K",
+     "AE1",
+     "T",
+     "ER0",
+     "P",
+     "IH2",
+     "L",
+     "ER0"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈkætəˌpɪlə/",
+    "arpabet": [
+     "K",
+     "AE1",
+     "T",
+     "AH0",
+     "P",
+     "IH2",
+     "L",
+     "AH0"
+    ]
+   }
+  ],
+  "112": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈhɛlɪˌkɑptər/",
+    "arpabet": [
+     "HH",
+     "EH1",
+     "L",
+     "IH0",
+     "K",
+     "AA2",
+     "P",
+     "T",
+     "ER0"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈhɛlɪˌkɑptə/",
+    "arpabet": [
+     "HH",
+     "EH1",
+     "L",
+     "IH0",
+     "K",
+     "AA2",
+     "P",
+     "T",
+     "AH0"
+    ]
+   }
+  ],
+  "113": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/rɪˈfrɪdʒəˌreɪtər/",
+    "arpabet": [
+     "R",
+     "IH0",
+     "F",
+     "R",
+     "IH1",
+     "JH",
+     "AH0",
+     "R",
+     "EY2",
+     "T",
+     "ER0"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/rɪˈfrɪdʒərˌeɪtər/",
+    "arpabet": [
+     "R",
+     "IH0",
+     "F",
+     "R",
+     "IH1",
+     "JH",
+     "ER0",
+     "EY2",
+     "T",
+     "ER0"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/rɪˈfrɪdʒəˌreɪtə/",
+    "arpabet": [
+     "R",
+     "IH0",
+     "F",
+     "R",
+     "IH1",
+     "JH",
+     "AH0",
+     "R",
+     "EY2",
+     "T",
+     "AH0"
+    ]
+   }
+  ],
+  "114": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˌhɪpəˈpɑtəməs/",
+    "arpabet": [
+     "HH",
+     "IH2",
+     "P",
+     "AH0",
+     "P",
+     "AA1",
+     "T",
+     "AH0",
+     "M",
+     "AH0",
+     "S"
+    ]
+   }
+  ],
+  "115": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈvɛdʒtəbəl/",
+    "arpabet": [
+     "V",
+     "EH1",
+     "JH",
+     "T",
+     "AH0",
+     "B",
+     "AH0",
+     "L"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/ˈvɛdʒətəbəl/",
+    "arpabet": [
+     "V",
+     "EH1",
+     "JH",
+     "AH0",
+     "T",
+     "AH0",
+     "B",
+     "AH0",
+     "L"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈvɛdʒɪtəbəl/",
+    "arpabet": [
+     "V",
+     "EH1",
+     "JH",
+     "IH0",
+     "T",
+     "AH0",
+     "B",
+     "AH0",
+     "L"
+    ]
+   }
+  ],
+  "116": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/raɪˈnɑsərəs/",
+    "arpabet": [
+     "R",
+     "AY0",
+     "N",
+     "AA1",
+     "S",
+     "ER0",
+     "AH0",
+     "S"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/raɪˈnɑsərəs/",
+    "arpabet": [
+     "R",
+     "AY0",
+     "N",
+     "AA1",
+     "S",
+     "AH0",
+     "R",
+     "AH0",
+     "S"
+    ]
+   }
+  ],
+  "117": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈθɜroʊli/",
+    "arpabet": [
+     "TH",
+     "ER1",
+     "OW0",
+     "L",
+     "IY0"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈθʌrəli/",
+    "arpabet": [
+     "TH",
+     "AH1",
+     "R",
+     "AH0",
+     "L",
+     "IY0"
+    ]
+   }
+  ],
+  "118": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˌpɑrˈtɪkjələrli/",
+    "arpabet": [
+     "P",
+     "AA2",
+     "R",
+     "T",
+     "IH1",
+     "K",
+     "Y",
+     "AH0",
+     "L",
+     "ER0",
+     "L",
+     "IY0"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/pərˈtɪkjələrli/",
+    "arpabet": [
+     "P",
+     "ER0",
+     "T",
+     "IH1",
+     "K",
+     "Y",
+     "AH0",
+     "L",
+     "ER0",
+     "L",
+     "IY0"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/pəˈtɪkjʊləli/",
+    "arpabet": [
+     "P",
+     "AH0",
+     "T",
+     "IH1",
+     "K",
+     "Y",
+     "UH0",
+     "L",
+     "AH0",
+     "L",
+     "IY0"
+    ]
+   }
+  ],
+  "119": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈvʌlnərəbəl/",
+    "arpabet": [
+     "V",
+     "AH1",
+     "L",
+     "N",
+     "ER0",
+     "AH0",
+     "B",
+     "AH0",
+     "L"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈvʌlnərəbəl/",
+    "arpabet": [
+     "V",
+     "AH1",
+     "L",
+     "N",
+     "AH0",
+     "R",
+     "AH0",
+     "B",
+     "AH0",
+     "L"
+    ]
+   }
+  ],
+  "120": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈrɪðəm/",
+    "arpabet": [
+     "R",
+     "IH1",
+     "DH",
+     "AH0",
+     "M"
+    ]
+   }
+  ],
+  "121": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/fəˈnɑməˌnɑn/",
+    "arpabet": [
+     "F",
+     "AH0",
+     "N",
+     "AA1",
+     "M",
+     "AH0",
+     "N",
+     "AA2",
+     "N"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/fɪˈnɑmɪnən/",
+    "arpabet": [
+     "F",
+     "IH0",
+     "N",
+     "AA1",
+     "M",
+     "IH0",
+     "N",
+     "AH0",
+     "N"
+    ]
+   }
+  ],
+  "122": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ɪnˈvaɪrənmənt/",
+    "arpabet": [
+     "IH0",
+     "N",
+     "V",
+     "AY1",
+     "R",
+     "AH0",
+     "N",
+     "M",
+     "AH0",
+     "N",
+     "T"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/ɪnˈvaɪərnmənt/",
+    "arpabet": [
+     "IH0",
+     "N",
+     "V",
+     "AY1",
+     "ER0",
+     "N",
+     "M",
+     "AH0",
+     "N",
+     "T"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ɛnˈvaɪrənmənt/",
+    "arpabet": [
+     "EH0",
+     "N",
+     "V",
+     "AY1",
+     "R",
+     "AH0",
+     "N",
+     "M",
+     "AH0",
+     "N",
+     "T"
+    ]
+   }
+  ],
+  "123": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈtɛmprətʃər/",
+    "arpabet": [
+     "T",
+     "EH1",
+     "M",
+     "P",
+     "R",
+     "AH0",
+     "CH",
+     "ER0"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/ˈtɛmpərətʃər/",
+    "arpabet": [
+     "T",
+     "EH1",
+     "M",
+     "P",
+     "ER0",
+     "AH0",
+     "CH",
+     "ER0"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈtɛmprɪtʃə/",
+    "arpabet": [
+     "T",
+     "EH1",
+     "M",
+     "P",
+     "R",
+     "IH0",
+     "CH",
+     "AH0"
+    ]
+   }
+  ],
+  "124": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈtuθbrəʃ/",
+    "arpabet": [
+     "T",
+     "UW1",
+     "TH",
+     "B",
+     "R",
+     "AH0",
+     "SH"
+    ]
+   }
+  ],
+  "125": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/proʊˌnʌnsiˈeɪʃən/",
+    "arpabet": [
+     "P",
+     "R",
+     "OW0",
+     "N",
+     "AH2",
+     "N",
+     "S",
+     "IY0",
+     "EY1",
+     "SH",
+     "AH0",
+     "N"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/prəˌnʌnsiˈeɪʃən/",
+    "arpabet": [
+     "P",
+     "R",
+     "AH0",
+     "N",
+     "AH2",
+     "N",
+     "S",
+     "IY0",
+     "EY1",
+     "SH",
+     "AH0",
+     "N"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/prəˌnʌnsɪˈeɪʃən/",
+    "arpabet": [
+     "P",
+     "R",
+     "AH0",
+     "N",
+     "AH2",
+     "N",
+     "S",
+     "IH0",
+     "EY1",
+     "SH",
+     "AH0",
+     "N"
+    ]
+   }
+  ],
+  "126": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/rɪˈmɛmbər/",
+    "arpabet": [
+     "R",
+     "IH0",
+     "M",
+     "EH1",
+     "M",
+     "B",
+     "ER0"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/riˈmɛmbər/",
+    "arpabet": [
+     "R",
+     "IY0",
+     "M",
+     "EH1",
+     "M",
+     "B",
+     "ER0"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/rɪˈmɛmbə/",
+    "arpabet": [
+     "R",
+     "IH0",
+     "M",
+     "EH1",
+     "M",
+     "B",
+     "AH0"
+    ]
+   }
+  ],
+  "127": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ɪˌlɛkˈtrɪsəti/",
+    "arpabet": [
+     "IH0",
+     "L",
+     "EH2",
+     "K",
+     "T",
+     "R",
+     "IH1",
+     "S",
+     "AH0",
+     "T",
+     "IY0"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ɪlɛkˈtrɪsɪti/",
+    "arpabet": [
+     "IH0",
+     "L",
+     "EH0",
+     "K",
+     "T",
+     "R",
+     "IH1",
+     "S",
+     "IH0",
+     "T",
+     "IY0"
+    ]
+   }
+  ],
+  "128": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/spəˈɡɛti/",
+    "arpabet": [
+     "S",
+     "P",
+     "AH0",
+     "G",
+     "EH1",
+     "T",
+     "IY0"
+    ]
+   }
+  ],
+  "129": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈæmbjələns/",
+    "arpabet": [
+     "AE1",
+     "M",
+     "B",
+     "Y",
+     "AH0",
+     "L",
+     "AH0",
+     "N",
+     "S"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈæmbjʊləns/",
+    "arpabet": [
+     "AE1",
+     "M",
+     "B",
+     "Y",
+     "UH0",
+     "L",
+     "AH0",
+     "N",
+     "S"
+    ]
+   }
+  ],
+  "130": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈkrɑkəˌdaɪl/",
+    "arpabet": [
+     "K",
+     "R",
+     "AA1",
+     "K",
+     "AH0",
+     "D",
+     "AY2",
+     "L"
+    ]
+   }
+  ],
+  "131": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˌkæŋɡəˈru/",
+    "arpabet": [
+     "K",
+     "AE2",
+     "NG",
+     "G",
+     "AH0",
+     "R",
+     "UW1"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/ˌkæŋɡərˈu/",
+    "arpabet": [
+     "K",
+     "AE2",
+     "NG",
+     "G",
+     "ER0",
+     "UW1"
+    ]
+   }
+  ],
+  "132": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈtraɪˌæŋɡəl/",
+    "arpabet": [
+     "T",
+     "R",
+     "AY1",
+     "AE2",
+     "NG",
+     "G",
+     "AH0",
+     "L"
+    ]
+   }
+  ],
+  "133": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈsɪzərz/",
+    "arpabet": [
+     "S",
+     "IH1",
+     "Z",
+     "ER0",
+     "Z"
+    ]
+   },
+   {
+    "id": "gb",
+    "accent": "British (RP)",
+    "ipa": "/ˈsɪzəz/",
+    "arpabet": [
+     "S",
+     "IH1",
+     "Z",
+     "AH0",
+     "Z"
+    ]
+   }
+  ],
+  "134": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈwɛnzdi/",
+    "arpabet": [
+     "W",
+     "EH1",
+     "N",
+     "Z",
+     "D",
+     "IY0"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/ˈwɛnzˌdeɪ/",
+    "arpabet": [
+     "W",
+     "EH1",
+     "N",
+     "Z",
+     "D",
+     "EY2"
+    ]
+   }
+  ],
+  "135": [
+   {
+    "id": "us",
+    "accent": "General American",
+    "ipa": "/ˈprɑbəbli/",
+    "arpabet": [
+     "P",
+     "R",
+     "AA1",
+     "B",
+     "AH0",
+     "B",
+     "L",
+     "IY0"
+    ]
+   },
+   {
+    "id": "us-2",
+    "accent": "General American (alternate)",
+    "ipa": "/ˈprɑbli/",
+    "arpabet": [
+     "P",
+     "R",
+     "AA1",
+     "B",
+     "L",
+     "IY0"
+    ]
+   }
+  ]
+ },
+ "phonemes": [
+  {
+   "phoneme": "ə",
+   "label": "the quick unstressed 'uh' (as in the first syllable of 'banana')",
+   "kind": "vowel",
+   "word_count": 42
+  },
+  {
+   "phoneme": "r",
+   "label": "r as in 'red'",
+   "kind": "consonant",
+   "word_count": 40
+  },
+  {
+   "phoneme": "t",
+   "label": "t as in 'top'",
+   "kind": "consonant",
+   "word_count": 34
+  },
+  {
+   "phoneme": "s",
+   "label": "s as in 'sun'",
+   "kind": "consonant",
+   "word_count": 33
+  },
+  {
+   "phoneme": "l",
+   "label": "l as in 'leaf'",
+   "kind": "consonant",
+   "word_count": 32
+  },
+  {
+   "phoneme": "n",
+   "label": "n as in 'nose'",
+   "kind": "consonant",
+   "word_count": 31
+  },
+  {
+   "phoneme": "p",
+   "label": "p as in 'pen'",
+   "kind": "consonant",
+   "word_count": 29
+  },
+  {
+   "phoneme": "k",
+   "label": "k as in 'cat'",
+   "kind": "consonant",
+   "word_count": 27
+  },
+  {
+   "phoneme": "b",
+   "label": "b as in 'bat'",
+   "kind": "consonant",
+   "word_count": 26
+  },
+  {
+   "phoneme": "i",
+   "label": "the 'ee' vowel in 'see'",
+   "kind": "vowel",
+   "word_count": 26
+  },
+  {
+   "phoneme": "ɛ",
+   "label": "the 'e' vowel in 'bed'",
+   "kind": "vowel",
+   "word_count": 24
+  },
+  {
+   "phoneme": "m",
+   "label": "m as in 'moon'",
+   "kind": "consonant",
+   "word_count": 23
+  },
+  {
+   "phoneme": "ɪ",
+   "label": "the short 'i' vowel in 'sit'",
+   "kind": "vowel",
+   "word_count": 22
+  },
+  {
+   "phoneme": "æ",
+   "label": "the 'a' vowel in 'cat'",
+   "kind": "vowel",
+   "word_count": 21
+  },
+  {
+   "phoneme": "ər",
+   "label": "the unstressed 'er' at the end of 'butter'",
+   "kind": "vowel",
+   "word_count": 18
+  },
+  {
+   "phoneme": "f",
+   "label": "f as in 'fan'",
+   "kind": "consonant",
+   "word_count": 14
+  },
+  {
+   "phoneme": "ɑ",
+   "label": "the 'ah' vowel in 'father'",
+   "kind": "vowel",
+   "word_count": 14
+  },
+  {
+   "phoneme": "ʌ",
+   "label": "the 'u' vowel in 'cup'",
+   "kind": "consonant",
+   "word_count": 14
+  },
+  {
+   "phoneme": "d",
+   "label": "d as in 'dog'",
+   "kind": "consonant",
+   "word_count": 12
+  },
+  {
+   "phoneme": "aɪ",
+   "label": "the 'eye' vowel in 'five'",
+   "kind": "vowel",
+   "word_count": 10
+  },
+  {
+   "phoneme": "u",
+   "label": "the long 'oo' vowel in 'moon'",
+   "kind": "vowel",
+   "word_count": 10
+  },
+  {
+   "phoneme": "ɡ",
+   "label": "g as in 'go'",
+   "kind": "consonant",
+   "word_count": 10
+  },
+  {
+   "phoneme": "θ",
+   "label": "voiceless 'th' as in 'thumb'",
+   "kind": "consonant",
+   "word_count": 10
+  },
+  {
+   "phoneme": "oʊ",
+   "label": "the 'oh' vowel in 'go'",
+   "kind": "vowel",
+   "word_count": 9
+  },
+  {
+   "phoneme": "eɪ",
+   "label": "the 'ay' vowel in 'cake'",
+   "kind": "vowel",
+   "word_count": 8
+  },
+  {
+   "phoneme": "tʃ",
+   "label": "ch as in 'chair'",
+   "kind": "consonant",
+   "word_count": 7
+  },
+  {
+   "phoneme": "v",
+   "label": "v as in 'van'",
+   "kind": "consonant",
+   "word_count": 7
+  },
+  {
+   "phoneme": "ʃ",
+   "label": "sh as in 'shoe'",
+   "kind": "consonant",
+   "word_count": 7
+  },
+  {
+   "phoneme": "h",
+   "label": "h as in 'hat'",
+   "kind": "consonant",
+   "word_count": 6
+  },
+  {
+   "phoneme": "w",
+   "label": "w as in 'web'",
+   "kind": "consonant",
+   "word_count": 6
+  },
+  {
+   "phoneme": "ɔ",
+   "label": "the 'aw' vowel in 'thought'",
+   "kind": "vowel",
+   "word_count": 6
+  },
+  {
+   "phoneme": "dʒ",
+   "label": "j as in 'jump'",
+   "kind": "consonant",
+   "word_count": 5
+  },
+  {
+   "phoneme": "j",
+   "label": "y as in 'yes'",
+   "kind": "consonant",
+   "word_count": 5
+  },
+  {
+   "phoneme": "z",
+   "label": "z as in 'zoo'",
+   "kind": "consonant",
+   "word_count": 5
+  },
+  {
+   "phoneme": "ŋ",
+   "label": "the 'ng' sound in 'sing'",
+   "kind": "consonant",
+   "word_count": 5
+  },
+  {
+   "phoneme": "aʊ",
+   "label": "the 'ow' vowel in 'house'",
+   "kind": "vowel",
+   "word_count": 4
+  },
+  {
+   "phoneme": "ð",
+   "label": "voiced 'th' as in 'this'",
+   "kind": "consonant",
+   "word_count": 4
+  },
+  {
+   "phoneme": "ʊ",
+   "label": "the short 'oo' vowel in 'book'",
+   "kind": "vowel",
+   "word_count": 4
+  },
+  {
+   "phoneme": "ɜr",
+   "label": "the 'er' vowel in 'bird'",
+   "kind": "vowel",
+   "word_count": 2
+  }
+ ],
+ "samples": {
+  "rabbit_r_as_w": {
+   "analysis": {
+    "contract_version": "1.0.0",
+    "analysis_id": "f1485516-69e3-4a20-bfef-e7f2314fdbef",
+    "word": "rabbit",
+    "word_id": 45,
+    "status": "assessed",
+    "overall_score": 80,
+    "rating": "satisfactory",
+    "word_recognized": false,
+    "recognized_word": "web",
+    "phonetically_accurate": false,
+    "confidence": 0.6,
+    "confidence_label": "medium",
+    "confidence_factors": {
+     "recording_quality": 1.0,
+     "phoneme_model": 1.0,
+     "consistency": 0.6,
+     "duration_plausibility": 1.0
+    },
+    "needs_retry": false,
+    "retry_reason": null,
+    "matched_variant": {
+     "id": "us-2",
+     "accent": "General American (alternate)",
+     "ipa": "/ˈræbɪt/",
+     "arpabet": [
+      "R",
+      "AE1",
+      "B",
+      "IH0",
+      "T"
+     ]
+    },
+    "phoneme_scores": [
+     {
+      "index": 0,
+      "phoneme": "r",
+      "arpabet": "R",
+      "score": 65,
+      "posterior": 0.0028,
+      "status": "poor",
+      "likely_realization": "w",
+      "likely_realization_probability": 0.974,
+      "deletion_probability": 0.005,
+      "accepted_variant": null,
+      "start_s": 0.28,
+      "end_s": 0.31
+     },
+     {
+      "index": 1,
+      "phoneme": "æ",
+      "arpabet": "AE1",
+      "score": 83,
+      "posterior": 0.0282,
+      "status": "fair",
+      "likely_realization": "ʌ",
+      "likely_realization_probability": 0.377,
+      "deletion_probability": 0.003,
+      "accepted_variant": null,
+      "start_s": 0.31,
+      "end_s": 0.38
+     },
+     {
+      "index": 2,
+      "phoneme": "b",
+      "arpabet": "B",
+      "score": 98,
+      "posterior": 0.8887,
+      "status": "good",
+      "likely_realization": null,
+      "likely_realization_probability": null,
+      "deletion_probability": 0.011,
+      "accepted_variant": null,
+      "start_s": 0.38,
+      "end_s": 0.44
+     },
+     {
+      "index": 3,
+      "phoneme": "ɪ",
+      "arpabet": "IH0",
+      "score": 96,
+      "posterior": 0.5693,
+      "status": "good",
+      "likely_realization": null,
+      "likely_realization_probability": null,
+      "deletion_probability": 0.04,
+      "accepted_variant": null,
+      "start_s": 0.44,
+      "end_s": 0.52
+     },
+     {
+      "index": 4,
+      "phoneme": "t",
+      "arpabet": "T",
+      "score": 98,
+      "posterior": 0.9656,
+      "status": "good",
+      "likely_realization": null,
+      "likely_realization_probability": null,
+      "deletion_probability": 0.022,
+      "accepted_variant": null,
+      "start_s": 0.52,
+      "end_s": 0.6
+     }
+    ],
+    "components": [
+     {
+      "name": "phoneme_accuracy",
+      "score": 79.7,
+      "weight": 0.6,
+      "available": true,
+      "details": {
+       "aggregation": "word-level calibration of calibrated phone scores",
+       "calibration": "speechocean762 train (28277 phones)",
+       "pitch": {
+        "median_hz": 195.9,
+        "range_semitones": 3.5,
+        "voiced_fraction": 0.438
+       }
+      }
+     },
+     {
+      "name": "acoustic_similarity",
+      "score": 70.8,
+      "weight": 0.2,
+      "available": true,
+      "details": {
+       "dtw_cost": 0.5407,
+       "reference": "piper:en_US-libritts_r-medium:0",
+       "warp": 0.96,
+       "references_compared": 3
+      }
+     },
+     {
+      "name": "syllable_completeness",
+      "score": 85.0,
+      "weight": 0.1,
+      "available": true,
+      "details": {
+       "expected": 2,
+       "detected_nuclei": 1,
+       "vowels_present": 2,
+       "completeness": 0.85
+      }
+     },
+     {
+      "name": "temporal",
+      "score": 98.5,
+      "weight": 0.1,
+      "available": true,
+      "details": {
+       "speech_duration_s": 0.315,
+       "reference_duration_s": 0.385,
+       "rate_ratio": 0.818,
+       "rhythm_deviation": 0.269
+      }
+     }
+    ],
+    "acoustic_similarity": 0.7082,
+    "syllables": {
+     "expected": 2,
+     "detected_nuclei": 1,
+     "vowels_present": 2,
+     "completeness": 0.85
+    },
+    "timing": {
+     "speech_duration_s": 0.315,
+     "reference_duration_s": 0.385,
+     "rate_ratio": 0.818,
+     "rhythm_deviation": 0.269
+    },
+    "recognition": {
+     "recognized_phonemes": [
+      "w",
+      "ʌ",
+      "b",
+      "ɪ",
+      "t"
+     ],
+     "closest_word": "web",
+     "matches_target": false,
+     "phoneme_error_rate": 0.4
+    },
+    "quality": {
+     "usable": true,
+     "duration_s": 1.222,
+     "speech_duration_s": 0.315,
+     "speech_start_s": 0.4,
+     "speech_end_s": 0.715,
+     "rms_dbfs": -13.4,
+     "peak_dbfs": -6.9,
+     "snr_db": 56.0,
+     "clipping_ratio": 0.0,
+     "issues": []
+    },
+    "identified_issues": [
+     {
+      "id": "ph0-substitution",
+      "type": "substitution",
+      "severity": "moderate",
+      "phoneme": "r",
+      "position": 0,
+      "realized_as": "w",
+      "message": "The /r/ sound at the start of the word may have sounded more like /w/.",
+      "evidence": {
+       "score": 65,
+       "posterior": 0.0028,
+       "deletion_probability": 0.005,
+       "likely_realization_probability": 0.974
+      }
+     },
+     {
+      "id": "ph1-substitution",
+      "type": "substitution",
+      "severity": "minor",
+      "phoneme": "æ",
+      "position": 1,
+      "realized_as": "ʌ",
+      "message": "The /æ/ vowel in the first syllable may have sounded more like /ʌ/.",
+      "evidence": {
+       "score": 83,
+       "posterior": 0.0282,
+       "deletion_probability": 0.003,
+       "likely_realization_probability": 0.377
+      }
+     }
+    ],
+    "strengths": [
+     {
+      "id": "ph2-good",
+      "message": "The /b/ in the second syllable was clear.",
+      "phoneme": "b",
+      "position": 2
+     },
+     {
+      "id": "ph4-good",
+      "message": "The /t/ at the end of the word was clear.",
+      "phoneme": "t",
+      "position": 4
+     },
+     {
+      "id": "ph3-good",
+      "message": "The /ɪ/ in the second syllable was clear.",
+      "phoneme": "ɪ",
+      "position": 3
+     }
+    ],
+    "engine": {
+     "name": "allosaurus",
+     "model": "eng2102",
+     "phoneme_level": true,
+     "calibration": "speechocean762 train (28277 phones)",
+     "notes": null
+    },
+    "processing_ms": 6999,
+    "disclaimer": "Scores are automated estimates intended for practice feedback. They are not a clinical assessment or diagnosis and have not been clinically validated."
+   },
+   "feedback": {
+    "summary": "Good attempt at 'rabbit' (80/100). A little practice will make it even clearer. The /b/ in the second syllable was clear.",
+    "recommendations": [
+     {
+      "issue_id": "ph0-substitution",
+      "tip": "Focus on the /r/ sound (r as in 'red'). It may have sounded more like /w/.",
+      "articulation": "For /r/ keep your lips more relaxed instead of rounding them, and let your tongue do the work: lift or bunch it so the sides touch your upper back teeth."
+     },
+     {
+      "issue_id": "ph1-substitution",
+      "tip": "Focus on the /æ/ sound (the 'a' vowel in 'cat'). It may have sounded more like /ʌ/.",
+      "articulation": "Drop your jaw wide open, keep your tongue low and forward, lips spread slightly."
+     }
+    ],
+    "encouragement": "Listen to the example once more, then try again slowly.",
+    "progress_note": "",
+    "source": "rule_based",
+    "grounded": true,
+    "guardrail_notes": [],
+    "disclaimer": "This feedback is generated automatically for practice. It is not a diagnosis or a clinical assessment."
+   }
+  },
+  "butterfly_correct_us": {
+   "analysis": {
+    "contract_version": "1.0.0",
+    "analysis_id": "30886d55-b12e-44c5-acee-aba978e626af",
+    "word": "butterfly",
+    "word_id": 89,
+    "status": "assessed",
+    "overall_score": 97,
+    "rating": "mastered",
+    "word_recognized": true,
+    "recognized_word": "butterfly",
+    "phonetically_accurate": true,
+    "confidence": 1.0,
+    "confidence_label": "high",
+    "confidence_factors": {
+     "recording_quality": 1.0,
+     "phoneme_model": 1.0,
+     "consistency": 1.0,
+     "duration_plausibility": 1.0
+    },
+    "needs_retry": false,
+    "retry_reason": null,
+    "matched_variant": {
+     "id": "us",
+     "accent": "General American",
+     "ipa": "/ˈbʌtərˌflaɪ/",
+     "arpabet": [
+      "B",
+      "AH1",
+      "T",
+      "ER0",
+      "F",
+      "L",
+      "AY2"
+     ]
+    },
+    "phoneme_scores": [
+     {
+      "index": 0,
+      "phoneme": "b",
+      "arpabet": "B",
+      "score": 98,
+      "posterior": 0.9571,
+      "status": "good",
+      "likely_realization": null,
+      "likely_realization_probability": null,
+      "deletion_probability": 0.0,
+      "accepted_variant": null,
+      "start_s": 0.23,
+      "end_s": 0.25
+     },
+     {
+      "index": 1,
+      "phoneme": "ʌ",
+      "arpabet": "AH1",
+      "score": 92,
+      "posterior": 0.2648,
+      "status": "good",
+      "likely_realization": null,
+      "likely_realization_probability": null,
+      "deletion_probability": 0.0,
+      "accepted_variant": null,
+      "start_s": 0.25,
+      "end_s": 0.32
+     },
+     {
+      "index": 2,
+      "phoneme": "t",
+      "arpabet": "T",
+      "score": 100,
+      "posterior": 0.9998,
+      "status": "good",
+      "likely_realization": null,
+      "likely_realization_probability": null,
+      "deletion_probability": 0.0,
+      "accepted_variant": null,
+      "start_s": 0.32,
+      "end_s": 0.39
+     },
+     {
+      "index": 3,
+      "phoneme": "ər",
+      "arpabet": "ER0",
+      "score": 98,
+      "posterior": 0.9682,
+      "status": "good",
+      "likely_realization": null,
+      "likely_realization_probability": null,
+      "deletion_probability": 0.001,
+      "accepted_variant": null,
+      "start_s": 0.39,
+      "end_s": 0.45
+     },
+     {
+      "index": 4,
+      "phoneme": "f",
+      "arpabet": "F",
+      "score": 99,
+      "posterior": 0.9629,
+      "status": "good",
+      "likely_realization": null,
+      "likely_realization_probability": null,
+      "deletion_probability": 0.002,
+      "accepted_variant": null,
+      "start_s": 0.45,
+      "end_s": 0.53
+     },
+     {
+      "index": 5,
+      "phoneme": "l",
+      "arpabet": "L",
+      "score": 99,
+      "posterior": 0.9894,
+      "status": "good",
+      "likely_realization": null,
+      "likely_realization_probability": null,
+      "deletion_probability": 0.009,
+      "accepted_variant": null,
+      "start_s": 0.53,
+      "end_s": 0.58
+     },
+     {
+      "index": 6,
+      "phoneme": "aɪ",
+      "arpabet": "AY2",
+      "score": 97,
+      "posterior": 0.7176,
+      "status": "good",
+      "likely_realization": null,
+      "likely_realization_probability": null,
+      "deletion_probability": 0.0,
+      "accepted_variant": null,
+      "start_s": 0.58,
+      "end_s": 0.61
+     }
+    ],
+    "components": [
+     {
+      "name": "phoneme_accuracy",
+      "score": 99.4,
+      "weight": 0.6,
+      "available": true,
+      "details": {
+       "aggregation": "word-level calibration of calibrated phone scores",
+       "calibration": "speechocean762 train (28277 phones)",
+       "pitch": {
+        "median_hz": 181.7,
+        "range_semitones": 9.62,
+        "voiced_fraction": 0.725
+       }
+      }
+     },
+     {
+      "name": "acoustic_similarity",
+      "score": 96.4,
+      "weight": 0.2,
+      "available": true,
+      "details": {
+       "dtw_cost": 0.4201,
+       "reference": "piper:en_US-libritts_r-medium:0",
+       "warp": 0.96,
+       "references_compared": 3
+      }
+     },
+     {
+      "name": "syllable_completeness",
+      "score": 80.0,
+      "weight": 0.1,
+      "available": true,
+      "details": {
+       "expected": 3,
+       "detected_nuclei": 1,
+       "vowels_present": 3,
+       "completeness": 0.8
+      }
+     },
+     {
+      "name": "temporal",
+      "score": 100.0,
+      "weight": 0.1,
+      "available": true,
+      "details": {
+       "speech_duration_s": 0.525,
+       "reference_duration_s": 0.525,
+       "rate_ratio": 1.0,
+       "rhythm_deviation": 0.232
+      }
+     }
+    ],
+    "acoustic_similarity": 0.9644,
+    "syllables": {
+     "expected": 3,
+     "detected_nuclei": 1,
+     "vowels_present": 3,
+     "completeness": 0.8
+    },
+    "timing": {
+     "speech_duration_s": 0.525,
+     "reference_duration_s": 0.525,
+     "rate_ratio": 1.0,
+     "rhythm_deviation": 0.232
+    },
+    "recognition": {
+     "recognized_phonemes": [
+      "b",
+      "ɛ",
+      "t",
+      "ɜr",
+      "f",
+      "l",
+      "aɪ"
+     ],
+     "closest_word": "butterfly",
+     "matches_target": true,
+     "phoneme_error_rate": 0.125
+    },
+    "quality": {
+     "usable": true,
+     "duration_s": 1.385,
+     "speech_duration_s": 0.525,
+     "speech_start_s": 0.39,
+     "speech_end_s": 0.915,
+     "rms_dbfs": -15.3,
+     "peak_dbfs": -6.8,
+     "snr_db": 54.8,
+     "clipping_ratio": 0.0,
+     "issues": []
+    },
+    "identified_issues": [],
+    "strengths": [
+     {
+      "id": "ph2-good",
+      "message": "The /t/ in the second syllable was clear.",
+      "phoneme": "t",
+      "position": 2
+     },
+     {
+      "id": "ph4-good",
+      "message": "The /f/ in the third syllable was clear.",
+      "phoneme": "f",
+      "position": 4
+     },
+     {
+      "id": "ph5-good",
+      "message": "The /l/ in the third syllable was clear.",
+      "phoneme": "l",
+      "position": 5
+     },
+     {
+      "id": "feat-medial_cluster-4",
+      "message": "Consonant sequence /fl/ between syllables was produced clearly.",
+      "phoneme": null,
+      "position": null
+     }
+    ],
+    "engine": {
+     "name": "allosaurus",
+     "model": "eng2102",
+     "phoneme_level": true,
+     "calibration": "speechocean762 train (28277 phones)",
+     "notes": null
+    },
+    "processing_ms": 220,
+    "disclaimer": "Scores are automated estimates intended for practice feedback. They are not a clinical assessment or diagnosis and have not been clinically validated."
+   },
+   "feedback": {
+    "summary": "Excellent - 'butterfly' sounded clear (97/100). The /t/ in the second syllable was clear.",
+    "recommendations": [],
+    "encouragement": "Great work! Try the next word when you're ready.",
+    "progress_note": "",
+    "source": "rule_based",
+    "grounded": true,
+    "guardrail_notes": [],
+    "disclaimer": "This feedback is generated automatically for practice. It is not a diagnosis or a clinical assessment."
+   }
+  },
+  "quality_noisy": {
+   "analysis": {
+    "contract_version": "1.0.0",
+    "analysis_id": "28e2b42e-afb4-40ae-a2e5-568e6ade5675",
+    "word": "rabbit",
+    "word_id": 45,
+    "status": "retry_required",
+    "overall_score": null,
+    "rating": null,
+    "word_recognized": null,
+    "recognized_word": null,
+    "phonetically_accurate": null,
+    "confidence": 0.0,
+    "confidence_label": "low",
+    "confidence_factors": {},
+    "needs_retry": true,
+    "retry_reason": "There is too much background noise compared with your voice. Try a quieter place.",
+    "matched_variant": null,
+    "phoneme_scores": null,
+    "components": [],
+    "acoustic_similarity": null,
+    "syllables": null,
+    "timing": null,
+    "recognition": null,
+    "quality": {
+     "usable": false,
+     "duration_s": 1.257,
+     "speech_duration_s": 0.265,
+     "speech_start_s": 0.41,
+     "speech_end_s": 0.675,
+     "rms_dbfs": -13.6,
+     "peak_dbfs": -5.5,
+     "snr_db": 10.9,
+     "clipping_ratio": 0.0,
+     "issues": [
+      {
+       "code": "noisy",
+       "message": "There is too much background noise compared with your voice. Try a quieter place.",
+       "blocking": true
+      }
+     ]
+    },
+    "identified_issues": [],
+    "strengths": [],
+    "engine": {
+     "name": "allosaurus",
+     "model": "eng2102",
+     "phoneme_level": true,
+     "calibration": "speechocean762 train (28277 phones)",
+     "notes": null
+    },
+    "processing_ms": 1,
+    "disclaimer": "Scores are automated estimates intended for practice feedback. They are not a clinical assessment or diagnosis and have not been clinically validated."
+   },
+   "feedback": {
+    "summary": "There is too much background noise compared with your voice. Try a quieter place.",
+    "recommendations": [],
+    "encouragement": "Take your time, then press Record when you are ready.",
+    "progress_note": "",
+    "source": "rule_based",
+    "grounded": true,
+    "guardrail_notes": [],
+    "disclaimer": "This feedback is generated automatically for practice. It is not a diagnosis or a clinical assessment."
+   }
+  }
+ },
+ "status": {
+  "status": "ok",
+  "environment": "development",
+  "contract_version": "1.0.0",
+  "analysis_engine": {
+   "name": "allosaurus",
+   "model": "eng2102",
+   "phoneme_level": true,
+   "calibration": "speechocean762 train (28277 phones)",
+   "notes": null,
+   "weights": {
+    "phoneme_accuracy": 0.6,
+    "acoustic_similarity": 0.2,
+    "syllable_completeness": 0.1,
+    "temporal": 0.1
+   },
+   "rating_thresholds": {
+    "mastered": 90,
+    "satisfactory": 70,
+    "strong_error_below": 60,
+    "cap_scores": true
+   }
+  },
+  "feedback": {
+   "mode": "rule_based",
+   "provider": null,
+   "model": null
+  },
+  "reference_audio": {
+   "piper_voices": [
+    "en_US-libritts_r-medium:0",
+    "en_US-libritts_r-medium:40",
+    "en_GB-vctk-medium:3"
+   ],
+   "espeak": true,
+   "human_recordings": []
+  },
+  "words": 135
+ }
+}
