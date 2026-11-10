@@ -1,0 +1,136 @@
+word,difficulty,category,focus,us_override,gb_override,notes
+cat,easy,simple_words,K,,,CVC word
+dog,easy,simple_words,D G,D AO1 G|D AA1 G,,cot-caught variation accepted
+sun,easy,s_sound,S,,,
+map,easy,simple_words,M P,,,
+cup,easy,simple_words,K P,,,
+bed,easy,simple_words,B D,,,
+pig,easy,simple_words,P G,,,
+hat,easy,simple_words,HH,,,
+bus,easy,s_sound,S,,,final /s/
+fish,easy,sh_ch_j,SH,,,final /sh/
+book,easy,simple_words,B K,,,
+ball,easy,l_sound,L,,,final /l/
+top,easy,simple_words,T P,,,
+man,easy,simple_words,M N,,,
+moon,easy,simple_words,M UW,,,
+key,easy,k_g_sound,K,,,
+bee,easy,simple_words,B IY,,,
+go,easy,k_g_sound,G,,,
+shoe,easy,sh_ch_j,SH,,,
+five,easy,f_v_sound,F V,,,
+nose,easy,simple_words,N Z,,,
+duck,easy,k_g_sound,D K,,,
+pen,easy,simple_words,P EH,,,pin-pen merger accepted
+web,easy,simple_words,W B,,,
+yes,easy,simple_words,Y S,,,
+zoo,easy,s_sound,Z,,,
+van,easy,f_v_sound,V,,,
+home,easy,simple_words,HH M,,,
+cake,easy,k_g_sound,K,,,
+boat,easy,simple_words,B OW,,,
+fan,easy,f_v_sound,F,,,
+ship,easy,vowel_contrast,SH IH,,,minimal pair with sheep
+sheep,easy,vowel_contrast,SH IY,,,minimal pair with ship
+baby,easy,simple_words,B,,,
+happy,easy,simple_words,HH P,,,
+cookie,easy,k_g_sound,K,,,
+puppy,easy,simple_words,P,,,
+monkey,easy,k_g_sound,NG K,,,
+bit,easy,vowel_contrast,IH,,,minimal pair with beat
+beat,easy,vowel_contrast,IY,,,minimal pair with bit
+pool,easy,vowel_contrast,UW L,,,minimal pair with pull
+pull,easy,vowel_contrast,UH L,,,minimal pair with pool
+mouse,easy,s_sound,AW S,,,
+red,medium,r_sound,R,,,initial /r/
+rabbit,medium,r_sound,R,,,initial /r/
+road,medium,r_sound,R,,,initial /r/
+rain,medium,r_sound,R,,,initial /r/
+rocket,medium,r_sound,R K,,,
+carrot,medium,r_sound,R,,,intervocalic /r/
+mirror,medium,r_sound,R ER,,,
+around,medium,r_sound,R,AH0 R AW1 N D|ER0 AW1 N D,,
+car,medium,r_sound,AA R,,,vocalic /r/; non-rhotic accents accepted
+tree,medium,clusters,T R,,,/tr/ cluster
+frog,medium,clusters,F R,F R AA1 G|F R AO1 G,,/fr/ cluster
+green,medium,clusters,G R,,,/gr/ cluster
+bread,medium,clusters,B R,,,/br/ cluster
+snake,medium,clusters,S N,,,/sn/ cluster
+spoon,medium,clusters,S P,,,/sp/ cluster
+star,medium,clusters,S T,,,/st/ cluster
+sleep,medium,clusters,S L,,,/sl/ cluster
+house,medium,s_sound,HH S,,,
+glass,medium,clusters,G L S,,G L AA1 S,/gl/ cluster
+seven,medium,s_sound,S V,,,
+leaf,medium,l_sound,L,,,initial /l/
+lamp,medium,l_sound,L M P,,,
+yellow,medium,l_sound,Y L,,,
+balloon,medium,l_sound,L,,,
+lion,medium,l_sound,L,,,
+plane,medium,clusters,P L,,,/pl/ cluster
+flower,medium,clusters,F L,,,/fl/ cluster
+thumb,medium,th_sound,TH,,,voiceless th
+think,medium,th_sound,TH NG K,,,voiceless th
+mother,medium,th_sound,DH,,,voiced th
+feather,medium,th_sound,DH,,,voiced th
+teeth,medium,th_sound,TH,,,final th
+this,medium,th_sound,DH,,,voiced th
+bath,medium,th_sound,TH,,B AA1 TH,BATH vowel differs by accent
+chair,medium,sh_ch_j,CH,,,
+cheese,medium,sh_ch_j,CH Z,,,
+jump,medium,sh_ch_j,JH,,,
+giraffe,medium,sh_ch_j,JH R F,JH AH0 R AE1 F|JH ER0 AE1 F,JH IH0 R AA1 F,
+watch,medium,sh_ch_j,CH,W AA1 CH|W AO1 CH,,
+orange,medium,sh_ch_j,R JH,,,
+kitchen,medium,k_g_sound,K CH,,,
+glove,medium,f_v_sound,G L V,,,
+banana,medium,multisyllabic,B N,,,3 syllables
+elephant,medium,multisyllabic,L F,,,3 syllables
+umbrella,medium,multisyllabic,M B R L,,,3 syllables
+butterfly,medium,multisyllabic,B T F L,,,3 syllables
+tomato,medium,multisyllabic,T M,,,3 syllables; accent variants
+dinosaur,medium,multisyllabic,D N S,,,3 syllables
+computer,medium,multisyllabic,K M P Y,,,3 syllables
+pencil,medium,s_sound,N S L,,,
+water,medium,r_sound,W ER,,,vocalic /r/
+spider,medium,clusters,S P,,,/sp/ cluster
+sandwich,medium,multisyllabic,N D W CH,S AE1 N D W IH0 CH|S AE1 N W IH0 CH,,
+strawberry,hard,clusters,S T R,,,/str/ cluster
+street,hard,clusters,S T R,,,/str/ cluster
+squirrel,hard,clusters,S K W R L,,,/skw/ cluster
+splash,hard,clusters,S P L SH,,,/spl/ cluster
+scratch,hard,clusters,S K R CH,,,/skr/ cluster
+sixth,hard,clusters,K S TH,,,final /ksθ/ cluster
+months,hard,clusters,N TH S,,,final /nθs/ cluster
+strengths,hard,clusters,S T R NG K TH S,S T R EH1 NG K TH S|S T R EH1 NG TH S,,
+rural,hard,r_sound,R L,,,
+library,hard,r_sound,L B R,L AY1 B R EH2 R IY0|L AY1 B R ER0 IY0,,
+February,hard,multisyllabic,F B R,F EH1 B R UW0 EH2 R IY0|F EH1 B Y UW0 EH2 R IY0,,
+specific,hard,clusters,S P S F K,,,
+statistics,hard,clusters,S T K,,,
+thermometer,hard,th_sound,TH R M,,,
+caterpillar,hard,multisyllabic,K T P L R,,,4 syllables
+helicopter,hard,multisyllabic,HH L K P T,,,4 syllables
+refrigerator,hard,multisyllabic,R F JH,R IH0 F R IH1 JH AH0 R EY2 T ER0|R IH0 F R IH1 JH ER0 EY2 T ER0,,5 syllables
+hippopotamus,hard,multisyllabic,P T M S,,none,5 syllables
+vegetable,hard,multisyllabic,V JH T B L,V EH1 JH T AH0 B AH0 L|V EH1 JH AH0 T AH0 B AH0 L,,
+rhinoceros,hard,r_sound,R N S,,,
+thoroughly,hard,th_sound,TH R L,,,
+particularly,hard,multisyllabic,P R T K L,,,5 syllables
+vulnerable,hard,multisyllabic,V L N R B,,,
+rhythm,hard,th_sound,R DH M,,,
+phenomenon,hard,multisyllabic,F N M,,,
+environment,hard,multisyllabic,N V R M,IH0 N V AY1 R AH0 N M AH0 N T|IH0 N V AY1 ER0 N M AH0 N T,,
+temperature,hard,multisyllabic,T M P R CH,,,
+toothbrush,hard,th_sound,TH B R SH,,,
+pronunciation,hard,multisyllabic,P R N S SH,,,5 syllables
+remember,hard,multisyllabic,R M B,,,
+electricity,hard,multisyllabic,L K T R S,,,5 syllables
+spaghetti,hard,clusters,S P G T,,,
+ambulance,hard,multisyllabic,M B Y L N S,,,
+crocodile,hard,clusters,K R D L,,,
+kangaroo,hard,multisyllabic,K NG G R,K AE2 NG G AH0 R UW1|K AE2 NG G ER0 UW1,none,
+triangle,hard,clusters,T R NG G L,,,
+scissors,hard,s_sound,S Z,,S IH1 Z AH0 Z,
+Wednesday,hard,multisyllabic,W N Z D,,,silent letters
+probably,hard,multisyllabic,P R B L,P R AA1 B AH0 B L IY0|P R AA1 B L IY0,,

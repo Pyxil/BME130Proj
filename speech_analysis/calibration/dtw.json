@@ -1,0 +1,11 @@
+{
+  "midpoint": 0.585,
+  "scale": 0.05,
+  "same_word_cost_mean": 0.4979,
+  "different_word_cost_mean": 0.6435,
+  "pairs": 216,
+  "classification_accuracy": 0.926,
+  "fitted_on": "Piper TTS held-out speakers, 36 words, 216 pairs (synthetic)",
+  "scale_fitted": 0.0203,
+  "note": "scale widened from the fitted value to >= 0.05 so similarity degrades gradually; real recordings compared with TTS references are expected to have higher costs than TTS-vs-TTS pairs"
+}

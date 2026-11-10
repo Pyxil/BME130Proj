@@ -1,0 +1,130 @@
+[
+  {
+    "file": "butterfly_correct_us.wav",
+    "word": "butterfly",
+    "realised": "B AH1 T ER0 F L AY2",
+    "voice": "en_US-libritts_r-medium:12",
+    "kind": "correct"
+  },
+  {
+    "file": "butterfly_correct_gb.wav",
+    "word": "butterfly",
+    "realised": "B AH1 T AH0 F L AY2",
+    "voice": "en_GB-vctk-medium:5",
+    "kind": "correct",
+    "variant": "gb"
+  },
+  {
+    "file": "butterfly_vowel_error.wav",
+    "word": "butterfly",
+    "realised": "B AE1 T ER0 F L AY2",
+    "voice": "en_US-libritts_r-medium:12",
+    "kind": "error",
+    "position": 1
+  },
+  {
+    "file": "rabbit_correct.wav",
+    "word": "rabbit",
+    "realised": "R AE1 B AH0 T",
+    "voice": "en_US-libritts_r-medium:12",
+    "kind": "correct"
+  },
+  {
+    "file": "rabbit_r_as_w.wav",
+    "word": "rabbit",
+    "realised": "W AE1 B AH0 T",
+    "voice": "en_US-libritts_r-medium:12",
+    "kind": "error",
+    "position": 0
+  },
+  {
+    "file": "leaf_correct.wav",
+    "word": "leaf",
+    "realised": "L IY1 F",
+    "voice": "en_US-libritts_r-medium:12",
+    "kind": "correct"
+  },
+  {
+    "file": "leaf_l_as_w.wav",
+    "word": "leaf",
+    "realised": "W IY1 F",
+    "voice": "en_US-libritts_r-medium:12",
+    "kind": "error",
+    "position": 0
+  },
+  {
+    "file": "spoon_correct.wav",
+    "word": "spoon",
+    "realised": "S P UW1 N",
+    "voice": "en_US-libritts_r-medium:12",
+    "kind": "correct"
+  },
+  {
+    "file": "spoon_cluster_reduced.wav",
+    "word": "spoon",
+    "realised": "P UW1 N",
+    "voice": "en_US-libritts_r-medium:12",
+    "kind": "error",
+    "position": 0
+  },
+  {
+    "file": "banana_correct.wav",
+    "word": "banana",
+    "realised": "B AH0 N AE1 N AH0",
+    "voice": "en_US-libritts_r-medium:12",
+    "kind": "correct"
+  },
+  {
+    "file": "banana_syllable_dropped.wav",
+    "word": "banana",
+    "realised": "N AE1 N AH0",
+    "voice": "en_US-libritts_r-medium:12",
+    "kind": "error",
+    "position": 0
+  },
+  {
+    "file": "strawberry_correct.wav",
+    "word": "strawberry",
+    "realised": "S T R AO1 B EH2 R IY0",
+    "voice": "en_US-libritts_r-medium:12",
+    "kind": "correct"
+  },
+  {
+    "file": "tomato_gb.wav",
+    "word": "tomato",
+    "realised": "T AH0 M AA1 T OW2",
+    "voice": "en_GB-vctk-medium:5",
+    "kind": "correct",
+    "variant": "us-2"
+  },
+  {
+    "file": "quality_silence.wav",
+    "word": "rabbit",
+    "kind": "bad_quality",
+    "quality": "silence"
+  },
+  {
+    "file": "quality_too_quiet.wav",
+    "word": "rabbit",
+    "kind": "bad_quality",
+    "quality": "too_quiet"
+  },
+  {
+    "file": "quality_clipped.wav",
+    "word": "rabbit",
+    "kind": "bad_quality",
+    "quality": "clipped"
+  },
+  {
+    "file": "quality_noisy.wav",
+    "word": "rabbit",
+    "kind": "bad_quality",
+    "quality": "noisy"
+  },
+  {
+    "file": "quality_truncated_end.wav",
+    "word": "rabbit",
+    "kind": "bad_quality",
+    "quality": "truncated_end"
+  }
+]
