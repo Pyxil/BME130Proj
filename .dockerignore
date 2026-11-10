@@ -1,0 +1,15 @@
+.git
+**/node_modules
+**/__pycache__
+**/.pytest_cache
+**/.ruff_cache
+frontend/dist
+models
+data/*.db
+data/cache
+data/recordings
+.env
+.env.*
+docs/images
+speech_analysis/tests/fixtures
+e2e
