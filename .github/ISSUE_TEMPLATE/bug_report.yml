@@ -1,0 +1,62 @@
+name: Bug report
+description: Something is broken or behaves unexpectedly
+labels: ["type: bug", "status: triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! **Never attach real users' recordings, emails or API keys.**
+        Use the synthetic fixtures in `speech_analysis/tests/fixtures/` to reproduce analysis problems.
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - Frontend / UI
+        - Backend API / database
+        - Speech analysis / scoring
+        - AI feedback
+        - Infrastructure / CI / Docker
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Include the analysis_id or attempt id if it is an analysis result.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Start a "One sound" session for /r/
+        2. Record the word "rabbit"
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      description: Browser and OS, how you run the app (Docker / local), engine shown on the "How it works" page.
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or screenshots
+      render: shell
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy
+      options:
+        - label: This report contains no personal data, real recordings or secrets.
+          required: true

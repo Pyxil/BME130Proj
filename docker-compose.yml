@@ -1,0 +1,57 @@
+# One-command local stack:   docker compose up --build
+#   frontend  http://localhost:8080   (nginx, proxies /api)
+#   backend   http://localhost:8000   (FastAPI, docs at /docs)
+#   db        PostgreSQL 16
+# Smaller image without the phoneme model:  INSTALL_ML=false docker compose up --build
+name: voice-therapy
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+      POSTGRES_DB: voice_therapy
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U app -d voice_therapy"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+      args:
+        INSTALL_ML: ${INSTALL_ML:-true}
+        DOWNLOAD_MODELS: ${DOWNLOAD_MODELS:-true}
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      APP_ENV: ${APP_ENV:-development}
+      DATABASE_URL: postgresql+psycopg://app:app@db:5432/voice_therapy
+      CORS_ORIGINS: http://localhost:8080,http://localhost:5173
+      SECRET_KEY: ${SECRET_KEY:-local-docker-dev-secret-change-me-0123456789}
+    volumes:
+      - recordings:/app/data/recordings
+      - refcache:/app/data/cache
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
+  recordings:
+  refcache:

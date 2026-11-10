@@ -1,0 +1,11 @@
+# Replace the placeholder team handles with your organisation's GitHub teams.
+# Owners are requested as reviewers automatically.
+*                       @your-org/maintainers
+/frontend/              @your-org/frontend-team
+/backend/               @your-org/backend-team
+/speech_analysis/       @your-org/speech-team
+/data/                  @your-org/speech-team
+/ai_feedback/           @your-org/ai-team
+/e2e/                   @your-org/qa-team
+/.github/               @your-org/qa-team @your-org/maintainers
+/docs/validation.md     @your-org/speech-team

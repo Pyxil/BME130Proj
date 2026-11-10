@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Team guide
+    url: ../../blob/main/TEAM_GUIDE.md
+    about: How we claim tasks, branch, review and integrate.
+  - name: Development guide
+    url: ../../blob/main/docs/development_guide.md
+    about: Setup and testing instructions for each module.

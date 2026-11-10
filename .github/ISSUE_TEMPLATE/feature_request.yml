@@ -1,0 +1,41 @@
+name: Feature request
+description: Suggest an improvement or new capability
+labels: ["type: feature", "status: triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Who needs this and why? (e.g. "children practising /s/ need ...")
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+  - type: dropdown
+    id: component
+    attributes:
+      label: Components affected
+      multiple: true
+      options:
+        - Frontend / UI
+        - Backend API / database
+        - Speech analysis / scoring
+        - AI feedback
+        - Infrastructure / CI / Docker
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      placeholder: "- [ ] ..."
+  - type: checkboxes
+    id: impact
+    attributes:
+      label: Impact
+      options:
+        - label: Changes the API or analysis contract (needs a contract review)
+        - label: Affects scoring or claims about accuracy (needs a validation run)
+        - label: Affects personal data or recordings (needs a privacy review)

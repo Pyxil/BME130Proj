@@ -1,0 +1,97 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    name: Backend, speech analysis, AI feedback
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: app
+          POSTGRES_PASSWORD: app
+          POSTGRES_DB: ci
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U app -d ci"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: System packages (espeak-ng for the word-database check)
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends espeak-ng
+      - name: Install
+        run: pip install -e ".[dev,llm,postgres]"
+      - name: Lint (ruff)
+        run: ruff check backend speech_analysis ai_feedback scripts
+      - name: Unit, API and contract tests (no models needed)
+        run: pytest -q -m "not model"
+      - name: Migrations on PostgreSQL (upgrade, check for drift, downgrade, upgrade)
+        env:
+          DATABASE_URL: postgresql+psycopg://app:app@localhost:5432/ci
+        run: |
+          alembic -c backend/alembic.ini upgrade head
+          alembic -c backend/alembic.ini check
+          alembic -c backend/alembic.ini downgrade base
+          alembic -c backend/alembic.ini upgrade head
+      - name: Migrations on SQLite
+        env:
+          DATABASE_URL: sqlite:///./ci.db
+        run: alembic -c backend/alembic.ini upgrade head && alembic -c backend/alembic.ini check
+      - name: API contract (OpenAPI + JSON schemas) is up to date
+        run: python -m backend.scripts.export_openapi --check
+      - name: Word database is up to date with data/source/words.csv
+        run: python scripts/build_word_database.py --check
+
+  frontend:
+    name: Frontend
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Type check
+        run: npm run typecheck
+      - name: Unit tests
+        run: npm test
+      - name: Generated API types match docs/openapi.json
+        run: npm run gen:api && git diff --exit-code src/types/api.generated.ts
+      - name: Production build
+        run: npm run build
+
+  docker:
+    name: Docker images build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Backend image (acoustic baseline variant, fast)
+        run: docker build -f backend/Dockerfile --build-arg INSTALL_ML=false --build-arg DOWNLOAD_MODELS=false -t vt-backend .
+      - name: Frontend image
+        run: docker build -t vt-frontend frontend
+      - name: Compose file is valid
+        run: docker compose config --quiet

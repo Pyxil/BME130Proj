@@ -1,0 +1,77 @@
+name: Speech pipeline with models
+
+# Runs the full analysis pipeline (Allosaurus + Piper) on the committed fixture
+# recordings whenever the speech code changes, weekly, or on demand.  The manual
+# "validation" job re-scores a sample of speechocean762 and fails if accuracy regresses.
+on:
+  pull_request:
+    paths:
+      - "speech_analysis/**"
+      - "data/words.json"
+      - "scripts/download_models.py"
+      - "scripts/evaluate_speechocean762.py"
+  schedule:
+    - cron: "17 3 * * 1"
+  workflow_dispatch:
+    inputs:
+      validation_utterances:
+        description: "speechocean762 test utterances to score (0 = skip validation)"
+        default: "300"
+
+permissions:
+  contents: read
+
+jobs:
+  fixtures:
+    name: Fixture recordings through the real pipeline
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Cache models
+        uses: actions/cache@v4
+        with:
+          path: models
+          key: models-v1-${{ hashFiles('scripts/download_models.py') }}
+      - name: Install (CPU PyTorch)
+        run: |
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e ".[dev,ml]"
+      - run: python scripts/download_models.py
+      - name: Integration tests with models
+        run: pytest -q -m model
+
+  validation:
+    name: Accuracy regression check (speechocean762)
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.validation_utterances != '0'
+    needs: fixtures
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - uses: actions/cache@v4
+        with:
+          path: models
+          key: models-v1-${{ hashFiles('scripts/download_models.py') }}
+      - run: |
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e ".[dev,ml]"
+          python scripts/download_models.py
+      - name: Fetch speechocean762 (CC BY 4.0)
+        run: git clone --depth 1 https://github.com/jimbozhang/speechocean762 /tmp/so762
+      - name: Score held-out test utterances
+        run: |
+          python scripts/evaluate_speechocean762.py --data /tmp/so762 --split test \
+            --limit ${{ github.event.inputs.validation_utterances }} --workers 4 \
+            --calibration speech_analysis/calibration/allosaurus-eng2102.json \
+            --report validation-report.json --fail-under-auc 0.85
+      - uses: actions/upload-artifact@v4
+        with:
+          name: validation-report
+          path: validation-report.json
