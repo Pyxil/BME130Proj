@@ -4,7 +4,7 @@
 
 | Tool | Version | Notes |
 |---|---|---|
-| Python | 3.11-3.13 | 3.12 in Docker and CI |
+| Python | 3.11-3.13; **3.11 or 3.12 on Windows** | 3.12 in Docker and CI. On Windows a speech-model package (editdistance) has no ready-made build for 3.13+ |
 | Node.js | 22.12+ (any current LTS) | Vite 8 and Vitest 5 need it; `dev.py setup` checks |
 | Git | any recent | |
 | ffmpeg | optional | decode non-WAV uploads (the web client sends WAV) |
@@ -56,8 +56,11 @@ py -3.12 scripts/dev.py frontend               # terminal 2 -> open http://local
 ```
 
 - No `winget`? Use the installers from python.org, nodejs.org (LTS) and git-scm.com instead.
-- `py` is the Python launcher that comes with Python; `py -3.12` picks 3.12 even when other versions are
-  installed. If typing `python` opens the Microsoft Store, ignore it and use `py -3.12`.
+- Use **Python 3.12** (`py -3.12`), even if you also have a newer Python: one speech-model package has no
+  ready-made Windows build for 3.13+. `py` is the launcher that comes with Python; `py -3.12` picks 3.12 even
+  when other versions are installed. If typing `python` opens the Microsoft Store, ignore it.
+- If VS Code offers to create a virtual environment for this folder, decline: `dev.py setup` makes `.venv`
+  itself (and replaces one made with a different Python).
 - Keep the project out of folders that OneDrive syncs (Desktop, Documents): OneDrive locks files while it
   syncs, and very long paths can break the PyTorch install. `C:\Users\<you>\BME130Proj` (from `cd $HOME`)
   is fine. If the Python installer offers *Disable path length limit*, accept it.
@@ -188,5 +191,7 @@ Human reference recordings can be dropped into `data/reference_audio/<word>.wav`
 - *Slow first analysis*: models load lazily; `WARMUP_ON_START=true` loads them in the background at start.
 - *Port 8000 or 5173 already in use*: a backend or frontend is still running in another terminal; stop it
   with Ctrl+C.
+- *"Failed building wheel for editdistance"* (Windows): `.venv` was made with Python 3.13 or newer. Run
+  `py -3.12 scripts/dev.py setup` again; setup replaces a `.venv` made with a different Python.
 - *Setup stops with a Python or Node.js version message*: install the version it names, open a new
   terminal, and run setup again (it picks up where it left off).

@@ -43,7 +43,7 @@ For a small image without the phoneme model (acoustic baseline only), run
 
 ### Option B: Local development (Windows, macOS, Linux)
 
-Requirements: Python 3.11+ (3.12 recommended) and Node.js 22.12+. Step-by-step guides:
+Requirements: Python 3.12 (3.11 works too; Windows needs 3.11 or 3.12) and Node.js 22.12+. Step-by-step guides:
 [macOS](docs/development_guide.md#macos-apple-silicon-or-intel) (use `python3.12` below) and
 [Windows](docs/development_guide.md#windows) (use `py -3.12` below). Then:
 

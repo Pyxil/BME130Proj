@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import os
 import platform
+import re
 import secrets
 import shutil
 import subprocess
@@ -75,18 +76,23 @@ def check_tools(args: list[str]) -> None:
         else:
             hint = "Install Python 3.11-3.13."
         sys.exit(f"Python 3.11+ is required (this is {platform.python_version()}). {hint}")
+    if win and sys.version_info >= (3, 13) and "--no-ml" not in args:
+        sys.exit(f"On Windows the speech model needs Python 3.11 or 3.12 (this is {platform.python_version()}): "
+                 "one of its packages, editdistance, has no ready-made Windows build for newer versions, and "
+                 "building it needs Microsoft's C++ tools. Run `py -3.12 scripts/dev.py setup` (install it with "
+                 "`winget install Python.Python.3.12`), or add --no-ml for the acoustic baseline.")
     if mac and platform.machine() == "x86_64" and sys.version_info >= (3, 13) and "--no-ml" not in args:
         sys.exit("PyTorch has no Intel-Mac builds for Python 3.13+. Use `python3.12 scripts/dev.py setup` "
                  "(or add --no-ml for the acoustic baseline).")
-    install_node = ("`brew install node`" if mac else
-                    "`winget install OpenJS.NodeJS.LTS`, then open a new terminal" if win else
-                    "the current LTS from https://nodejs.org")
+    install_node = ("with `brew install node`" if mac else
+                    "with `winget install OpenJS.NodeJS.LTS`, then open a new terminal" if win else
+                    "from https://nodejs.org (current LTS)")
     version = node_version()
     if shutil.which(NPM) is None or version is None:
-        sys.exit(f"Node.js 22.12+ is required for the frontend. Install {install_node}.")
+        sys.exit(f"Node.js 22.12+ is required for the frontend. Install it {install_node}.")
     if version < (22, 12):  # Vite 8 and Vitest 5 need it
         sys.exit(f"Node.js {version[0]}.{version[1]} is too old for the frontend tools (needs 22.12+). "
-                 f"Install {install_node}.")
+                 f"Install it {install_node}.")
 
 
 def write_env_file() -> None:
@@ -97,11 +103,44 @@ def write_env_file() -> None:
     print("created .env from .env.example (with a random SECRET_KEY)")
 
 
+def venv_python_version() -> tuple[int, int] | None:
+    """(major, minor) of the Python that created .venv, read from its pyvenv.cfg."""
+    try:
+        text = (VENV / "pyvenv.cfg").read_text(encoding="utf-8")
+    except OSError:
+        return None
+    m = re.search(r"^version(?:_info)?\s*=\s*(\d+)\.(\d+)", text, re.MULTILINE)
+    return (int(m.group(1)), int(m.group(2))) if m else None
+
+
+def ensure_venv() -> None:
+    """Create .venv, or recreate it when it is broken or was made with a different Python.
+
+    A .venv left behind by another Python (an earlier run with a newer `python`, or one an editor
+    created) would otherwise be reused and fail later, e.g. building editdistance on Windows.
+    """
+    if VENV.exists():
+        made_with, running = venv_python_version(), sys.version_info[:2]
+        if PY.exists() and made_with in (None, running):
+            return
+        if made_with not in (None, running):
+            reason = (f"it was made with Python {made_with[0]}.{made_with[1]}, "
+                      f"but setup is running on {running[0]}.{running[1]}")
+        else:
+            reason = "it has no Python interpreter (an earlier setup was interrupted?)"
+        print(f"recreating .venv: {reason}")
+        try:
+            shutil.rmtree(VENV)
+        except OSError as exc:
+            sys.exit(f"Could not delete .venv ({exc}). Close anything that uses it (the backend, VS Code), "
+                     "delete the .venv folder, and run setup again.")
+    print("creating .venv")
+    venv.create(VENV, with_pip=True)
+
+
 def setup(args: list[str]) -> None:
     check_tools(args)
-    if not VENV.exists():
-        print("creating .venv")
-        venv.create(VENV, with_pip=True)
+    ensure_venv()
     run([py(), "-m", "pip", "install", "--upgrade", "pip"])
     run([py(), "-m", "pip", "install", "-e", ".[dev,llm,postgres]"])
     if "--no-ml" not in args:
