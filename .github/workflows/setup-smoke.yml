@@ -1,0 +1,72 @@
+name: Setup on Windows, macOS and Linux
+
+# Follows the README on a fresh machine of each kind: `python scripts/dev.py setup`
+# (virtualenv, PyTorch, speech models, Node packages, database), then every test including
+# the speech-model tests, then a live check of the real backend and the Vite dev server.
+# Runs when setup-related files change, weekly (new package releases or moved model files
+# can break setup without any change here), and on demand.
+on:
+  pull_request:
+    paths:
+      - "scripts/dev.py"
+      - "scripts/download_models.py"
+      - "scripts/smoke_test.py"
+      - "pyproject.toml"
+      - "frontend/package.json"
+      - "frontend/package-lock.json"
+      - "frontend/vite.config.ts"
+      - "backend/core/config.py"
+      - ".env.example"
+      - ".github/workflows/setup-smoke.yml"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/dev.py"
+      - "scripts/download_models.py"
+      - "scripts/smoke_test.py"
+      - "pyproject.toml"
+      - "frontend/package.json"
+      - "frontend/package-lock.json"
+      - "frontend/vite.config.ts"
+      - "backend/core/config.py"
+      - ".env.example"
+      - ".github/workflows/setup-smoke.yml"
+  schedule:
+    - cron: "41 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: setup-smoke-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  setup:
+    name: dev.py setup on ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Setup, exactly as documented
+        run: python scripts/dev.py setup
+      - name: All tests, including the speech models
+        run: python scripts/dev.py test --models
+      - name: Live check of the backend and dev server
+        run: python scripts/dev.py smoke --require-phonemes
+      - name: Production build of the frontend
+        working-directory: frontend
+        run: npm run build

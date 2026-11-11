@@ -147,7 +147,7 @@ def espeak_ipa(text: str, voice: str = "en-us") -> str:
     if exe is None:
         raise RuntimeError("espeak-ng is not installed")
     res = subprocess.run(
-        [exe, "-q", "--ipa", "-v", voice, text], capture_output=True, text=True, check=True, timeout=10
+        [exe, "-q", "--ipa", "-v", voice, text], capture_output=True, encoding="utf-8", check=True, timeout=10
     )
     return res.stdout.strip()
 

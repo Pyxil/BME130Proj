@@ -93,7 +93,7 @@ class AnalysisConfig(BaseModel):
         data: dict = {}
         path = os.environ.get("SPEECH_ANALYSIS_CONFIG")
         if path:
-            data = json.loads(Path(path).read_text())
+            data = json.loads(Path(path).read_text(encoding="utf-8"))
         cfg = cls.model_validate(data)
         env = os.environ
         if "SA_ENGINE" in env:

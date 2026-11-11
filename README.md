@@ -43,8 +43,9 @@ For a small image without the phoneme model (acoustic baseline only), run
 
 ### Option B: Local development (Windows, macOS, Linux)
 
-Requirements: Python 3.11+ (3.12 recommended), Node 20+. On a Mac: `brew install python@3.12 node`, then use
-`python3.12` in the commands below (step-by-step: [docs/development_guide.md#macos-apple-silicon-or-intel](docs/development_guide.md#macos-apple-silicon-or-intel)). Then:
+Requirements: Python 3.11+ (3.12 recommended) and Node.js 22.12+. Step-by-step guides:
+[macOS](docs/development_guide.md#macos-apple-silicon-or-intel) (use `python3.12` below) and
+[Windows](docs/development_guide.md#windows) (use `py -3.12` below). Then:
 
 ```bash
 python scripts/dev.py setup      # venv, Python + Node dependencies, models, database
