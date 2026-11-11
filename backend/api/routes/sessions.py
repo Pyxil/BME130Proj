@@ -12,6 +12,7 @@ from ...core.deps import get_current_user
 from ...database.session import get_db
 from ...models import Attempt, PracticeSession, User, Word
 from ...schemas import (
+    UNPROCESSABLE,
     ErrorResponse,
     SessionAdvance,
     SessionCreate,
@@ -63,7 +64,7 @@ def session_out(db: Session, s: PracticeSession) -> SessionOut:
     )
 
 
-@router.post("", response_model=SessionOut, status_code=201, responses={422: {"model": ErrorResponse}})
+@router.post("", response_model=SessionOut, status_code=201, responses={422: UNPROCESSABLE})
 def create_session(body: SessionCreate, user: User = Depends(get_current_user), db: Session = Depends(get_db)) -> SessionOut:
     try:
         word_ids = plan_words(db, user, body.mode, body.phoneme, body.size)

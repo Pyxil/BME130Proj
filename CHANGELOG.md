@@ -11,6 +11,8 @@ Contract changes (OpenAPI, `AnalysisResult`, `FeedbackResponse`) must be listed 
 - The repository-root `.env` is now loaded for every component (API key, `LLM_*`, `SA_*`, `VITE_*`).
 - Safari: the recorder's AudioContext is created inside the click; reference audio is prefetched so
   playback starts within the user gesture.
+- `docs/openapi.json` is now generated identically on Python 3.12 and 3.13 (3.13 renamed the 413/422
+  status phrases), so the CI contract check passes.
 
 ### Added
 - macOS setup instructions; `dev.py setup` checks the Python/Node versions with Mac-specific hints and

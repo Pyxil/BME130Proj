@@ -13,7 +13,7 @@ from ...core.config import get_settings
 from ...core.deps import get_current_user
 from ...database.session import get_db
 from ...models import Attempt, AttemptPhoneme, User, Word
-from ...schemas import AttemptList, AttemptOut, ErrorResponse
+from ...schemas import TOO_LARGE, UNPROCESSABLE, AttemptList, AttemptOut, ErrorResponse
 from ...services import recordings
 from ...services.adaptive import replan_remaining
 from ...services.analysis import AnalysisService, get_analysis_service
@@ -47,7 +47,7 @@ def attempt_out(a: Attempt, best: int | None = None) -> AttemptOut:
 
 
 @router.post("/pronunciation/analyze", response_model=AttemptOut,
-             responses={413: {"model": ErrorResponse}, 415: {"model": ErrorResponse}, 422: {"model": ErrorResponse}})
+             responses={413: TOO_LARGE, 415: {"model": ErrorResponse}, 422: UNPROCESSABLE})
 async def analyze_pronunciation(
     audio: UploadFile = File(..., description="Recording (16 kHz mono WAV preferred)"),
     word_id: int = Form(...),

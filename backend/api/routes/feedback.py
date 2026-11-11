@@ -14,7 +14,7 @@ from ai_feedback import FeedbackRequest, FeedbackResponse, FeedbackService, Prev
 from ...core.deps import get_current_user
 from ...database.session import get_db
 from ...models import Attempt, User
-from ...schemas import ErrorResponse, FeedbackRequestIn
+from ...schemas import UNPROCESSABLE, ErrorResponse, FeedbackRequestIn
 
 router = APIRouter(tags=["feedback"])
 _service: FeedbackService | None = None
@@ -30,7 +30,7 @@ def get_feedback_service() -> FeedbackService:
 
 
 @router.post("/feedback", response_model=FeedbackResponse,
-             responses={404: {"model": ErrorResponse}, 422: {"model": ErrorResponse}})
+             responses={404: {"model": ErrorResponse}, 422: UNPROCESSABLE})
 async def generate_feedback(
     body: FeedbackRequestIn,
     user: User = Depends(get_current_user),

@@ -19,6 +19,12 @@ class ErrorResponse(BaseModel):
     detail: str
 
 
+# Explicit descriptions keep docs/openapi.json identical on every Python version: 3.13 renamed the
+# standard phrases for 413 and 422, which FastAPI would otherwise copy into the schema.
+UNPROCESSABLE = {"model": ErrorResponse, "description": "Unprocessable Content"}
+TOO_LARGE = {"model": ErrorResponse, "description": "Content Too Large"}
+
+
 # ---------------------------------------------------------------- auth / users
 class RegisterRequest(BaseModel):
     email: str = Field(max_length=255)
