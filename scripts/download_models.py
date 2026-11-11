@@ -60,7 +60,10 @@ def _safe_extract(tar: tarfile.TarFile, dest: Path) -> None:
         target = (dest / member.name).resolve()
         if not str(target).startswith(str(dest)) or member.issym() or member.islnk():
             raise RuntimeError(f"unsafe path in archive: {member.name}")
-    tar.extractall(dest)  # noqa: S202 - members validated above
+    if hasattr(tarfile, "data_filter"):  # stdlib safety filter (3.11.4+); the default from Python 3.14
+        tar.extractall(dest, filter="data")
+    else:
+        tar.extractall(dest)  # noqa: S202 - members validated above
 
 
 def allosaurus(name: str = "eng2102") -> None:

@@ -124,8 +124,8 @@ def check_frontend(web: str) -> None:
 
 
 def main() -> int:
-    if hasattr(sys.stdout, "reconfigure"):  # IPA in messages must not crash a non-UTF-8 console
-        sys.stdout.reconfigure(errors="backslashreplace")
+    if hasattr(sys.stdout, "reconfigure"):  # print IPA correctly in CI logs and redirected output
+        sys.stdout.reconfigure(encoding="utf-8", errors="backslashreplace")
     ap = argparse.ArgumentParser(description="Start the backend and dev server and check them end to end.")
     ap.add_argument("--port", type=int, default=8000, help="backend port (default 8000)")
     ap.add_argument("--frontend-port", type=int, default=5173, help="dev server port (default 5173)")
