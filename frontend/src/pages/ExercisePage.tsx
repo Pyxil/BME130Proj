@@ -79,8 +79,14 @@ export default function ExercisePage() {
   }, [recorder.state, recorder.recording, word, session, user?.store_recordings_consent]);
 
   const hear = useCallback((slow = false) => {
-    if (word) void reference.play(word.id, word.word, accent, slow);
+    if (word) reference.play(word.id, word.word, accent, slow);
   }, [word, reference, accent]);
+
+  // Fetch the example audio as soon as the word appears so "Hear pronunciation" plays instantly.
+  const { prefetch } = reference;
+  useEffect(() => {
+    if (word) prefetch(word.id, accent);
+  }, [word, accent, prefetch]);
 
   const next = useCallback(async () => {
     if (!session) return;
@@ -169,7 +175,7 @@ export default function ExercisePage() {
           <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 pt-5 dark:border-slate-800">
             <div className="flex flex-wrap gap-2">
               {recorder.recording && (
-                <Button variant="ghost" onClick={() => void reference.playUrl(recorder.recording!.url)}>▶ My recording</Button>
+                <Button variant="ghost" onClick={() => reference.playUrl(recorder.recording!.url)}>▶ My recording</Button>
               )}
               <Button variant="ghost" onClick={() => hear(false)}>▶ Example</Button>
             </div>

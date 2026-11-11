@@ -5779,7 +5779,7 @@
   "rabbit_r_as_w": {
    "analysis": {
     "contract_version": "1.0.0",
-    "analysis_id": "f1485516-69e3-4a20-bfef-e7f2314fdbef",
+    "analysis_id": "9660a240-4e12-4c6d-a6d1-ba212a29168d",
     "word": "rabbit",
     "word_id": 45,
     "status": "assessed",
@@ -6031,7 +6031,7 @@
      "calibration": "speechocean762 train (28277 phones)",
      "notes": null
     },
-    "processing_ms": 6999,
+    "processing_ms": 5340,
     "disclaimer": "Scores are automated estimates intended for practice feedback. They are not a clinical assessment or diagnosis and have not been clinically validated."
    },
    "feedback": {
@@ -6059,7 +6059,7 @@
   "butterfly_correct_us": {
    "analysis": {
     "contract_version": "1.0.0",
-    "analysis_id": "30886d55-b12e-44c5-acee-aba978e626af",
+    "analysis_id": "8fd5566b-f2ed-480b-9b2a-beb53ac73fd4",
     "word": "butterfly",
     "word_id": 89,
     "status": "assessed",
@@ -6318,7 +6318,7 @@
      "calibration": "speechocean762 train (28277 phones)",
      "notes": null
     },
-    "processing_ms": 220,
+    "processing_ms": 222,
     "disclaimer": "Scores are automated estimates intended for practice feedback. They are not a clinical assessment or diagnosis and have not been clinically validated."
    },
    "feedback": {
@@ -6335,7 +6335,7 @@
   "quality_noisy": {
    "analysis": {
     "contract_version": "1.0.0",
-    "analysis_id": "28e2b42e-afb4-40ae-a2e5-568e6ade5675",
+    "analysis_id": "862bd92a-fefb-4938-9679-51ac4d375c51",
     "word": "rabbit",
     "word_id": 45,
     "status": "retry_required",

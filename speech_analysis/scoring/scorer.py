@@ -29,6 +29,7 @@ from ..contracts import (
 from ..phoneme_analysis.engines.base import EngineOutput, VariantAssessment
 from ..phoneme_analysis.phonemes import ipa_for, is_vowel, syllabify
 from .acoustic_similarity import SimilarityResult
+from .components import syllable_completeness
 
 ORDINAL = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh"]
 _LABEL_IPA = {"AH": "ʌ", "AH0": "ə", "ER": "ɜr"}
@@ -145,7 +146,10 @@ def _issues_and_strengths(word: dict, arpabet: list[str], scores: list[PhonemeSc
                     strengths.append(Strength(id=f"feat-{f['type']}-{f['positions'][0]}",
                                               message=f"{f['description']} was produced clearly."))
     syl = ev.syllables
-    if syl and syl.vowels_present is not None and syl.vowels_present < syl.expected:
+    # Report a missing syllable only when two independent signals agree: the model finds a vowel
+    # missing AND the acoustic nucleus count is short (either alone produces false alarms).
+    acoustic_short = syl is None or syl.detected_nuclei is None or syl.detected_nuclei < syl.expected
+    if syl and syl.vowels_present is not None and syl.vowels_present < syl.expected and acoustic_short:
         missing = syl.expected - syl.vowels_present
         issues.append(Issue(
             id="syllable-missing", type="syllable_missing", severity="moderate",
@@ -222,6 +226,13 @@ def build_result(ev: Evidence, cfg: AnalysisConfig, cal: PhoneCalibration | None
         vmeta = next((v for v in word["variants"] if v["id"] == variant.variant_id), word["variants"][0])
         matched = MatchedVariant(id=vmeta["id"], accent=vmeta["accent"], ipa=vmeta["ipa"], arpabet=vmeta["arpabet"])
     scores = _phone_scores(variant, cal, cfg) if variant else None
+    if scores and variant is not None and ev.syllables is not None:
+        # A vowel counts as absent when deleting it is the model's best explanation AND its
+        # calibrated status is not "good" (keeps syllable evidence consistent with the sound chips).
+        flags = [not (vp.best_alternative is None and vp.deletion_prob >= cfg.phoneme.report_deletion_min_prob
+                      and s.status != "good")
+                 for vp, s in zip(variant.phones, scores) if is_vowel(s.arpabet)]
+        ev.syllables = syllable_completeness(ev.syllables.expected, ev.syllables.detected_nuclei, vowel_present=flags)
 
     phone_acc = None
     aggregation = None

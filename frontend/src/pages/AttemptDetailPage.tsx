@@ -47,8 +47,8 @@ export default function AttemptDetailPage() {
       <p className="text-slate-600 dark:text-slate-400">{new Date(attempt.created_at).toLocaleString()}</p>
       <Card className="space-y-4">
         <div className="flex flex-wrap gap-3">
-          <Button variant="secondary" onClick={() => void reference.play(attempt.word_id, a.word, user?.preferred_accent ?? "us")}>🔊 Example</Button>
-          {recUrl && <Button variant="secondary" onClick={() => void reference.playUrl(recUrl)}>▶ My recording</Button>}
+          <Button variant="secondary" onClick={() => reference.play(attempt.word_id, a.word, user?.preferred_accent ?? "us")}>🔊 Example</Button>
+          {recUrl && <Button variant="secondary" onClick={() => reference.playUrl(recUrl)}>▶ My recording</Button>}
           {attempt.has_recording && <Button variant="ghost" onClick={() => void removeRecording()}>Delete this recording</Button>}
         </div>
         <ResultsPanel result={a} feedback={attempt.feedback ?? null} feedbackLoading={false} />

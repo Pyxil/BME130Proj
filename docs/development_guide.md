@@ -14,6 +14,29 @@
 Works on Windows, macOS and Linux. On Windows use PowerShell and `python` instead of `python3`;
 `scripts/dev.py` handles venv paths for you.
 
+## macOS (Apple Silicon or Intel)
+
+```bash
+xcode-select --install                         # Git and compilers (skip if already installed)
+# Homebrew, if you don't have it: https://brew.sh
+brew install python@3.12 node                  # required
+brew install ffmpeg espeak-ng                  # optional (non-WAV uploads, fallback TTS)
+git clone https://github.com/Pyxil/BME130Proj.git && cd BME130Proj
+python3.12 scripts/dev.py setup                # ~5-10 min: venv, PyTorch, models, Node packages, database
+python3.12 scripts/dev.py backend              # terminal 1 -> http://localhost:8000/docs
+python3.12 scripts/dev.py frontend             # terminal 2 -> open http://localhost:5173
+```
+
+- Use **Python 3.12**: the `python3` that ships with macOS is too old, and PyTorch has no Intel-Mac builds
+  for Python 3.13+. `dev.py` checks this and tells you what to do.
+- The first time you press Record, the browser asks for the microphone. If macOS blocks it, enable your
+  browser under **System Settings > Privacy & Security > Microphone**. Use Chrome if you can: it is what
+  the automated tests use. Safari should work on `localhost` (the recorder handles Safari's audio rules)
+  but has not been tested on a real Mac yet.
+- Python from python.org instead of Homebrew: if model downloads fail with a certificate error, run
+  *Install Certificates.command* in `/Applications/Python 3.12/` (the script also falls back to certifi).
+- Docker Desktop alternative: `docker compose up --build`, then open http://localhost:8080.
+
 ## First-time setup
 
 ```bash
@@ -30,7 +53,7 @@ pip install -e ".[dev,llm,postgres]"
 pip install torch --index-url https://download.pytorch.org/whl/cpu   # Linux: CPU wheel avoids CUDA downloads
 pip install -e ".[ml]"                                                # Allosaurus
 python scripts/download_models.py                                     # ./models (Allosaurus + Piper voices)
-cp .env.example .env
+cp .env.example .env            # dev.py setup also fills in a random SECRET_KEY
 cd frontend && npm ci && cd ..
 python -m backend.database.init_db                                    # Alembic migrations + seed 135 words
 ```
@@ -48,7 +71,10 @@ results and in the UI.
 | Whole stack in Docker | `docker compose up --build` | http://localhost:8080 |
 | Stop Docker stack | `docker compose down` (add `-v` to delete the database volume) | |
 
-The Vite dev server proxies `/api` to `VITE_API_PROXY_TARGET` (default `http://localhost:8000`).
+All components read one configuration file, the repository-root `.env` (backend settings, `SA_*` analysis
+settings, `LLM_*`/`ANTHROPIC_API_KEY` feedback settings and the frontend's `VITE_*` values). Variables already
+set in your shell take precedence. The Vite dev server proxies `/api` to `VITE_API_PROXY_TARGET`
+(default `http://localhost:8000`).
 Microphone access works on `localhost` or HTTPS only.
 
 ### Using the analysis library alone (speech team)

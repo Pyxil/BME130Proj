@@ -3,6 +3,19 @@
 All notable changes are documented here (format: [Keep a Changelog](https://keepachangelog.com)).
 Contract changes (OpenAPI, `AnalysisResult`, `FeedbackResponse`) must be listed under **Contract**.
 
+## [0.1.1] - 2026-11-11
+
+### Fixed
+- Backend crashed at startup when `CORS_ORIGINS` was comma-separated (as in `.env.example` and
+  docker-compose); an empty `SECRET_KEY=` produced an empty signing key.
+- The repository-root `.env` is now loaded for every component (API key, `LLM_*`, `SA_*`, `VITE_*`).
+- Safari: the recorder's AudioContext is created inside the click; reference audio is prefetched so
+  playback starts within the user gesture.
+
+### Added
+- macOS setup instructions; `dev.py setup` checks the Python/Node versions with Mac-specific hints and
+  writes a random `SECRET_KEY` into the new `.env`; model downloads fall back to certifi.
+
 ## [0.1.0] - 2026-11-10
 
 ### Added

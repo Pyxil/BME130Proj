@@ -3,18 +3,33 @@
 See ``.env.example`` for every variable with a description.  Separate
 configurations for development / testing / production are selected with
 ``APP_ENV``; production refuses to start with insecure defaults.
+
+The repository-root ``.env`` is also loaded into ``os.environ`` (without
+overriding variables that are already set), so settings read by the
+``speech_analysis`` (``SA_*``) and ``ai_feedback`` (``LLM_*``,
+``ANTHROPIC_API_KEY``, ``OLLAMA_*``) packages work from the same file.
 """
 
 from __future__ import annotations
 
 from functools import lru_cache
 from pathlib import Path
+from typing import Annotated
 
+from dotenv import load_dotenv
 from pydantic import Field, field_validator
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 _DEV_SECRET = "dev-only-insecure-secret-change-me-before-deploying"
+
+
+def load_env_file(path: Path = REPO_ROOT / ".env") -> bool:
+    """Load ``path`` into ``os.environ``; existing environment variables win."""
+    return load_dotenv(path, override=False) if path.exists() else False
+
+
+load_env_file()
 
 
 class Settings(BaseSettings):
@@ -24,7 +39,8 @@ class Settings(BaseSettings):
     database_url: str = f"sqlite:///{(REPO_ROOT / 'data' / 'app.db').as_posix()}"
     secret_key: str = _DEV_SECRET
     access_token_expire_minutes: int = 60 * 24 * 7
-    cors_origins: list[str] = ["http://localhost:5173", "http://127.0.0.1:5173"]
+    # NoDecode: accept "http://a,http://b" from the environment instead of requiring JSON
+    cors_origins: Annotated[list[str], NoDecode] = ["http://localhost:5173", "http://127.0.0.1:5173"]
     max_upload_bytes: int = 2_000_000
     max_concurrent_analyses: int = 2
     recordings_dir: Path = REPO_ROOT / "data" / "recordings"
@@ -37,8 +53,19 @@ class Settings(BaseSettings):
     @classmethod
     def _split(cls, v):
         if isinstance(v, str):
+            v = v.strip()
+            if v.startswith("["):  # JSON list is accepted too
+                import json
+
+                return json.loads(v)
             return [s.strip() for s in v.split(",") if s.strip()]
         return v
+
+    @field_validator("secret_key", mode="before")
+    @classmethod
+    def _empty_secret_means_default(cls, v):
+        # `SECRET_KEY=` in .env (as in .env.example) must not produce an empty signing key
+        return _DEV_SECRET if v is None or not str(v).strip() else v
 
     def check_production(self) -> None:
         if self.app_env == "production":

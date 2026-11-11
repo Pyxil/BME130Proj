@@ -71,12 +71,13 @@ async function recordAndWait(page, label) {
   await page.goto(`${APP}/practice`);
   await page.getByRole("heading", { name: "Practise your pronunciation" }).waitFor();
   await page.screenshot({ path: path.join(SHOTS, "01-practice-setup.png"), fullPage: true });
+  // The example audio is prefetched when the word appears, so playback starts inside the click.
+  const audioResp = page.waitForResponse((r) => r.url().includes("/audio") && r.status() === 200);
   await page.goto(`${APP}/practice/${session.id}`);
   await page.getByText(`Word 1 of ${session.total_words}`).waitFor();
-  const audioResp = page.waitForResponse((r) => r.url().includes("/audio") && r.status() === 200);
-  await page.getByRole("button", { name: /Hear pronunciation/ }).click();
   const ref = await audioResp;
-  console.log(`reference audio: ${ref.headers()["x-reference-source"]}, ${(await ref.body()).length} bytes`);
+  console.log(`reference audio prefetched: ${ref.headers()["x-reference-source"]}`);
+  await page.getByRole("button", { name: /Hear pronunciation/ }).click();
   await page.screenshot({ path: path.join(SHOTS, "02-exercise.png"), fullPage: true });
   await recordAndWait(page, "03");
   await page.screenshot({ path: path.join(SHOTS, "04-results-correct.png"), fullPage: true });

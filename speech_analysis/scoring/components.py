@@ -16,18 +16,23 @@ from ..phoneme_analysis.phonemes import is_vowel
 def syllable_completeness(
     expected: int,
     detected_nuclei: int | None,
-    variant: VariantAssessment | None,
-    vowel_present_min: float = 0.25,
+    variant: VariantAssessment | None = None,
+    vowel_present: list[bool] | None = None,
+    deletion_min_prob: float = 0.4,
 ) -> SyllableReport:
-    """Combine model evidence (are the vowels there?) with an acoustic nucleus count."""
-    vowels_present = None
-    c_model = None
-    if variant is not None:
-        vowels = [p for p in variant.phones if is_vowel(p.arpabet)]
-        present = [p for p in vowels if not (p.best_alternative is None and p.deletion_prob > 0.5)
-                   and p.posterior + p.best_alternative_prob * (p.best_alternative is not None) >= vowel_present_min]
-        vowels_present = len(present)
-        c_model = vowels_present / max(1, len(vowels))
+    """Combine model evidence (are the vowels there?) with an acoustic nucleus count.
+
+    ``vowel_present`` (one flag per vowel, e.g. from final phone statuses) takes
+    precedence; otherwise a vowel counts as missing only when deleting it is the
+    model's most likely explanation with probability >= ``deletion_min_prob``.
+    """
+    if vowel_present is None and variant is not None:
+        vowel_present = [
+            not (p.best_alternative is None and p.deletion_prob >= deletion_min_prob)
+            for p in variant.phones if is_vowel(p.arpabet)
+        ]
+    vowels_present = None if vowel_present is None else int(sum(vowel_present))
+    c_model = None if not vowel_present else vowels_present / len(vowel_present)
     c_acoustic = None
     if detected_nuclei is not None:
         tolerance = 1 if expected >= 3 else 0  # adjacent nuclei often merge in fluent speech

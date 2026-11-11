@@ -16,9 +16,11 @@ from __future__ import annotations
 
 import argparse
 import shutil
+import ssl
 import sys
 import tarfile
 import tempfile
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -29,9 +31,26 @@ PIPER = "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits
 DEFAULT_VOICES = ["en_US-libritts_r-medium", "en_GB-vctk-medium"]
 
 
+def _open(url: str):
+    try:
+        return urllib.request.urlopen(url, timeout=120)  # noqa: S310 - fixed https URLs
+    except urllib.error.URLError as exc:
+        if not isinstance(exc.reason, ssl.SSLCertVerificationError):
+            raise
+        # python.org builds of Python on macOS ship without a CA bundle until
+        # "Install Certificates.command" is run; certifi (installed with httpx) fixes it.
+        try:
+            import certifi
+        except ImportError:
+            sys.exit("HTTPS certificate check failed. On macOS run 'Install Certificates.command' from "
+                     "/Applications/Python 3.x/ or `pip install certifi`, then retry.")
+        ctx = ssl.create_default_context(cafile=certifi.where())
+        return urllib.request.urlopen(url, timeout=120, context=ctx)  # noqa: S310
+
+
 def _download(url: str, dest: Path) -> None:
     print(f"  downloading {url}")
-    with urllib.request.urlopen(url, timeout=120) as resp, open(dest, "wb") as fh:  # noqa: S310 - fixed https URLs
+    with _open(url) as resp, open(dest, "wb") as fh:
         shutil.copyfileobj(resp, fh, length=1 << 20)
 
 

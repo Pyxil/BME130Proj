@@ -90,12 +90,17 @@ export function useAudioRecorder(opts: RecorderOptions = {}) {
       return;
     }
     setState("requesting");
+    // Create the AudioContext synchronously inside the click handler: Safari only lets an
+    // AudioContext start during a user gesture, and the permission prompt below ends it.
+    const AudioCtx = window.AudioContext ?? (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+    const ctx = new AudioCtx();
     let stream: MediaStream;
     try {
       stream = await navigator.mediaDevices.getUserMedia({
         audio: { channelCount: 1, echoCancellation: false, noiseSuppression: false, autoGainControl: false },
       });
     } catch (err) {
+      void ctx.close();
       const name = (err as DOMException).name;
       setState("error");
       setError(
@@ -109,8 +114,6 @@ export function useAudioRecorder(opts: RecorderOptions = {}) {
       );
       return;
     }
-    const AudioCtx = window.AudioContext ?? (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-    const ctx = new AudioCtx();
     ctxRef.current = ctx;
     streamRef.current = stream;
     chunksRef.current = [];
@@ -154,9 +157,15 @@ export function useAudioRecorder(opts: RecorderOptions = {}) {
         const url = URL.createObjectURL(new Blob([code], { type: "application/javascript" }));
         await ctx.audioWorklet.addModule(url);
         URL.revokeObjectURL(url);
-        const node = new AudioWorkletNode(ctx, "capture-processor", { numberOfInputs: 1, numberOfOutputs: 0 });
+        const node = new AudioWorkletNode(ctx, "capture-processor", { numberOfInputs: 1, numberOfOutputs: 1 });
         node.port.onmessage = (e: MessageEvent<Float32Array>) => onChunk(e.data);
+        // Route through a muted gain to the destination so every browser (incl. Safari) keeps pulling
+        // the node; the worklet writes no output, and gain 0 guarantees nothing is played back.
+        const mute = ctx.createGain();
+        mute.gain.value = 0;
         source.connect(node);
+        node.connect(mute);
+        mute.connect(ctx.destination);
         nodeRef.current = node;
       } else {
         const sp = ctx.createScriptProcessor(2048, 1, 1);

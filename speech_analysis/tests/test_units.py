@@ -156,3 +156,25 @@ def test_describe_position():
     assert describe_position(arpa, 0) == "at the start of the word"
     assert describe_position(arpa, 3) == "in the second syllable"
     assert describe_position(arpa, 6) == "at the end of the word"
+
+
+def test_missing_syllable_needs_model_and_acoustic_agreement():
+    """'1 of 1 syllables missing' must not appear when the acoustic count finds the syllable."""
+    from speech_analysis.calibration import PhoneCalibration
+
+    w = WORDS["bread"]
+    fair = PhoneCalibration({"global": {"x": [-10.0, 0.0], "y": [77.0, 77.0]}, "per_phone": {}}, "test")
+
+    def run(detected_nuclei):
+        eng = _engine_output(w, [0.01, 0.01, 0.03, 0.9])
+        for ph in eng.best.phones:  # the model's best explanation: the sounds were deleted
+            ph.best_alternative, ph.deletion_prob = None, 0.95
+        ev = _evidence(w, eng)
+        ev.syllables = syllable_completeness(1, detected_nuclei, eng.best)
+        return build_result(ev, AnalysisConfig(), fair, "id", 1)
+
+    heard = run(detected_nuclei=1)  # acoustics found the syllable -> no syllable message
+    assert all(p.status == "fair" for p in heard.phoneme_scores)
+    assert not any(i.type == "syllable_missing" for i in heard.identified_issues)
+    gone = run(detected_nuclei=0)  # both signals agree -> reported
+    assert any(i.type == "syllable_missing" for i in gone.identified_issues)
