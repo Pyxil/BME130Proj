@@ -3,6 +3,14 @@
 All notable changes are documented here (format: [Keep a Changelog](https://keepachangelog.com)).
 Contract changes (OpenAPI, `AnalysisResult`, `FeedbackResponse`) must be listed under **Contract**.
 
+## [0.1.3] - 2026-11-11
+
+### Fixed
+- Windows: setup failed with "Failed building wheel for editdistance" when `.venv` had been made with
+  Python 3.13 or newer (e.g. by an earlier run with a newer `python`, or by VS Code); that package has no
+  Windows builds for those versions. `dev.py setup` now replaces a `.venv` made with a different Python
+  (or left incomplete), and on Windows asks for Python 3.11 or 3.12 before installing the speech model.
+
 ## [0.1.2] - 2026-11-11
 
 ### Added
