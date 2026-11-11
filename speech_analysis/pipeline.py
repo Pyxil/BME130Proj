@@ -21,7 +21,7 @@ import numpy as np
 
 from .audio_processing import decode_audio, prepare_audio
 from .audio_processing.preprocess import detect_speech
-from .calibration import load_dtw_calibration, load_phone_calibration
+from .calibration import load_dtw_calibration, load_phone_calibration, load_signal_calibration
 from .config import REPO_ROOT, AnalysisConfig
 from .contracts import AnalysisResult, EngineInfo
 from .feature_extraction import pitch, syllable_nuclei
@@ -30,6 +30,11 @@ from .phoneme_analysis.phonemes import syllable_count
 from .scoring.acoustic_similarity import acoustic_similarity
 from .scoring.components import syllable_completeness, temporal_score
 from .scoring.scorer import Evidence, build_result
+from .signal_analysis.compare import compare, mistake_contrasts, pick_best
+from .signal_analysis.features import extract, frames_to_seconds
+from .signal_analysis.report import build_signal_result
+from .signal_analysis.segments import syllable_nuclei as signal_nuclei
+from .signal_analysis.standards import StandardLibrary
 from .tts.reference import ReferenceAudioService
 
 log = logging.getLogger(__name__)
@@ -48,6 +53,7 @@ class PronunciationAnalyzer:
         self._engine = engine
         self._references = references
         self._vocabulary = vocabulary
+        self._standards: StandardLibrary | None = None
 
     # Lazily created so that importing the backend stays fast.
     @property
@@ -71,6 +77,17 @@ class PronunciationAnalyzer:
                 self._vocabulary = []
         return self._vocabulary
 
+    @property
+    def standards(self) -> StandardLibrary:
+        """Standard recordings of every word (signal mode)."""
+        if self._standards is None:
+            self._standards = StandardLibrary(self.references, self.vocabulary)
+        return self._standards
+
+    @cached_property
+    def signal_calibration(self):
+        return load_signal_calibration()
+
     @cached_property
     def phone_calibration(self):
         eng = self.engine
@@ -84,9 +101,10 @@ class PronunciationAnalyzer:
         eng = self.engine
         if eng is None:
             return EngineInfo(
-                name="acoustic-baseline", model=None, phoneme_level=False, calibration=None,
-                notes="No phoneme recognition model installed: phoneme-level scores are unavailable. "
-                      "Scores use acoustic similarity, syllable and timing measures only.")
+                name="signal-analysis", model=None, phoneme_level=False, calibration=self.signal_calibration.source,
+                notes="Scores compare the recording's waveform features (spectrum, loudness, pitch, timing) with "
+                      "standard recordings using signal processing. No speech-recognition model is used, so "
+                      "feedback names parts of the word rather than individual sounds.")
         cal = self.phone_calibration
         return EngineInfo(name=eng.name, model=eng.model, phoneme_level=eng.phoneme_level,
                           calibration=cal.source if cal else None,
@@ -109,6 +127,9 @@ class PronunciationAnalyzer:
         if not prepared.quality.usable:
             ev = Evidence(word, prepared.quality, None, info, None, None, None, None)
             return build_result(ev, self.config, None, analysis_id, int((time.perf_counter() - t0) * 1000))
+
+        if self.engine is None:
+            return self._analyze_signal(prepared, word, info, analysis_id, t0)
 
         speech = prepared.audio
         variants = word["variants"]
@@ -148,3 +169,41 @@ class PronunciationAnalyzer:
         if result.components:
             result.components[0].details["pitch"] = pc.summary()
         return result
+
+    # ------------------------------------------------------- signal analysis
+    def _analyze_signal(self, prepared, word: dict, info: EngineInfo, analysis_id: str, t0: float) -> AnalysisResult:
+        """Signals-and-systems path: compare the recording with the word's standard recordings."""
+        user = extract(prepared.audio)
+        try:
+            standards = self.standards.for_word(word)
+        except Exception as exc:  # noqa: BLE001 - reported as inconclusive below
+            log.warning("standard recordings unavailable: %s", exc)
+            standards = []
+        if not standards:
+            return AnalysisResult(
+                analysis_id=analysis_id, word=word["word"], word_id=word.get("id"), status="inconclusive",
+                confidence=0.0, confidence_label="low", needs_retry=True, quality=prepared.quality, engine=info,
+                retry_reason="No standard recording is available for this word yet (run scripts/download_models.py).",
+                processing_ms=int((time.perf_counter() - t0) * 1000))
+        best = pick_best([compare(user, s) for s in standards])
+        ident = None
+        if self.config.signal.identify_words and self.vocabulary:
+            self.standards.warm_in_background()
+            ident = self.standards.identify(user, best.warp, top=3, target=word["word"])
+
+        try:
+            contrasts = mistake_contrasts(user, best.warp, standards, self.standards.mistakes(word))
+        except Exception as exc:  # noqa: BLE001 - the minimal-pair check is optional
+            log.warning("minimal-pair standards unavailable: %s", exc)
+            contrasts = []
+
+        variant = next((v for v in word["variants"] if v["id"] == best.standard.variant_id), word["variants"][0])
+        syl = syllable_completeness(syllable_count(variant["arpabet"]), len(signal_nuclei(user)))
+        us, ue = user.speech_bounds()
+        ss, se = best.standard.features.speech_bounds()
+        tscore, timing = temporal_score(frames_to_seconds(ue - us), frames_to_seconds(se - ss), best.tempo_deviation)
+        return build_signal_result(
+            word=word, quality=prepared.quality, info=info, comp=best, standards_compared=len(standards),
+            user=user, syllables=syl, timing=timing, temporal=tscore, ident=ident, contrasts=contrasts,
+            vocab_size=len(self.vocabulary), cfg=self.config, cal=self.signal_calibration,
+            analysis_id=analysis_id, processing_ms=int((time.perf_counter() - t0) * 1000))

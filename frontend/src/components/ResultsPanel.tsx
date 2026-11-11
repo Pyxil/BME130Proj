@@ -3,6 +3,7 @@ import { RATING_LABEL, ratingTone } from "./format";
 import { FeedbackCard } from "./FeedbackCard";
 import { PhonemeBreakdown } from "./PhonemeBreakdown";
 import { ScoreRing } from "./ScoreRing";
+import { SignalBreakdown } from "./SignalBreakdown";
 import {Alert, Badge} from "./ui";
 
 const COMPONENT_LABEL: Record<string, string> = {
@@ -10,6 +11,10 @@ const COMPONENT_LABEL: Record<string, string> = {
   acoustic_similarity: "Similarity to example",
   syllable_completeness: "All syllables present",
   temporal: "Timing and pace",
+  spectral_similarity: "Sound pattern (spectrum vs. standard)",
+  minimal_pair_contrast: "Common-mistake check (minimal pairs)",
+  loudness_contour: "Loudness pattern (rhythm and stress)",
+  pitch_contour: "Pitch pattern (melody)",
 };
 
 export function ResultsPanel({ result, feedback, feedbackLoading, feedbackError, wordBest }: {
@@ -24,6 +29,7 @@ export function ResultsPanel({ result, feedback, feedbackLoading, feedbackError,
     );
   }
   const issues = result.identified_issues ?? [];
+  const signalMode = result.signal_analysis != null;
   const strengths = result.strengths ?? [];
   return (
     <div className="space-y-6" aria-live="polite">
@@ -33,9 +39,13 @@ export function ResultsPanel({ result, feedback, feedbackLoading, feedbackError,
           <h2 className="text-2xl font-bold">Pronunciation score: {result.overall_score}/100</h2>
           <div className="flex flex-wrap justify-center gap-2 sm:justify-start">
             {result.rating && <Badge tone={ratingTone(result.rating)}>{RATING_LABEL[result.rating]}</Badge>}
-            <Badge tone={result.word_recognized ? "good" : "slate"}>
-              {result.word_recognized ? "Word recognised ✓" : `Heard as "${result.recognized_word ?? "?"}"`}
-            </Badge>
+            {result.word_recognized != null && (
+              <Badge tone={result.word_recognized ? "good" : "slate"}>
+                {result.word_recognized
+                  ? (signalMode ? "Matched the word ✓" : "Word recognised ✓")
+                  : `${signalMode ? "Closest match" : "Heard as"} "${result.recognized_word ?? "?"}"`}
+              </Badge>
+            )}
             {result.phonetically_accurate && <Badge tone="good">All sounds clear</Badge>}
             <Badge tone={result.confidence_label === "high" ? "brand" : "slate"}>
               {result.confidence_label === "high" ? "High confidence" : result.confidence_label === "medium" ? "Medium confidence" : "Low confidence"}
@@ -56,6 +66,8 @@ export function ResultsPanel({ result, feedback, feedbackLoading, feedbackError,
           <PhonemeBreakdown phonemes={result.phoneme_scores} />
         </section>
       )}
+
+      {result.signal_analysis && <SignalBreakdown signal={result.signal_analysis} word={result.word} />}
 
       <div className="grid gap-4 md:grid-cols-2">
         <section aria-labelledby="improve-h" className="rounded-2xl bg-slate-50 p-5 ring-1 ring-slate-200 dark:bg-slate-950 dark:ring-slate-800">
@@ -97,7 +109,9 @@ export function ResultsPanel({ result, feedback, feedbackLoading, feedbackError,
         </table>
         <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">
           Engine: {result.engine.name}{result.engine.model ? ` (${result.engine.model})` : ""} ·{" "}
-          {result.engine.phoneme_level ? "phoneme-level scoring" : "acoustic-only baseline (no phoneme scores)"} ·
+          {result.engine.phoneme_level ? "phoneme-level scoring"
+            : signalMode ? "signal comparison with standard recordings (no speech-recognition model)"
+              : "acoustic-only baseline (no phoneme scores)"} ·
           analysed in {(result.processing_ms / 1000).toFixed(1)} s
         </p>
         <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{result.disclaimer}</p>

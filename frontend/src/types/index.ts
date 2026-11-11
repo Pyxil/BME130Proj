@@ -31,3 +31,6 @@ export type FeedbackResponse = S["FeedbackResponse"];
 export type ProgressOut = S["ProgressOut"];
 export type PhonemeStat = S["PhonemeStat"];
 export type SystemStatus = S["SystemStatus"];
+export type SignalAnalysis = S["SignalAnalysis"];
+export type SignalPart = S["SignalPart"];
+export type MistakeCheck = S["MistakeCheck"];

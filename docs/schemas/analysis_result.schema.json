@@ -16,7 +16,11 @@
             "phoneme_accuracy",
             "acoustic_similarity",
             "syllable_completeness",
-            "temporal"
+            "temporal",
+            "spectral_similarity",
+            "loudness_contour",
+            "pitch_contour",
+            "minimal_pair_contrast"
           ],
           "title": "Name",
           "type": "string"
@@ -176,7 +180,10 @@
             "extra_syllable",
             "too_fast",
             "too_slow",
-            "low_acoustic_similarity"
+            "low_acoustic_similarity",
+            "part_mismatch",
+            "stress_pattern",
+            "pitch_pattern"
           ],
           "title": "Type",
           "type": "string"
@@ -220,6 +227,62 @@
         "arpabet"
       ],
       "title": "MatchedVariant",
+      "type": "object"
+    },
+    "MistakeCheck": {
+      "description": "A common mistake the recording was compared against (minimal-pair standard).",
+      "properties": {
+        "description": {
+          "description": "e.g. '/w/ instead of /r/ at the start of the word'.",
+          "title": "Description",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "substitution",
+            "deletion"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "phoneme": {
+          "description": "Expected sound (IPA).",
+          "title": "Phoneme",
+          "type": "string"
+        },
+        "position": {
+          "title": "Position",
+          "type": "integer"
+        },
+        "probability": {
+          "description": "Calibrated chance that this mistake was made.",
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Probability",
+          "type": "number"
+        },
+        "realized_as": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Sound said instead (IPA); null when left out.",
+          "title": "Realized As"
+        }
+      },
+      "required": [
+        "description",
+        "kind",
+        "phoneme",
+        "position",
+        "probability"
+      ],
+      "title": "MistakeCheck",
       "type": "object"
     },
     "PhonemeScore": {
@@ -482,6 +545,271 @@
       "title": "QualityReport",
       "type": "object"
     },
+    "SignalAnalysis": {
+      "description": "Details of the signals-and-systems comparison (present when no phoneme model is used).",
+      "properties": {
+        "closest_words": {
+          "description": "Words whose standards matched best.",
+          "items": {
+            "$ref": "#/$defs/WordMatch"
+          },
+          "title": "Closest Words",
+          "type": "array"
+        },
+        "curves": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SignalCurves"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "mistakes_checked": {
+          "items": {
+            "$ref": "#/$defs/MistakeCheck"
+          },
+          "title": "Mistakes Checked",
+          "type": "array"
+        },
+        "parts": {
+          "items": {
+            "$ref": "#/$defs/SignalPart"
+          },
+          "title": "Parts",
+          "type": "array"
+        },
+        "standard": {
+          "description": "Best-matching standard recording, e.g. 'piper:en_US-libritts_r-medium:0'.",
+          "title": "Standard",
+          "type": "string"
+        },
+        "standard_variant": {
+          "title": "Standard Variant",
+          "type": "string"
+        },
+        "standards_compared": {
+          "title": "Standards Compared",
+          "type": "integer"
+        },
+        "target_rank": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "1 = the target word was the closest match.",
+          "title": "Target Rank"
+        },
+        "warp_factor": {
+          "description": "Frequency-warp factor that best matched the user's voice to the standard.",
+          "title": "Warp Factor",
+          "type": "number"
+        },
+        "words_compared": {
+          "default": 0,
+          "title": "Words Compared",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "standard",
+        "standard_variant",
+        "standards_compared",
+        "warp_factor"
+      ],
+      "title": "SignalAnalysis",
+      "type": "object"
+    },
+    "SignalCurves": {
+      "description": "Aligned loudness (and pitch) curves of the recording and the standard, for plotting.",
+      "properties": {
+        "part_edges": {
+          "description": "Boundaries between parts on the 0..1 axis.",
+          "items": {
+            "type": "number"
+          },
+          "title": "Part Edges",
+          "type": "array"
+        },
+        "standard_db": {
+          "items": {
+            "type": "number"
+          },
+          "title": "Standard Db",
+          "type": "array"
+        },
+        "standard_pitch_st": {
+          "items": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "title": "Standard Pitch St",
+          "type": "array"
+        },
+        "t": {
+          "description": "Position along the standard, 0..1.",
+          "items": {
+            "type": "number"
+          },
+          "title": "T",
+          "type": "array"
+        },
+        "user_db": {
+          "description": "User loudness in dB relative to its loudest frame.",
+          "items": {
+            "type": "number"
+          },
+          "title": "User Db",
+          "type": "array"
+        },
+        "user_pitch_st": {
+          "description": "Semitones relative to the median; null = unvoiced.",
+          "items": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "title": "User Pitch St",
+          "type": "array"
+        }
+      },
+      "required": [
+        "t",
+        "user_db",
+        "standard_db"
+      ],
+      "title": "SignalCurves",
+      "type": "object"
+    },
+    "SignalPart": {
+      "description": "One part of the word (a syllable, or the start / vowel / end of a one-syllable word).",
+      "properties": {
+        "end_s": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End S"
+        },
+        "high_band_diff_db": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "3.5-8 kHz energy (hiss of /s/, /sh/, /f/) vs. the standard, relative to the whole word.",
+          "title": "High Band Diff Db"
+        },
+        "index": {
+          "title": "Index",
+          "type": "integer"
+        },
+        "label": {
+          "description": "Plain-language name, e.g. 'the first syllable', 'the end of the word'.",
+          "title": "Label",
+          "type": "string"
+        },
+        "loudness_diff_db": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Loudness of this part vs. the standard, relative to the whole word.",
+          "title": "Loudness Diff Db"
+        },
+        "phonemes": {
+          "description": "Expected sounds in this part (IPA, from the dictionary; not detected).",
+          "items": {
+            "type": "string"
+          },
+          "title": "Phonemes",
+          "type": "array"
+        },
+        "relative_duration": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Length of this part relative to the standard, after allowing for overall speaking rate.",
+          "title": "Relative Duration"
+        },
+        "similarity": {
+          "description": "How closely this part matched the standard.",
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Similarity",
+          "type": "integer"
+        },
+        "start_s": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Where this part is in the user's recording (trimmed audio).",
+          "title": "Start S"
+        },
+        "status": {
+          "enum": [
+            "good",
+            "fair",
+            "poor"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "index",
+        "label",
+        "phonemes",
+        "similarity",
+        "status"
+      ],
+      "title": "SignalPart",
+      "type": "object"
+    },
     "Strength": {
       "properties": {
         "id": {
@@ -626,6 +954,26 @@
       "title": "TimingReport",
       "type": "object"
     },
+    "WordMatch": {
+      "properties": {
+        "similarity": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Similarity",
+          "type": "integer"
+        },
+        "word": {
+          "title": "Word",
+          "type": "string"
+        }
+      },
+      "required": [
+        "word",
+        "similarity"
+      ],
+      "title": "WordMatch",
+      "type": "object"
+    },
     "WordRecognition": {
       "properties": {
         "closest_word": {
@@ -728,7 +1076,7 @@
       "type": "string"
     },
     "contract_version": {
-      "default": "1.0.0",
+      "default": "1.1.0",
       "title": "Contract Version",
       "type": "string"
     },
@@ -864,6 +1212,17 @@
       "default": null,
       "title": "Retry Reason"
     },
+    "signal_analysis": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SignalAnalysis"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
     "status": {
       "enum": [
         "assessed",
@@ -928,7 +1287,7 @@
         }
       ],
       "default": null,
-      "description": "Whether the decoded sounds match the target word better than other practice words.",
+      "description": "Whether the recording matches the target word better than any other practice word.",
       "title": "Word Recognized"
     }
   },

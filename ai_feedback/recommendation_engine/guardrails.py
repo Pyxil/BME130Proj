@@ -39,6 +39,14 @@ def allowed_symbols(req: FeedbackRequest) -> set[str]:
         for k in ("phoneme", "realized_as"):
             if i.get(k):
                 syms.add(i[k])
+    sig = a.get("signal_analysis") or {}
+    for part in sig.get("parts") or []:  # part labels such as /ræ/
+        syms.add("".join(part.get("phonemes") or []))
+        syms.update(part.get("phonemes") or [])
+    for m in sig.get("mistakes_checked") or []:
+        for k in ("phoneme", "realized_as"):
+            if m.get(k):
+                syms.add(m[k])
     mv = a.get("matched_variant") or {}
     for ch in (mv.get("ipa") or "").strip("/"):
         syms.add(ch)

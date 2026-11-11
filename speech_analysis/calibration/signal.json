@@ -1,0 +1,98 @@
+{
+  "fitted_on": "Piper voices not used as standards (675 correct recordings of 135 words), 2026-11-11",
+  "method": "Anchored on correct recordings: median -> 95, worst 10% -> 85 (see scripts/calibrate_signal.py)",
+  "distance": {
+    "midpoint": 0.9113,
+    "scale": 0.0747
+  },
+  "part": {
+    "midpoint": 1.1085,
+    "scale": 0.1396
+  },
+  "loudness": {
+    "low": 0.7738,
+    "high": 0.9707
+  },
+  "pitch": {
+    "good": 4.994,
+    "bad": 31.013
+  },
+  "mistake": {
+    "midpoint": 0.047,
+    "scale": 0.0171
+  },
+  "validation": {
+    "correct_recordings": 675,
+    "error_recordings": 948,
+    "unusable_skipped": 0,
+    "words": 135,
+    "identification_top1": 0.781,
+    "identification_top3": 0.899,
+    "identification_top1_without_syllable_penalty": 0.791,
+    "auc_correct_vs_error": 0.699,
+    "auc_correct_vs_covered": 0.737,
+    "auc_correct_vs_uncovered": 0.59,
+    "mistake_named_covered": 0.426,
+    "mistake_named_uncovered": 0.045,
+    "mistake_false_alarm_correct": 0.05,
+    "median_score_correct": 93.0,
+    "median_score_error": 88.0,
+    "ratings_correct": {
+      "mastered": 0.679,
+      "satisfactory": 0.268,
+      "needs_practice": 0.053,
+      "inconclusive": 0.0
+    },
+    "ratings_error": {
+      "mastered": 0.381,
+      "satisfactory": 0.401,
+      "needs_practice": 0.218,
+      "inconclusive": 0.0
+    },
+    "error_part_flagged": 0.233,
+    "by_error_type": {
+      "cluster reduction (covered)": {
+        "n": 52,
+        "median_score": 76.5,
+        "auc_vs_correct": 0.79,
+        "part_flagged": 0.404,
+        "mistake_named": 0.596
+      },
+      "consonant substitution (covered)": {
+        "n": 232,
+        "median_score": 87.0,
+        "auc_vs_correct": 0.715,
+        "part_flagged": 0.25,
+        "mistake_named": 0.379
+      },
+      "final consonant deletion (covered)": {
+        "n": 150,
+        "median_score": 69.0,
+        "auc_vs_correct": 0.891,
+        "part_flagged": 0.347,
+        "mistake_named": 0.667
+      },
+      "other consonant substitution (uncovered)": {
+        "n": 208,
+        "median_score": 91.0,
+        "auc_vs_correct": 0.558,
+        "part_flagged": 0.24,
+        "mistake_named": 0.038
+      },
+      "vowel change (covered)": {
+        "n": 270,
+        "median_score": 89.0,
+        "auc_vs_correct": 0.66,
+        "part_flagged": 0.048,
+        "mistake_named": 0.3
+      },
+      "weak syllable deletion (uncovered)": {
+        "n": 36,
+        "median_score": 85.0,
+        "auc_vs_correct": 0.776,
+        "part_flagged": 0.75,
+        "mistake_named": 0.083
+      }
+    }
+  }
+}

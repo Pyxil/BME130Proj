@@ -15,8 +15,10 @@
 
 ## Images
 
-- `backend/Dockerfile` (context: repository root): Python 3.12, CPU PyTorch + Allosaurus + Piper voices
-  (`INSTALL_ML=true`, ~1.5 GB) or the acoustic-baseline variant (`INSTALL_ML=false`). Runs as a non-root
+- `backend/Dockerfile` (context: repository root): Python 3.12 + Piper voices (the standard recordings for
+  the default signal analysis); `INSTALL_ML=true` adds CPU PyTorch + Allosaurus for the optional phoneme
+  model (~1.5 GB). The first start generates every word's standards (a few minutes; cached in the data
+  volume). Runs as a non-root
   user, applies Alembic migrations and seeds words at startup (`AUTO_MIGRATE=true`), healthcheck on
   `/api/health`.
 - `frontend/Dockerfile`: static build served by nginx; nginx proxies `/api` to `backend:8000` and sets

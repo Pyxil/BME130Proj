@@ -65,12 +65,37 @@ class ConfidenceThresholds(BaseModel):
     high_at_or_above: float = 0.80
 
 
+class SignalWeights(BaseModel):
+    """Weights of the signal-comparison measures (renormalised over the available ones)."""
+
+    spectral_similarity: float = 0.45
+    minimal_pair_contrast: float = 0.20
+    loudness_contour: float = 0.15
+    pitch_contour: float = 0.05
+    syllable_completeness: float = 0.05
+    temporal: float = 0.10
+
+
+class SignalSettings(BaseModel):
+    weights: SignalWeights = SignalWeights()
+    part_good: int = 85  # part similarity at or above: "good"
+    part_fair: int = 70  # at or above: "fair"; below: "poor"
+    max_parts_reported: int = 2
+    mistake_report_probability: float = 0.5  # report a minimal-pair mistake at or above this probability
+    mistake_strong_probability: float = 0.85  # at or above: counts as a strong error (needs practice)
+    identify_words: bool = True  # compare each recording with every word's standards
+
+
 class AnalysisConfig(BaseModel):
-    engine: str = Field("auto", description="auto | allosaurus | wav2vec2 | none")
+    engine: str = Field(
+        "signal",
+        description="signal (default: compare waveform features with standard recordings, no model) | "
+                    "allosaurus | wav2vec2 (optional neural phoneme models, for comparison) | auto")
     allosaurus_model: str = "eng2102"
     wav2vec2_model: str = "facebook/wav2vec2-lv-60-espeak-cv-ft"
     model_dir: Path = REPO_ROOT / "models"
-    weights: ScoreWeights = ScoreWeights()
+    weights: ScoreWeights = ScoreWeights()  # phoneme-model scoring only
+    signal: SignalSettings = SignalSettings()
     quality: QualityThresholds = QualityThresholds()
     rating: RatingThresholds = RatingThresholds()
     phoneme: PhonemeThresholds = PhonemeThresholds()
@@ -102,6 +127,10 @@ class AnalysisConfig(BaseModel):
             cfg.model_dir = Path(env["SA_MODEL_DIR"])
         if "SA_WAV2VEC2_MODEL" in env:
             cfg.wav2vec2_model = env["SA_WAV2VEC2_MODEL"]
+        for key in SignalWeights.model_fields:
+            env_key = f"SA_SIGNAL_WEIGHT_{key.upper()}"
+            if env_key in env:
+                setattr(cfg.signal.weights, key, float(env[env_key]))
         for key in ScoreWeights.model_fields:
             env_key = f"SA_WEIGHT_{key.upper()}"
             if env_key in env:

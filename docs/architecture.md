@@ -73,6 +73,46 @@ Feedback is a separate call so the score appears immediately while the LLM write
 
 ## Analysis pipeline
 
+Two engines share the audio processing and quality gate (step 1):
+
+* **Signal analysis (default, `SA_ENGINE=signal`)**: signals-and-systems comparison of the recording with
+  standard recordings; no speech-recognition model. Described in the next section.
+* **Phoneme model (optional, `SA_ENGINE=allosaurus`, needs `dev.py setup --ml`)**: steps 2-5 below; kept to
+  compare against the signal analysis.
+
+### Signal analysis (`speech_analysis/signal_analysis`)
+
+1. **Front end** (`dsp.py`, `features.py`), the same for the recording and every standard: zero-phase
+   Butterworth high-pass (70 Hz, removes DC and hum) -> 25 ms Hamming frames every 10 ms -> FFT power
+   spectrum. Per frame: short-time energy, zero-crossing rate, spectral centroid, energy in four bands
+   (80-500, 500-1500, 1500-3500, 3500-8000 Hz), pitch by autocorrelation (computed with the FFT,
+   Wiener-Khinchin), and MFCCs (pre-emphasis, 40 mel filters, log, DCT) with cepstral mean/variance
+   normalisation, which cancels a microphone's linear filter. The comparison vector per frame is MFCC
+   c1-c12 + their deltas + loudness relative to the loudest frame.
+2. **Standards** (`standards.py`): human recordings in `data/reference_audio/` when present, plus Piper
+   voices (3 voices x every pronunciation variant) for every word, generated once and cached.
+3. **Alignment** (`compare.py`): dynamic time warping with a Sakoe-Chiba band, searched over 7 frequency-warp
+   factors (vocal tract length normalisation), so speaking rate and voice size are not counted as errors.
+   The standard that explains the recording best (overall distance + half the worst part's) is used, which
+   gives accent tolerance.
+4. **Measures** along the aligned path: spectral distance (mean frame distance), loudness-contour
+   correlation, pitch contour (RMS semitone difference, each relative to its own median), syllable count
+   (voiced peaks of 300-2500 Hz energy), duration ratio and rhythm (spread of the warping path's slope).
+5. **Parts** (`segments.py`): the standard is split into syllables at the energy dips between syllable
+   nuclei (start / vowel / end for one-syllable words); each part gets its own spectral similarity,
+   relative duration, loudness and 3.5-8 kHz (hiss) difference, which drive the feedback.
+6. **Minimal pairs** (`minimal_pairs.py`): standards of common mistakes ("wabbit", "poon", /th/ for /s/ ...)
+   in the same voices. `d(correct) - d(mistake)`, averaged over voices, cancels most of the voice difference;
+   a calibrated logistic turns it into the probability of that mistake, which names the mistake in the
+   feedback when it is likely.
+7. **Word identification**: the recording is compared with the standards of every practice word (template
+   matching, with a penalty per syllable of difference); the rank of the target word sets a confidence
+   factor and the "Matched the word" badge.
+8. **Score** (`report.py`): weighted mean of spectral similarity 45%, minimal-pair check 20%, loudness
+   contour 15%, pitch contour 5% (2+ syllables), syllables 5%, timing 10%; the same rating rules and score
+   caps as the phoneme scorer, with parts in place of sounds. Calibration and validation:
+   `scripts/calibrate_signal.py`, results in [validation.md](validation.md#signal-analysis-default-engine).
+
 ### 1. Audio processing (`speech_analysis/audio_processing`)
 - Decoding: WAV/FLAC/OGG via libsndfile; WebM/MP4/MP3 via ffmpeg if installed. Resampled to 16 kHz mono.
 - Energy VAD with an adaptive threshold (`max(noise floor + 6 dB, peak - 32 dB)`), gap filling
@@ -88,7 +128,7 @@ Feedback is a separate call so the score appears immediately while the LLM write
 MFCC c1-c12 + deltas with per-utterance CMVN; log-mel; F0 by probabilistic YIN (65-600 Hz, adults and
 children); RMS energy; syllable nuclei as voiced peaks of 300-2500 Hz energy (de Jong & Wempe style).
 
-### 3. Phoneme-level GOP
+### 3. Phoneme-level GOP (optional engine)
 Engine interface: `PhonemeEngine.assess(audio, variants, vocabulary, target_word) -> EngineOutput`.
 The default engine (Allosaurus `eng2102`) outputs CTC log posteriors over 38 English phones; ARPAbet
 labels map to *units* (diphthongs are two symbols, e.g. /aɪ/ = `a j`).

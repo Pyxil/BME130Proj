@@ -102,8 +102,28 @@ weighted components alone give 77 (see `components[0].details.score_cap`).
 - `retry_required`: recording unusable (`retry_reason`, `quality.issues`); no score.
 - `inconclusive`: analysis ran but confidence < 0.35; no score; ask to record again.
 
-When no phoneme model is installed, `engine.phoneme_level` is `false`, `phoneme_scores` is `null`, and the
-score uses only acoustic, syllable and timing components.
+The example above comes from the optional phoneme engine. With the default **signal analysis**
+(`engine.name` = `"signal-analysis"`, contract 1.1.0) `phoneme_scores` is `null` and `signal_analysis` holds:
+
+```json
+"signal_analysis": {
+  "standard": "piper:en_US-libritts_r-medium:0", "standard_variant": "us", "standards_compared": 9,
+  "warp_factor": 0.96,
+  "parts": [{"index": 0, "label": "the first syllable", "phonemes": ["r", "æ"], "similarity": 64,
+             "status": "poor", "start_s": 0.08, "end_s": 0.27, "relative_duration": 0.82,
+             "loudness_diff_db": 0.4, "high_band_diff_db": 1.4}],
+  "mistakes_checked": [{"description": "/w/ instead of /r/ at the start of the word", "kind": "substitution",
+                        "phoneme": "r", "realized_as": "w", "position": 0, "probability": 0.93}],
+  "closest_words": [{"word": "rabbit", "similarity": 88}], "target_rank": 1, "words_compared": 135,
+  "curves": {"t": [0.0, 0.01], "user_db": [-48.2, -45.0], "standard_db": [-50.1, -46.3],
+             "user_pitch_st": [null, 0.4], "standard_pitch_st": [null, 0.1], "part_edges": [0.46]}
+}
+```
+
+`components` then lists `spectral_similarity`, `minimal_pair_contrast`, `loudness_contour`, `pitch_contour`,
+`syllable_completeness` and `temporal`, and issues can also have the types `part_mismatch`,
+`stress_pattern` and `pitch_pattern`. A likely common mistake found by the minimal-pair check is reported
+as a `substitution` or `deletion` issue with `phoneme` and `realized_as`.
 
 ### `FeedbackResponse`
 

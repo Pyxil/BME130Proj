@@ -149,7 +149,19 @@ class ReferenceAudioService:
         ref = self._piper(word, variant, spec, 1.45 if slow else 1.1)
         return ref or self._espeak(word, variant["id"], slow)
 
-    def references_for_scoring(self, word: str, variants: list[dict]) -> list[ReferenceAudio]:
+    def references_for_pronunciation(self, word: str, variant_id: str, arpabet: list[str]) -> list[ReferenceAudio]:
+        """16 kHz recordings of an arbitrary pronunciation (e.g. a common mistake) in every standard voice.
+
+        Not kept in memory: callers keep the features they need, and the audio is cached on disk.
+        """
+        out = []
+        for spec in self.available_voices():
+            r = self._piper(word, {"id": variant_id, "arpabet": list(arpabet)}, spec, 1.0)
+            if r is not None:
+                out.append(ReferenceAudio(resample(r.audio, r.sr, 16000), 16000, r.source, r.voice, r.variant_id))
+        return out
+
+    def references_for_scoring(self, word: str, variants: list[dict], keep_in_memory: bool = True) -> list[ReferenceAudio]:
         """16 kHz references used for DTW similarity (several voices per variant)."""
         refs: list[ReferenceAudio] = []
         for variant in variants:
@@ -158,12 +170,12 @@ class ReferenceAudioService:
                 refs.append(human)
             for spec in self.available_voices():
                 key = f"{word}|{variant['id']}|{spec}"
-                if key not in self._mem:
-                    r = self._piper(word, variant, spec, 1.0)
-                    if r is None:
-                        continue
+                r = self._mem.get(key) or self._piper(word, variant, spec, 1.0)
+                if r is None:
+                    continue
+                if keep_in_memory:
                     self._mem[key] = r
-                refs.append(self._mem[key])
+                refs.append(r)
         if not refs:
             for variant in variants[:1]:
                 r = self._espeak(word, variant["id"], slow=False)

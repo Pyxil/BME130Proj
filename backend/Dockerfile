@@ -2,7 +2,7 @@
 # Backend API + speech analysis + AI feedback (one image; build context = repository root).
 #
 #   docker build -f backend/Dockerfile -t voice-therapy-backend .
-#   docker build -f backend/Dockerfile --build-arg INSTALL_ML=false .   # acoustic baseline only (small image)
+#   docker build -f backend/Dockerfile --build-arg INSTALL_ML=true .   # add the optional phoneme model
 FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
@@ -28,7 +28,7 @@ COPY scripts ./scripts
 # INSTALL_ML=true installs CPU-only PyTorch + Allosaurus (phoneme-level scoring);
 # false gives a small image that runs the clearly-labelled acoustic baseline.
 # DOWNLOAD_MODELS=true fetches the Allosaurus model and Piper voices from their GitHub releases.
-ARG INSTALL_ML=true
+ARG INSTALL_ML=false
 ARG DOWNLOAD_MODELS=true
 ARG TORCH_INDEX_URL=https://download.pytorch.org/whl/cpu
 RUN pip install -e ".[postgres,llm]" \
