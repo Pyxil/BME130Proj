@@ -49,7 +49,7 @@ def load_phone_calibration(engine_id: str | None, override: Path | None = None) 
     path = override or (CAL_DIR / f"{engine_id}.json" if engine_id else None)
     if path is None or not Path(path).exists():
         return None
-    data = json.loads(Path(path).read_text())
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
     if "global" not in data:  # legacy single-curve format on the posterior axis
         xs, ys = data["x_posterior"], data["y_score"]
         lx = [float(np.log(max(x, 1e-4))) for x in xs]

@@ -12,6 +12,9 @@
     python scripts/dev.py makemigration "message"
     python scripts/dev.py contracts         regenerate OpenAPI/JSON schemas and frontend TypeScript types
     python scripts/dev.py e2e               browser end-to-end test (backend and frontend must be running)
+    python scripts/dev.py smoke             start the real backend + dev server and check them end to end
+
+On Windows run it as `py -3.12 scripts/dev.py ...`, on macOS as `python3.12 scripts/dev.py ...`.
 """
 
 from __future__ import annotations
@@ -41,17 +44,49 @@ def py() -> str:
     return str(PY) if PY.exists() else sys.executable
 
 
+def node_version() -> tuple[int, int] | None:
+    """(major, minor) of the `node` on PATH, or None if it is missing or unreadable."""
+    node = shutil.which("node")
+    if node is None:
+        return None
+    try:
+        out = subprocess.run([node, "--version"], capture_output=True, text=True, timeout=30).stdout
+        major, minor = (int(x) for x in out.strip().lstrip("v").split(".")[:2])
+    except (OSError, ValueError, subprocess.SubprocessError):
+        return None
+    return major, minor
+
+
+def launcher() -> str:
+    """How the docs tell people to start Python on this OS."""
+    return {"Windows": "py -3.12", "Darwin": "python3.12"}.get(platform.system(), "python3")
+
+
 def check_tools(args: list[str]) -> None:
-    mac = platform.system() == "Darwin"
+    system = platform.system()
+    mac, win = system == "Darwin", system == "Windows"
     if sys.version_info < (3, 11):  # noqa: UP036 - dev.py may be launched with an old system Python (macOS 3.9)
-        hint = ("macOS's built-in python3 is too old. Install Python 3.12 with `brew install python@3.12`, "
-                "then run `python3.12 scripts/dev.py setup`." if mac else "Install Python 3.11-3.13.")
+        if mac:
+            hint = ("macOS's built-in python3 is too old. Install Python 3.12 with `brew install python@3.12`, "
+                    "then run `python3.12 scripts/dev.py setup`.")
+        elif win:
+            hint = ("Install Python 3.12 (`winget install Python.Python.3.12` or python.org), "
+                    "then run `py -3.12 scripts/dev.py setup`.")
+        else:
+            hint = "Install Python 3.11-3.13."
         sys.exit(f"Python 3.11+ is required (this is {platform.python_version()}). {hint}")
     if mac and platform.machine() == "x86_64" and sys.version_info >= (3, 13) and "--no-ml" not in args:
         sys.exit("PyTorch has no Intel-Mac builds for Python 3.13+. Use `python3.12 scripts/dev.py setup` "
                  "(or add --no-ml for the acoustic baseline).")
-    if shutil.which(NPM) is None:
-        sys.exit("Node.js 20+ is required for the frontend" + (" (`brew install node`)." if mac else "."))
+    install_node = ("`brew install node`" if mac else
+                    "`winget install OpenJS.NodeJS.LTS`, then open a new terminal" if win else
+                    "the current LTS from https://nodejs.org")
+    version = node_version()
+    if shutil.which(NPM) is None or version is None:
+        sys.exit(f"Node.js 22.12+ is required for the frontend. Install {install_node}.")
+    if version < (22, 12):  # Vite 8 and Vitest 5 need it
+        sys.exit(f"Node.js {version[0]}.{version[1]} is too old for the frontend tools (needs 22.12+). "
+                 f"Install {install_node}.")
 
 
 def write_env_file() -> None:
@@ -80,7 +115,9 @@ def setup(args: list[str]) -> None:
         write_env_file()
     run([NPM, "ci"], cwd=ROOT / "frontend")
     run([py(), "-m", "backend.database.init_db"])
-    print("\nSetup complete. Next: `python scripts/dev.py backend` and `python scripts/dev.py frontend`.")
+    py_cmd = launcher()
+    print(f"\nSetup complete. Start the app in two terminals:\n  {py_cmd} scripts/dev.py backend\n"
+          f"  {py_cmd} scripts/dev.py frontend\nthen open http://localhost:5173")
 
 
 def main() -> int:
@@ -123,6 +160,8 @@ def main() -> int:
         run([NPM, "run", "gen:api"], cwd=fe)
     elif cmd == "e2e":
         run(["node", "e2e/practice-flow.cjs"], env={"PYTHON": py()})
+    elif cmd == "smoke":
+        run([py(), "scripts/smoke_test.py", *args])
     else:
         print(f"unknown command {cmd!r}\n{__doc__}")
         return 2

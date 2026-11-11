@@ -3,6 +3,20 @@
 All notable changes are documented here (format: [Keep a Changelog](https://keepachangelog.com)).
 Contract changes (OpenAPI, `AnalysisResult`, `FeedbackResponse`) must be listed under **Contract**.
 
+## [0.1.2] - 2026-11-11
+
+### Added
+- Windows setup instructions; `dev.py setup` gives Windows-specific hints and checks the Node.js version.
+- `scripts/smoke_test.py` (`dev.py smoke`): starts the real backend and Vite dev server and checks sign-up,
+  reference audio, scoring of a correct and a mispronounced recording, and the dev-server proxy.
+- CI workflow running the documented setup, all tests (with the speech models) and the smoke test on
+  Windows, macOS and Linux.
+
+### Fixed
+- Text files and espeak-ng output are always read as UTF-8 (Windows defaults to a legacy code page).
+- The Vite dev server listens on localhost only (no firewall prompt, not exposed to the network) and proxies
+  to `127.0.0.1:8000` instead of `localhost`, which can resolve to IPv6 first.
+
 ## [0.1.1] - 2026-11-11
 
 ### Fixed
