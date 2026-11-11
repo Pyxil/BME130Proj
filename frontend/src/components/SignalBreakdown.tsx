@@ -46,7 +46,8 @@ function CurveTooltip({ active, payload, edges, parts }: {
   );
 }
 
-/** Direct label at the end of a line (text in axis ink, offset so the two labels never collide). */
+/** Direct label at the end of a line (text in axis ink). The line that ends higher gets its label above,
+ *  the other below, so the two labels never collide. */
 function EndLabel({ x, y, index, count, text, dy }: {
   x?: number; y?: number; index?: number; count: number; text: string; dy: number;
 }) {
@@ -75,6 +76,8 @@ function LoudnessChart({ signal }: { signal: SignalAnalysis }) {
     return k >= 0 ? partShortLabel(parts[k].label) : "";
   };
   const rows = data.filter((_, k) => k % Math.max(1, Math.round(data.length / 12)) === 0);
+  const last = data[data.length - 1];
+  const youAbove = last.you >= last.example;
   return (
     <div>
       <div className="flex flex-wrap gap-4 text-sm text-slate-700 dark:text-slate-300">
@@ -94,10 +97,10 @@ function LoudnessChart({ signal }: { signal: SignalAnalysis }) {
             <Line type="monotone" dataKey="example" name="Example" stroke="var(--chart-standard)" strokeWidth={2}
               strokeDasharray="6 4" strokeLinecap="round" dot={false} isAnimationActive={false}
               activeDot={{ r: 4, stroke: "var(--chart-surface)", strokeWidth: 2 }}
-              label={<EndLabel count={data.length} text="Example" dy={14} />} />
+              label={<EndLabel count={data.length} text="Example" dy={youAbove ? 14 : -6} />} />
             <Line type="monotone" dataKey="you" name="You" stroke="var(--chart-you)" strokeWidth={2} strokeLinecap="round"
               dot={false} isAnimationActive={false} activeDot={{ r: 4, stroke: "var(--chart-surface)", strokeWidth: 2 }}
-              label={<EndLabel count={data.length} text="You" dy={-6} />} />
+              label={<EndLabel count={data.length} text="You" dy={youAbove ? -6 : 14} />} />
           </LineChart>
         </ResponsiveContainer>
       </div>
