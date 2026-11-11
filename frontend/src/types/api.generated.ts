@@ -442,7 +442,7 @@ export interface components {
             confidence_label: "high" | "medium" | "low";
             /**
              * Contract Version
-             * @default 1.0.0
+             * @default 1.1.0
              */
             contract_version: string;
             /**
@@ -478,6 +478,7 @@ export interface components {
             recognized_word?: string | null;
             /** Retry Reason */
             retry_reason?: string | null;
+            signal_analysis?: components["schemas"]["SignalAnalysis"] | null;
             /**
              * Status
              * @enum {string}
@@ -493,7 +494,7 @@ export interface components {
             word_id?: number | null;
             /**
              * Word Recognized
-             * @description Whether the decoded sounds match the target word better than other practice words.
+             * @description Whether the recording matches the target word better than any other practice word.
              */
             word_recognized?: boolean | null;
         };
@@ -589,7 +590,7 @@ export interface components {
              * Name
              * @enum {string}
              */
-            name: "phoneme_accuracy" | "acoustic_similarity" | "syllable_completeness" | "temporal";
+            name: "phoneme_accuracy" | "acoustic_similarity" | "syllable_completeness" | "temporal" | "spectral_similarity" | "loudness_contour" | "pitch_contour" | "minimal_pair_contrast";
             /** Score */
             score?: number | null;
             /**
@@ -716,7 +717,7 @@ export interface components {
              * Type
              * @enum {string}
              */
-            type: "substitution" | "deletion" | "unclear_articulation" | "insertion" | "syllable_missing" | "extra_syllable" | "too_fast" | "too_slow" | "low_acoustic_similarity";
+            type: "substitution" | "deletion" | "unclear_articulation" | "insertion" | "syllable_missing" | "extra_syllable" | "too_fast" | "too_slow" | "low_acoustic_similarity" | "part_mismatch" | "stress_pattern" | "pitch_pattern";
         };
         /** LoginRequest */
         LoginRequest: {
@@ -735,6 +736,39 @@ export interface components {
             id: string;
             /** Ipa */
             ipa: string;
+        };
+        /**
+         * MistakeCheck
+         * @description A common mistake the recording was compared against (minimal-pair standard).
+         */
+        MistakeCheck: {
+            /**
+             * Description
+             * @description e.g. '/w/ instead of /r/ at the start of the word'.
+             */
+            description: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "substitution" | "deletion";
+            /**
+             * Phoneme
+             * @description Expected sound (IPA).
+             */
+            phoneme: string;
+            /** Position */
+            position: number;
+            /**
+             * Probability
+             * @description Calibrated chance that this mistake was made.
+             */
+            probability: number;
+            /**
+             * Realized As
+             * @description Sound said instead (IPA); null when left out.
+             */
+            realized_as?: string | null;
         };
         /** PhonemeOption */
         PhonemeOption: {
@@ -1049,6 +1083,126 @@ export interface components {
             status: "pending" | "attempted" | "mastered";
             word: components["schemas"]["WordSummary"];
         };
+        /**
+         * SignalAnalysis
+         * @description Details of the signals-and-systems comparison (present when no phoneme model is used).
+         */
+        SignalAnalysis: {
+            /**
+             * Closest Words
+             * @description Words whose standards matched best.
+             */
+            closest_words?: components["schemas"]["WordMatch"][];
+            curves?: components["schemas"]["SignalCurves"] | null;
+            /** Mistakes Checked */
+            mistakes_checked?: components["schemas"]["MistakeCheck"][];
+            /** Parts */
+            parts?: components["schemas"]["SignalPart"][];
+            /**
+             * Standard
+             * @description Best-matching standard recording, e.g. 'piper:en_US-libritts_r-medium:0'.
+             */
+            standard: string;
+            /** Standard Variant */
+            standard_variant: string;
+            /** Standards Compared */
+            standards_compared: number;
+            /**
+             * Target Rank
+             * @description 1 = the target word was the closest match.
+             */
+            target_rank?: number | null;
+            /**
+             * Warp Factor
+             * @description Frequency-warp factor that best matched the user's voice to the standard.
+             */
+            warp_factor: number;
+            /**
+             * Words Compared
+             * @default 0
+             */
+            words_compared: number;
+        };
+        /**
+         * SignalCurves
+         * @description Aligned loudness (and pitch) curves of the recording and the standard, for plotting.
+         */
+        SignalCurves: {
+            /**
+             * Part Edges
+             * @description Boundaries between parts on the 0..1 axis.
+             */
+            part_edges?: number[];
+            /** Standard Db */
+            standard_db: number[];
+            /** Standard Pitch St */
+            standard_pitch_st?: (number | null)[];
+            /**
+             * T
+             * @description Position along the standard, 0..1.
+             */
+            t: number[];
+            /**
+             * User Db
+             * @description User loudness in dB relative to its loudest frame.
+             */
+            user_db: number[];
+            /**
+             * User Pitch St
+             * @description Semitones relative to the median; null = unvoiced.
+             */
+            user_pitch_st?: (number | null)[];
+        };
+        /**
+         * SignalPart
+         * @description One part of the word (a syllable, or the start / vowel / end of a one-syllable word).
+         */
+        SignalPart: {
+            /** End S */
+            end_s?: number | null;
+            /**
+             * High Band Diff Db
+             * @description 3.5-8 kHz energy (hiss of /s/, /sh/, /f/) vs. the standard, relative to the whole word.
+             */
+            high_band_diff_db?: number | null;
+            /** Index */
+            index: number;
+            /**
+             * Label
+             * @description Plain-language name, e.g. 'the first syllable', 'the end of the word'.
+             */
+            label: string;
+            /**
+             * Loudness Diff Db
+             * @description Loudness of this part vs. the standard, relative to the whole word.
+             */
+            loudness_diff_db?: number | null;
+            /**
+             * Phonemes
+             * @description Expected sounds in this part (IPA, from the dictionary; not detected).
+             */
+            phonemes: string[];
+            /**
+             * Relative Duration
+             * @description Length of this part relative to the standard, after allowing for overall speaking rate.
+             */
+            relative_duration?: number | null;
+            /**
+             * Similarity
+             * @description How closely this part matched the standard.
+             */
+            similarity: number;
+            /**
+             * Start S
+             * @description Where this part is in the user's recording (trimmed audio).
+             */
+            start_s?: number | null;
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "good" | "fair" | "poor";
+        };
         /** Strength */
         Strength: {
             /** Id */
@@ -1220,6 +1374,13 @@ export interface components {
             items: components["schemas"]["WordSummary"][];
             /** Total */
             total: number;
+        };
+        /** WordMatch */
+        WordMatch: {
+            /** Similarity */
+            similarity: number;
+            /** Word */
+            word: string;
         };
         /** WordProgress */
         WordProgress: {

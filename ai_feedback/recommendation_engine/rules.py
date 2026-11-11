@@ -56,6 +56,10 @@ def _tip_for(issue: dict, word: str, n_phones: int) -> Recommendation:
         if note is None:
             tip += " " + (pattern_note("unclear_vowel") or "")
         return Recommendation(issue_id=issue["id"], tip=tip.strip(), articulation=how)
+    if t == "part_mismatch":
+        return Recommendation(issue_id=issue["id"], tip=issue["message"], articulation=pattern_note("part_mismatch"))
+    if t in ("stress_pattern", "pitch_pattern"):
+        return Recommendation(issue_id=issue["id"], tip=issue["message"], articulation=pattern_note(t))
     key = {"syllable_missing": "syllable_missing", "extra_syllable": "extra_syllable", "too_fast": "too_fast",
            "too_slow": "too_slow", "low_acoustic_similarity": "low_acoustic_similarity"}.get(t)
     return Recommendation(issue_id=issue["id"], tip=pattern_note(key) if key else issue["message"], articulation="")
@@ -81,7 +85,7 @@ def rule_based_feedback(req: FeedbackRequest, reason: str | None = None) -> Feed
     elif rating == "satisfactory":
         summary = f"Good attempt at '{word}' ({score}/100). A little practice will make it even clearer."
     else:
-        summary = f"'{word}' scored {score}/100. Let's practise the sounds below."
+        summary = f"'{word}' scored {score}/100. Let's practise it with the tips below."
     if strengths:
         summary += " " + strengths[0]["message"]
     recs = [_tip_for(i, word, n_phones) for i in issues[:3]]

@@ -16,6 +16,10 @@ Rules you must follow:
    never describe the score as clinical. Scores are practice estimates.
 7. `progress_note`: compare with `previous_attempts` using only the numbers given. If the list is
    empty, return an empty string. Never claim improvement when the score went down.
-8. Keep it short and warm: `summary` one or two sentences, each `tip` one or two sentences,
+8. Some results come from comparing the recording's signal with standard recordings instead of
+   recognising sounds. Their `part_mismatch` issues describe a part of the word (e.g. "the first
+   syllable (/ræ/)"); talk about that part and how to practise it, and do not claim which sound was
+   wrong unless an issue gives `phoneme` and `realized_as`.
+9. Keep it short and warm: `summary` one or two sentences, each `tip` one or two sentences,
    `articulation` one sentence (or empty), `encouragement` one sentence. Plain language that a
    ten-year-old or an older adult can follow.

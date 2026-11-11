@@ -37,14 +37,14 @@ ENGINES = {"allosaurus": _allosaurus, "wav2vec2": _wav2vec2}
 
 
 def create_engine(cfg: AnalysisConfig) -> PhonemeEngine | None:
-    if cfg.engine == "none":
+    if cfg.engine in ("signal", "none"):  # signals-and-systems comparison, no phoneme model
         return None
     order = ["allosaurus", "wav2vec2"] if cfg.engine == "auto" else [cfg.engine]
     errors = []
     for name in order:
         factory = ENGINES.get(name)
         if factory is None:
-            raise ValueError(f"unknown engine {name!r}; choose from {sorted(ENGINES)} or 'none'")
+            raise ValueError(f"unknown engine {name!r}; choose from {sorted(ENGINES)} or 'signal'")
         try:
             engine = factory(cfg)
             log.info("phoneme engine: %s (%s)", engine.name, engine.model)

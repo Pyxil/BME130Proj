@@ -5,7 +5,7 @@ Linux, and it is handy locally after changing setup, configuration or dependenci
 
     python scripts/dev.py smoke                    # backend + frontend dev server
     python scripts/dev.py smoke --no-frontend      # backend only
-    python scripts/dev.py smoke --require-phonemes # fail unless the phoneme model is loaded
+    python scripts/dev.py smoke --expect-engine signal-analysis  # fail if another engine is active
 
 It uses the same ports as `dev.py backend` / `dev.py frontend` (8000 and 5173) so the default
 proxy settings are exercised; stop those first, or pass --port / --frontend-port.  A temporary
@@ -73,14 +73,14 @@ def analyze(c: httpx.Client, headers: dict, word_id: int, fixture: str) -> dict:
     return r.json()["analysis"]
 
 
-def check_api(api: str, require_phonemes: bool) -> None:
+def check_api(api: str, expect_engine: str | None) -> None:
     with httpx.Client(base_url=api, timeout=180, trust_env=False) as c:
         status = c.get("/system/status").raise_for_status().json()
         engine = status["analysis_engine"]
         print(f"engine: {engine['name']} (phoneme-level: {engine['phoneme_level']}), "
               f"reference voices: {status['reference_audio']['piper_voices']}, words: {status['words']}")
-        if require_phonemes and not engine["phoneme_level"]:
-            raise RuntimeError(f"phoneme model not loaded: {engine.get('notes')}")
+        if expect_engine and engine["name"] != expect_engine:
+            raise RuntimeError(f"expected the {expect_engine} engine, got {engine['name']}: {engine.get('notes')}")
 
         email = f"smoke-{uuid.uuid4().hex[:12]}@example.com"
         r = c.post("/auth/register", json={"email": email, "password": "smoke-test-password", "display_name": "Smoke"})
@@ -102,11 +102,18 @@ def check_api(api: str, require_phonemes: bool) -> None:
             print(f"rabbit, /r/ as /w/: {bad['status']} {bad['overall_score']} ({bad['rating']}); issues: {issues}")
             if good["status"] != "assessed" or (good["overall_score"] or 0) < 80:
                 raise RuntimeError("the correct recording should be assessed with a high score")
+            if (bad["overall_score"] or 0) >= good["overall_score"]:
+                raise RuntimeError("the mispronounced recording should score lower than the correct one")
             if engine["phoneme_level"]:
-                if (bad["overall_score"] or 0) >= good["overall_score"]:
-                    raise RuntimeError("the mispronounced recording should score lower than the correct one")
                 if not any(i.get("phoneme") == "r" for i in bad["identified_issues"]):
                     raise RuntimeError("the /r/ -> /w/ substitution should be reported")
+            else:
+                sa = bad.get("signal_analysis") or {}
+                if not sa.get("parts"):
+                    raise RuntimeError("signal analysis should report the parts of the word")
+                worst = min(sa["parts"], key=lambda p: p["similarity"])
+                print(f"signal analysis: standard {sa['standard']}, worst part {worst['label']} "
+                      f"({worst['similarity']}), closest words {[w['word'] for w in sa['closest_words']]}")
         finally:
             with contextlib.suppress(httpx.HTTPError):  # remove the temporary account
                 c.delete("/users/me", headers=headers)
@@ -130,7 +137,7 @@ def main() -> int:
     ap.add_argument("--port", type=int, default=8000, help="backend port (default 8000)")
     ap.add_argument("--frontend-port", type=int, default=5173, help="dev server port (default 5173)")
     ap.add_argument("--no-frontend", action="store_true", help="only check the backend")
-    ap.add_argument("--require-phonemes", action="store_true", help="fail unless the phoneme model is loaded")
+    ap.add_argument("--expect-engine", help="fail unless this analysis engine is active, e.g. signal-analysis")
     ap.add_argument("--startup-timeout", type=float, default=300, help="seconds to wait for the backend")
     args = ap.parse_args()
 
@@ -148,7 +155,7 @@ def main() -> int:
         procs.append(backend)
         api = f"http://127.0.0.1:{args.port}/api"
         wait_for(f"{api}/health", backend, args.startup_timeout)
-        check_api(api, args.require_phonemes)
+        check_api(api, args.expect_engine)
 
         if not args.no_frontend:
             vite = ROOT / "frontend" / "node_modules" / "vite" / "bin" / "vite.js"

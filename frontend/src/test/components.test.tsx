@@ -9,11 +9,13 @@ import type { AnalysisResult, FeedbackResponse } from "../types";
 const samples = (fixtures as unknown as { samples: Record<string, { analysis: AnalysisResult; feedback: FeedbackResponse }> }).samples;
 
 describe("ResultsPanel", () => {
-  it("shows the score, sound breakdown, issues and grounded feedback for an assessed attempt", () => {
+  it("shows the score, part-by-part comparison, issues and grounded feedback for an assessed attempt", () => {
     const { analysis, feedback } = samples.rabbit_r_as_w;
     render(<ResultsPanel result={analysis} feedback={feedback} feedbackLoading={false} />);
     expect(screen.getByRole("heading", { name: `Pronunciation score: ${analysis.overall_score}/100` })).toBeInTheDocument();
-    expect(screen.getByRole("list", { name: "Score for each sound" })).toBeInTheDocument();
+    expect(screen.getByRole("list", { name: "How closely each part of the word matched the example" })).toBeInTheDocument();
+    expect(screen.getByRole("img", { name: /loudness over time for your recording and the example/ })).toBeInTheDocument();
+    expect(screen.getByText("Common mistakes checked")).toBeInTheDocument();
     expect(screen.getAllByText(/may have sounded more like \/w\//).length).toBeGreaterThan(0);
     expect(screen.getByText(feedback.summary)).toBeInTheDocument();
     expect(screen.getByText(/not a clinical assessment/)).toBeInTheDocument();

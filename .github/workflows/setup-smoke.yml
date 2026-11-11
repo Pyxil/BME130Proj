@@ -1,8 +1,8 @@
 name: Setup on Windows, macOS and Linux
 
 # Follows the README on a fresh machine of each kind: `python scripts/dev.py setup`
-# (virtualenv, PyTorch, speech models, Node packages, database), then every test including
-# the speech-model tests, then a live check of the real backend and the Vite dev server.
+# (virtualenv, reference voices, Node packages, database), then every test including the ones
+# that need the voices, then a live check of the real backend and the Vite dev server.
 # Runs when setup-related files change, weekly (new package releases or moved model files
 # can break setup without any change here), and on demand.
 on:
@@ -11,6 +11,7 @@ on:
       - "scripts/dev.py"
       - "scripts/download_models.py"
       - "scripts/smoke_test.py"
+      - "speech_analysis/signal_analysis/**"
       - "pyproject.toml"
       - "frontend/package.json"
       - "frontend/package-lock.json"
@@ -24,6 +25,7 @@ on:
       - "scripts/dev.py"
       - "scripts/download_models.py"
       - "scripts/smoke_test.py"
+      - "speech_analysis/signal_analysis/**"
       - "pyproject.toml"
       - "frontend/package.json"
       - "frontend/package-lock.json"
@@ -78,7 +80,7 @@ jobs:
       - name: All tests, including the speech models
         run: python scripts/dev.py test --models
       - name: Live check of the backend and dev server
-        run: python scripts/dev.py smoke --require-phonemes
+        run: python scripts/dev.py smoke --expect-engine signal-analysis
       - name: Production build of the frontend
         working-directory: frontend
         run: npm run build

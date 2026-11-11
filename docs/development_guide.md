@@ -4,7 +4,7 @@
 
 | Tool | Version | Notes |
 |---|---|---|
-| Python | 3.11-3.13; **3.11 or 3.12 on Windows** | 3.12 in Docker and CI. On Windows a speech-model package (editdistance) has no ready-made build for 3.13+ |
+| Python | 3.11-3.13 | 3.12 in Docker and CI. The optional phoneme model (`setup --ml`) needs 3.11 or 3.12 on Windows |
 | Node.js | 22.12+ (any current LTS) | Vite 8 and Vitest 5 need it; `dev.py setup` checks |
 | Git | any recent | |
 | ffmpeg | optional | decode non-WAV uploads (the web client sends WAV) |
@@ -23,13 +23,13 @@ xcode-select --install                         # Git and compilers (skip if alre
 brew install python@3.12 node                  # required
 brew install ffmpeg espeak-ng                  # optional (non-WAV uploads, fallback TTS)
 git clone https://github.com/Pyxil/BME130Proj.git && cd BME130Proj
-python3.12 scripts/dev.py setup                # ~5-10 min: venv, PyTorch, models, Node packages, database
+python3.12 scripts/dev.py setup                # ~3-5 min: venv, reference voices, Node packages, database
 python3.12 scripts/dev.py backend              # terminal 1 -> http://localhost:8000/docs
 python3.12 scripts/dev.py frontend             # terminal 2 -> open http://localhost:5173
 ```
 
-- Use **Python 3.12**: the `python3` that ships with macOS is too old, and PyTorch has no Intel-Mac builds
-  for Python 3.13+. `dev.py` checks this and tells you what to do.
+- Use **Python 3.12**: the `python3` that ships with macOS is too old. (With the optional `--ml` model,
+  PyTorch has no Intel-Mac builds for Python 3.13+.) `dev.py` checks this and tells you what to do.
 - The first time you press Record, the browser asks for the microphone. If macOS blocks it, enable your
   browser under **System Settings > Privacy & Security > Microphone**. Use Chrome if you can: it is what
   the automated tests use. Safari should work on `localhost` (the recorder handles Safari's audio rules)
@@ -50,24 +50,24 @@ winget install Git.Git
 cd $HOME
 git clone https://github.com/Pyxil/BME130Proj.git
 cd BME130Proj
-py -3.12 scripts/dev.py setup                  # ~5-10 min: venv, PyTorch, models, Node packages, database
+py -3.12 scripts/dev.py setup                  # ~3-5 min: venv, reference voices, Node packages, database
 py -3.12 scripts/dev.py backend                # terminal 1 -> http://localhost:8000/docs
 py -3.12 scripts/dev.py frontend               # terminal 2 -> open http://localhost:5173
 ```
 
 - No `winget`? Use the installers from python.org, nodejs.org (LTS) and git-scm.com instead.
-- Use **Python 3.12** (`py -3.12`), even if you also have a newer Python: one speech-model package has no
-  ready-made Windows build for 3.13+. `py` is the launcher that comes with Python; `py -3.12` picks 3.12 even
+- Use **Python 3.12** (`py -3.12`), even if you also have a newer Python (the optional `--ml` phoneme model
+  needs 3.11 or 3.12 on Windows). `py` is the launcher that comes with Python; `py -3.12` picks 3.12 even
   when other versions are installed. If typing `python` opens the Microsoft Store, ignore it.
 - If VS Code offers to create a virtual environment for this folder, decline: `dev.py setup` makes `.venv`
   itself (and replaces one made with a different Python).
 - Keep the project out of folders that OneDrive syncs (Desktop, Documents): OneDrive locks files while it
-  syncs, and very long paths can break the PyTorch install. `C:\Users\<you>\BME130Proj` (from `cd $HOME`)
-  is fine. If the Python installer offers *Disable path length limit*, accept it.
+  syncs, and very long paths can break installs. `C:\Users\<you>\BME130Proj` (from `cd $HOME`) is fine.
+  If the Python installer offers *Disable path length limit*, accept it.
 - Microphone: **Settings > Privacy & security > Microphone**: turn on *Microphone access* and *Let desktop
   apps access your microphone*, then allow it when the browser asks. Use Edge or Chrome.
-- Windows on ARM (e.g. Snapdragon laptops): if PyTorch does not install, use the x64 Python installer from
-  python.org, or run `py -3.12 scripts/dev.py setup --no-ml` (acoustic scores only, no sound-by-sound scores).
+- Windows on ARM (e.g. Snapdragon laptops): the default setup works; for the optional `--ml` model, PyTorch
+  needs the x64 Python installer from python.org.
 - No `make` needed: `py -3.12 scripts/dev.py help` lists every task.
 - Docker Desktop alternative (WSL 2): `docker compose up --build`, then open http://localhost:8080.
 
@@ -75,7 +75,7 @@ py -3.12 scripts/dev.py frontend               # terminal 2 -> open http://local
 
 ```bash
 git clone https://github.com/Pyxil/BME130Proj.git && cd BME130Proj
-python scripts/dev.py setup        # or: python scripts/dev.py setup --no-ml   (skip PyTorch, ~2 GB smaller)
+python scripts/dev.py setup        # add --ml for the optional neural phoneme model (PyTorch, ~2 GB)
 ```
 
 What `setup` does (equivalent manual steps):
@@ -84,16 +84,19 @@ What `setup` does (equivalent manual steps):
 python -m venv .venv
 # Windows: .venv\Scripts\activate    macOS/Linux: source .venv/bin/activate
 pip install -e ".[dev,llm,postgres]"
-pip install torch --index-url https://download.pytorch.org/whl/cpu   # Linux: CPU wheel avoids CUDA downloads
-pip install -e ".[ml]"                                                # Allosaurus
-python scripts/download_models.py                                     # ./models (Allosaurus + Piper voices)
+python scripts/download_models.py --skip-allosaurus                  # ./models (Piper voices = the standards)
+# only with --ml (optional phoneme model):
+# pip install torch --index-url https://download.pytorch.org/whl/cpu   # Linux: CPU wheel avoids CUDA downloads
+# pip install -e ".[ml]" && python scripts/download_models.py         # Allosaurus
 cp .env.example .env            # Windows: copy; dev.py setup also fills in a random SECRET_KEY
 cd frontend && npm ci && cd ..
 python -m backend.database.init_db                                    # Alembic migrations + seed 135 words
 ```
 
-Without `.[ml]` the analyzer runs in **acoustic baseline** mode: no phoneme scores, clearly labelled in
-results and in the UI.
+By default the analyzer runs the **signal analysis**: the recording's waveform features are compared with
+standard recordings, with no speech-recognition model (see [architecture.md](architecture.md#analysis-pipeline)).
+After `setup --ml`, `SA_ENGINE=allosaurus` in `.env` switches to the optional neural phoneme model, e.g. to
+compare the two.
 
 ## Running services independently
 
@@ -147,6 +150,7 @@ Set `LLM_PROVIDER=anthropic` + `ANTHROPIC_API_KEY`, or `LLM_PROVIDER=ollama`, to
 | All CI checks | `python scripts/dev.py check` |
 | Browser end-to-end | start backend + frontend, then `python scripts/dev.py e2e` |
 | Live backend + dev server check | `python scripts/dev.py smoke` (stop running servers first) |
+| Signal scorer calibration and validation | `python scripts/calibrate_signal.py` (about 30 min; `--quick` for a sample) |
 | Accuracy on real speech | see [validation.md](validation.md#reproduce) |
 
 Deterministic fixtures: `speech_analysis/tests/fixtures/` (synthetic recordings with controlled errors,
@@ -191,7 +195,7 @@ Human reference recordings can be dropped into `data/reference_audio/<word>.wav`
 - *Slow first analysis*: models load lazily; `WARMUP_ON_START=true` loads them in the background at start.
 - *Port 8000 or 5173 already in use*: a backend or frontend is still running in another terminal; stop it
   with Ctrl+C.
-- *"Failed building wheel for editdistance"* (Windows): `.venv` was made with Python 3.13 or newer. Run
-  `py -3.12 scripts/dev.py setup` again; setup replaces a `.venv` made with a different Python.
+- *"Failed building wheel for editdistance"* (Windows, only with `--ml`): `.venv` was made with Python 3.13
+  or newer. Run `py -3.12 scripts/dev.py setup --ml` again; setup replaces a `.venv` made with another Python.
 - *Setup stops with a Python or Node.js version message*: install the version it names, open a new
   terminal, and run setup again (it picks up where it left off).

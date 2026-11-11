@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Cross-platform developer task runner (Windows, macOS, Linux).
 
-    python scripts/dev.py setup [--no-ml]   create .venv, install everything, download models, init DB
+    python scripts/dev.py setup [--ml]      create .venv, install everything, download voices, init DB
+                                            (--ml adds the optional neural phoneme model, ~2 GB)
     python scripts/dev.py backend           run the API with auto-reload (http://localhost:8000)
     python scripts/dev.py frontend          run the Vite dev server (http://localhost:5173)
     python scripts/dev.py mock              frontend with the in-browser mock API (no backend needed)
@@ -76,14 +77,15 @@ def check_tools(args: list[str]) -> None:
         else:
             hint = "Install Python 3.11-3.13."
         sys.exit(f"Python 3.11+ is required (this is {platform.python_version()}). {hint}")
-    if win and sys.version_info >= (3, 13) and "--no-ml" not in args:
-        sys.exit(f"On Windows the speech model needs Python 3.11 or 3.12 (this is {platform.python_version()}): "
-                 "one of its packages, editdistance, has no ready-made Windows build for newer versions, and "
-                 "building it needs Microsoft's C++ tools. Run `py -3.12 scripts/dev.py setup` (install it with "
-                 "`winget install Python.Python.3.12`), or add --no-ml for the acoustic baseline.")
-    if mac and platform.machine() == "x86_64" and sys.version_info >= (3, 13) and "--no-ml" not in args:
-        sys.exit("PyTorch has no Intel-Mac builds for Python 3.13+. Use `python3.12 scripts/dev.py setup` "
-                 "(or add --no-ml for the acoustic baseline).")
+    if win and sys.version_info >= (3, 13) and "--ml" in args:
+        sys.exit(f"On Windows the optional phoneme model needs Python 3.11 or 3.12 (this is "
+                 f"{platform.python_version()}): one of its packages, editdistance, has no ready-made Windows "
+                 "build for newer versions, and building it needs Microsoft's C++ tools. Run "
+                 "`py -3.12 scripts/dev.py setup --ml` (install it with `winget install Python.Python.3.12`), "
+                 "or leave out --ml: the default signal analysis does not need it.")
+    if mac and platform.machine() == "x86_64" and sys.version_info >= (3, 13) and "--ml" in args:
+        sys.exit("PyTorch has no Intel-Mac builds for Python 3.13+. Use `python3.12 scripts/dev.py setup --ml` "
+                 "(or leave out --ml: the default signal analysis does not need PyTorch).")
     install_node = ("with `brew install node`" if mac else
                     "with `winget install OpenJS.NodeJS.LTS`, then open a new terminal" if win else
                     "from https://nodejs.org (current LTS)")
@@ -138,12 +140,22 @@ def ensure_venv() -> None:
     venv.create(VENV, with_pip=True)
 
 
+def migrate_env_file() -> None:
+    """Switch an untouched old default (SA_ENGINE=auto) to the new default analysis (signal)."""
+    env = ROOT / ".env"
+    text = env.read_text(encoding="utf-8")
+    if "\nSA_ENGINE=auto\n" in text:
+        env.write_text(text.replace("\nSA_ENGINE=auto\n", "\nSA_ENGINE=signal\n", 1), encoding="utf-8")
+        print("updated .env: SA_ENGINE=signal (signal analysis is now the default; "
+              "set SA_ENGINE=allosaurus to use the optional phoneme model)")
+
+
 def setup(args: list[str]) -> None:
     check_tools(args)
     ensure_venv()
     run([py(), "-m", "pip", "install", "--upgrade", "pip"])
     run([py(), "-m", "pip", "install", "-e", ".[dev,llm,postgres]"])
-    if "--no-ml" not in args:
+    if "--ml" in args:  # optional neural phoneme model (for comparison with the signal analysis)
         if platform.system() == "Linux":  # avoid the multi-GB CUDA build on Linux
             run([py(), "-m", "pip", "install", "torch", "--index-url", "https://download.pytorch.org/whl/cpu"])
         run([py(), "-m", "pip", "install", "-e", ".[ml]"])
@@ -152,6 +164,8 @@ def setup(args: list[str]) -> None:
         run([py(), "scripts/download_models.py", "--skip-allosaurus"])
     if not (ROOT / ".env").exists():
         write_env_file()
+    else:
+        migrate_env_file()
     run([NPM, "ci"], cwd=ROOT / "frontend")
     run([py(), "-m", "backend.database.init_db"])
     py_cmd = launcher()

@@ -39,7 +39,10 @@ class AnalysisService:
 
     def status(self) -> dict:
         info = self.analyzer.engine_info().model_dump()
-        info["weights"] = self.analyzer.config.weights.model_dump()
+        cfg = self.analyzer.config
+        info["weights"] = (cfg.signal.weights if self.analyzer.engine is None else cfg.weights).model_dump()
+        if self.analyzer.engine is None:  # how the signal scorer did on unseen voices (calibration file)
+            info["validation"] = self.analyzer.signal_calibration.validation
         info["rating_thresholds"] = self.analyzer.config.rating.model_dump()
         return info
 
@@ -52,6 +55,9 @@ class AnalysisService:
             _ = self.analyzer.phone_calibration
             self.analyzer.references.available_voices()
             log.info("analysis engine ready: %s", self.analyzer.engine_info().name)
+            if self.analyzer.engine is None:  # signal analysis: prepare every word's standards
+                self.analyzer.standards.warm()
+                log.info("standard recordings ready for %d words", self.analyzer.standards.words_ready)
         except Exception as exc:  # noqa: BLE001
             log.warning("analysis warm-up failed: %s", exc)
 

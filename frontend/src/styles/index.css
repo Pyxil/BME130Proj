@@ -66,6 +66,10 @@
   --chart-grid: #e2e8f0;
   --chart-axis: #475569;
   --chart-surface: #ffffff;
+  /* Recording vs. standard (validated: light ΔE 15.7 CVD / 16.4 normal; dark 16.1 / 17.1; all >= 3:1).
+     Tritan separation is low, so the standard's line is also dashed and both lines are labelled. */
+  --chart-you: #0d9488;
+  --chart-standard: #2a78d6;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -74,5 +78,7 @@
     --chart-grid: #1e293b;
     --chart-axis: #94a3b8;
     --chart-surface: #0f172a;
+    --chart-you: #13a898;
+    --chart-standard: #3987e5;
   }
 }

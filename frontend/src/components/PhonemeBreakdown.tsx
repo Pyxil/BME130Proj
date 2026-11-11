@@ -1,12 +1,5 @@
 import type { PhonemeScore } from "../types";
-
-const STATUS = {
-  good: { label: "clear", cls: "bg-emerald-50 ring-emerald-300 text-emerald-900 dark:bg-emerald-950 dark:ring-emerald-800 dark:text-emerald-100", bar: "bg-good" },
-  fair: { label: "could be clearer", cls: "bg-amber-50 ring-amber-300 text-amber-950 dark:bg-amber-950 dark:ring-amber-800 dark:text-amber-100", bar: "bg-fair" },
-  poor: { label: "needs work", cls: "bg-rose-50 ring-rose-300 text-rose-900 dark:bg-rose-950 dark:ring-rose-800 dark:text-rose-100", bar: "bg-poor" },
-  missing: { label: "may be missing", cls: "bg-slate-100 ring-slate-300 text-slate-800 dark:bg-slate-800 dark:ring-slate-600 dark:text-slate-100", bar: "bg-slate-400" },
-  unscored: { label: "not scored", cls: "bg-slate-50 ring-slate-200 text-slate-600", bar: "bg-slate-300" },
-} as const;
+import { STATUS_STYLE as STATUS } from "./format";
 
 /** One chip per expected sound, coloured by status, with the score and likely substitute. */
 export function PhonemeBreakdown({ phonemes }: { phonemes: PhonemeScore[] }) {

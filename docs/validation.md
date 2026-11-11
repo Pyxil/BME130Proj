@@ -4,7 +4,63 @@ This document records **what was measured, on what data, and what it does not
 show**. Re-run everything with the commands at the end; numbers below come
 from `docs/validation_results.json`.
 
-## Summary
+## Signal analysis (default engine)
+
+The default engine compares the recording with standard recordings (see
+[architecture.md](architecture.md#signal-analysis-speech_analysissignal_analysis)). The standards are
+generated without random voice variation, so they are identical on every machine. There are no
+recordings of real learners in this repository yet, so the engine was calibrated and validated on
+**generated voices that are never used as standards**: Piper speakers other than the standards and the
+fixtures, with random speaking rate (0.85-1.25x) and voice variation, and 0.3 s of room noise around
+each word. Every practice word was generated correctly (675 recordings: 3 US and
+2 British voices x 135 words) and with mistakes (948 recordings) of two kinds:
+
+* **covered** - mistakes that have a minimal-pair standard: a common consonant substitution
+  (/w/ for /r/, /th/ for /s/ ...), a common confusion of the stressed vowel, a dropped cluster
+  consonant or final consonant;
+* **uncovered** - mistakes without one (/k/ for /t/ and similar, a dropped weak syllable).
+
+The 0-100 mappings are anchored on the correct recordings (median -> 95, worst 10% -> 85); the
+minimal-pair threshold is set so that 5% of correct recordings raise a false alarm. Everything else
+below is measured, not fitted. Rerun: `python scripts/calibrate_signal.py` (about 30 minutes).
+
+| Question | Answer (unseen generated voices) |
+|---|---|
+| Is a recording closest to its own word, out of all 135? | **78%** first choice, 91% in the top 3 |
+| Do correct recordings score higher than covered mistakes? | **AUC 0.76** |
+| ... than uncovered mistakes? | AUC 0.59 |
+| How often is a covered mistake named at the right sound? | 53% of mistaken recordings |
+| How often is a mistake wrongly named on a correct recording? | 5% (by design) |
+| Ratings of correct recordings | mastered 66%, satisfactory 28%, needs practice 6% |
+| Ratings of mistaken recordings | mastered 33%, satisfactory 39%, needs practice 28% |
+
+| Mistake type | n | median score | AUC vs. correct | named | worst part = mistake's part |
+|---|---|---|---|---|---|
+| cluster reduction (covered) | 52 | 69 | 0.81 | 75% | 46% |
+| consonant substitution (covered) | 232 | 85 | 0.75 | 48% | 25% |
+| final consonant deletion (covered) | 150 | 69 | 0.90 | 77% | 31% |
+| other consonant substitution (uncovered) | 208 | 91 | 0.57 | 8% | 23% |
+| vowel change (covered) | 270 | 87 | 0.69 | 38% | 10% |
+| weak syllable deletion (uncovered) | 36 | 87 | 0.74 | 14% | 72% |
+
+What this shows and does not show:
+
+* Template matching tells words apart well from the waveform alone, and catches dropped sounds and
+  common substitutions, especially with minimal-pair standards (vowel changes: AUC 0.52 before vowel
+  minimal pairs were added, 0.69 after).
+* It is **lenient**: 33% of mistaken recordings are still rated "mastered", because
+  two different voices saying the same word differ more, as waveforms, than one voice saying it right and
+  wrong. Mistakes outside the minimal-pair list are mostly missed.
+* Generated voices are cleaner and more alike than real people, microphones and rooms: expect lower
+  numbers on real speech. A per-syllable penalty in word identification made no meaningful difference
+  (78% with it, 78% without).
+* Not clinically validated; no children with speech-sound disorders.
+
+## Optional phoneme model (Allosaurus)
+
+The results below are for the optional neural phoneme engine (`dev.py setup --ml`, `SA_ENGINE=allosaurus`).
+
+### Summary
 
 | Question | Answer (held-out data) |
 |---|---|

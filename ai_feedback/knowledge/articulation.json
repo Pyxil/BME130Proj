@@ -89,6 +89,9 @@
     "too_fast": "Slow down a little and give every sound its time.",
     "too_slow": "Once the word feels comfortable, try saying it at a natural pace.",
     "unclear_vowel": "Listen to the example and copy the mouth shape for the vowel; hold it a little longer.",
-    "low_acoustic_similarity": "Listen to the example again and try to match its rhythm and melody."
+    "low_acoustic_similarity": "Listen to the example again and try to match its rhythm and melody.",
+    "part_mismatch": "Listen to that part of the example, say it slowly on its own a few times, then say the whole word.",
+    "stress_pattern": "Make the stressed syllable a little louder and longer, like in the example.",
+    "pitch_pattern": "Listen to how the example's voice rises and falls, then copy that melody."
   }
 }

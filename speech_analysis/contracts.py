@@ -13,7 +13,7 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, Field
 
-CONTRACT_VERSION = "1.0.0"
+CONTRACT_VERSION = "1.1.0"
 
 DISCLAIMER = (
     "Scores are automated estimates intended for practice feedback. They are not a clinical "
@@ -33,6 +33,9 @@ IssueType = Literal[
     "too_fast",
     "too_slow",
     "low_acoustic_similarity",
+    "part_mismatch",
+    "stress_pattern",
+    "pitch_pattern",
 ]
 Severity = Literal["minor", "moderate", "major"]
 
@@ -82,7 +85,10 @@ class PhonemeScore(BaseModel):
 
 
 class ComponentScore(BaseModel):
-    name: Literal["phoneme_accuracy", "acoustic_similarity", "syllable_completeness", "temporal"]
+    name: Literal[
+        "phoneme_accuracy", "acoustic_similarity", "syllable_completeness", "temporal",
+        "spectral_similarity", "loudness_contour", "pitch_contour", "minimal_pair_contrast",
+    ]
     score: float | None = Field(None, ge=0, le=100)
     weight: float = Field(description="Configured weight (renormalised over available components).")
     available: bool
@@ -137,6 +143,65 @@ class MatchedVariant(BaseModel):
     arpabet: list[str]
 
 
+class SignalPart(BaseModel):
+    """One part of the word (a syllable, or the start / vowel / end of a one-syllable word)."""
+
+    index: int
+    label: str = Field(description="Plain-language name, e.g. 'the first syllable', 'the end of the word'.")
+    phonemes: list[str] = Field(description="Expected sounds in this part (IPA, from the dictionary; not detected).")
+    similarity: int = Field(ge=0, le=100, description="How closely this part matched the standard.")
+    status: Literal["good", "fair", "poor"]
+    start_s: float | None = Field(None, description="Where this part is in the user's recording (trimmed audio).")
+    end_s: float | None = None
+    relative_duration: float | None = Field(
+        None, description="Length of this part relative to the standard, after allowing for overall speaking rate.")
+    loudness_diff_db: float | None = Field(None, description="Loudness of this part vs. the standard, relative to the whole word.")
+    high_band_diff_db: float | None = Field(
+        None, description="3.5-8 kHz energy (hiss of /s/, /sh/, /f/) vs. the standard, relative to the whole word.")
+
+
+class MistakeCheck(BaseModel):
+    """A common mistake the recording was compared against (minimal-pair standard)."""
+
+    description: str = Field(description="e.g. '/w/ instead of /r/ at the start of the word'.")
+    kind: Literal["substitution", "deletion"]
+    phoneme: str = Field(description="Expected sound (IPA).")
+    realized_as: str | None = Field(None, description="Sound said instead (IPA); null when left out.")
+    position: int
+    probability: float = Field(ge=0, le=1, description="Calibrated chance that this mistake was made.")
+
+
+class WordMatch(BaseModel):
+    word: str
+    similarity: int = Field(ge=0, le=100)
+
+
+class SignalCurves(BaseModel):
+    """Aligned loudness (and pitch) curves of the recording and the standard, for plotting."""
+
+    t: list[float] = Field(description="Position along the standard, 0..1.")
+    user_db: list[float] = Field(description="User loudness in dB relative to its loudest frame.")
+    standard_db: list[float]
+    user_pitch_st: list[float | None] = Field(default_factory=list, description="Semitones relative to the median; null = unvoiced.")
+    standard_pitch_st: list[float | None] = Field(default_factory=list)
+    part_edges: list[float] = Field(default_factory=list, description="Boundaries between parts on the 0..1 axis.")
+
+
+class SignalAnalysis(BaseModel):
+    """Details of the signals-and-systems comparison (present when no phoneme model is used)."""
+
+    standard: str = Field(description="Best-matching standard recording, e.g. 'piper:en_US-libritts_r-medium:0'.")
+    standard_variant: str
+    standards_compared: int
+    warp_factor: float = Field(description="Frequency-warp factor that best matched the user's voice to the standard.")
+    parts: list[SignalPart] = Field(default_factory=list)
+    mistakes_checked: list[MistakeCheck] = Field(default_factory=list)
+    closest_words: list[WordMatch] = Field(default_factory=list, description="Words whose standards matched best.")
+    target_rank: int | None = Field(None, description="1 = the target word was the closest match.")
+    words_compared: int = 0
+    curves: SignalCurves | None = None
+
+
 class EngineInfo(BaseModel):
     name: str
     model: str | None = None
@@ -154,7 +219,7 @@ class AnalysisResult(BaseModel):
     overall_score: int | None = Field(None, ge=0, le=100)
     rating: Rating | None = None
     word_recognized: bool | None = Field(
-        None, description="Whether the decoded sounds match the target word better than other practice words.",
+        None, description="Whether the recording matches the target word better than any other practice word.",
     )
     recognized_word: str | None = None
     phonetically_accurate: bool | None = Field(
@@ -172,6 +237,7 @@ class AnalysisResult(BaseModel):
     syllables: SyllableReport | None = None
     timing: TimingReport | None = None
     recognition: WordRecognition | None = None
+    signal_analysis: SignalAnalysis | None = None
     quality: QualityReport
     identified_issues: list[Issue] = Field(default_factory=list)
     strengths: list[Strength] = Field(default_factory=list)
