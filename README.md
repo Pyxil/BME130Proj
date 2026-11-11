@@ -22,7 +22,7 @@ of the word differed, and adapts the next words to the user's results.
 |---|---|
 | Word display, reference audio (neural TTS / human recordings / browser fallback), recording with live waveform and silence auto-stop | Working |
 | Recording quality gate (silence, too quiet, clipping, noise, cut-off): asks to re-record instead of scoring | Working, tested |
-| **Signals-and-systems scoring (default)**: filters, FFT and MFCCs, energy, zero-crossing rate, autocorrelation pitch; DTW alignment against standard recordings; part-by-part similarity; minimal-pair checks for common mistakes; word identification by template matching; configurable weights | Working; calibrated and validated on generated voices: word identification 78%, common mistakes AUC 0.74 |
+| **Signals-and-systems scoring (default)**: filters, FFT and MFCCs, energy, zero-crossing rate, autocorrelation pitch; DTW alignment against standard recordings; part-by-part similarity; minimal-pair checks for common mistakes; word identification by template matching; configurable weights | Working; calibrated and validated on generated voices: word identification 78%, common mistakes AUC 0.76 |
 | Accent tolerance (standards for US/UK/dictionary pronunciations) | Working, tested |
 | Optional neural phoneme model (Allosaurus + substitution/deletion-aware CTC GOP, `dev.py setup --ml`, `SA_ENGINE=allosaurus`) | Working, **validated on speechocean762** |
 | AI feedback grounded in measured issues (Claude, or local Ollama), rule-based fallback, guardrails | Working; LLM path unit-tested with stubs (no API key in dev environment) |
@@ -98,8 +98,8 @@ signal processing and are compared.
    confidence drops and the result says so.
 
 On generated voices not used as standards (675 correct and 948 mispronounced recordings of all
-135 words): word identification **78%** (top 3: 90%); common mistakes **AUC 0.74**,
-named in 43% of mistaken recordings, wrongly named for 5% of correct ones; other mistakes
+135 words): word identification **78%** (top 3: 91%); common mistakes **AUC 0.76**,
+named in 53% of mistaken recordings, wrongly named for 5% of correct ones; other mistakes
 AUC 0.59. Real voices will be harder. The optional phoneme model reaches AUC 0.91 on expert-rated
 non-native speech (speechocean762). Details, limitations and how to rerun: [docs/validation.md](docs/validation.md).
 

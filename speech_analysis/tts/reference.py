@@ -105,19 +105,27 @@ class ReferenceAudioService:
                 return ReferenceAudio(y.mean(axis=1), sr, "human", None, variant_id)
         return None
 
-    def _piper(self, word: str, variant: dict, spec: VoiceSpec, length_scale: float) -> ReferenceAudio | None:
+    def _piper(self, word: str, variant: dict, spec: VoiceSpec, length_scale: float,
+               standard: bool = False) -> ReferenceAudio | None:
+        """Synthesize with a Piper voice (cached on disk).
+
+        ``standard=True`` switches the voice's random variation off (noise 0): the voice's typical
+        rendition, identical on every machine, so scores are reproducible. Playback keeps some
+        variation, which sounds more natural.
+        """
         voice = self._voice(spec.voice)
         if voice is None:
             return None
         accent = "gb" if variant["id"].startswith("gb") or spec.voice.startswith("en_GB") else "us"
         ipa = arpabet_to_espeak_ipa(variant["arpabet"], accent=accent)
-        key = hashlib.sha1(f"{spec}|{ipa}|{length_scale}".encode()).hexdigest()[:16]
+        noise = 0.0 if standard else 0.333
+        key = hashlib.sha1(f"{spec}|{ipa}|{length_scale}|noise={noise}".encode()).hexdigest()[:16]
         path = self.config.reference_cache_dir / f"{self._slug(word)}_{variant['id']}_{key}.wav"
         if path.exists():
             y, sr = sf.read(path, dtype="float32")
             return ReferenceAudio(y, sr, "piper", str(spec), variant["id"])
         y = voice.synthesize_ipa(ipa, speaker_id=spec.speaker_id, length_scale=length_scale,
-                                 noise_scale=0.333, noise_w=0.333)
+                                 noise_scale=noise, noise_w=noise)
         try:
             sf.write(path, y, voice.sample_rate, subtype="PCM_16")
         except OSError as exc:
@@ -156,7 +164,7 @@ class ReferenceAudioService:
         """
         out = []
         for spec in self.available_voices():
-            r = self._piper(word, {"id": variant_id, "arpabet": list(arpabet)}, spec, 1.0)
+            r = self._piper(word, {"id": variant_id, "arpabet": list(arpabet)}, spec, 1.0, standard=True)
             if r is not None:
                 out.append(ReferenceAudio(resample(r.audio, r.sr, 16000), 16000, r.source, r.voice, r.variant_id))
         return out
@@ -170,7 +178,7 @@ class ReferenceAudioService:
                 refs.append(human)
             for spec in self.available_voices():
                 key = f"{word}|{variant['id']}|{spec}"
-                r = self._mem.get(key) or self._piper(word, variant, spec, 1.0)
+                r = self._mem.get(key) or self._piper(word, variant, spec, 1.0, standard=True)
                 if r is None:
                     continue
                 if keep_in_memory:

@@ -27,7 +27,7 @@ from .segments import segment, syllable_nuclei
 log = logging.getLogger(__name__)
 
 SYLLABLE_PENALTY = 0.04  # distance added per syllable of difference: a small tie-breaker. On held-out voices
-# it made no meaningful difference (top-1 78.1% with it, 79.1% without, docs/validation.md).
+# it made no meaningful difference (top-1 77.6% with it, 77.9% without, docs/validation.md).
 
 
 @dataclass

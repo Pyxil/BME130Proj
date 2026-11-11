@@ -47,9 +47,9 @@ PAIRS = [
     ("leaf_correct.wav", "leaf_l_as_w.wav"),
     ("banana_correct.wav", "banana_syllable_dropped.wav"),
 ]
-# Standards are generated on each machine with a little random voice variation, so borderline ratings
-# can flip between runs (the scorer is lenient, docs/validation.md). These two are far below 90 every time.
-CLEAR_MISTAKES = {"rabbit_r_as_w.wav", "spoon_cluster_reduced.wav"}
+# Borderline ratings near 90 can differ by a point between platforms (floating point), and the scorer is
+# lenient (docs/validation.md); these mistakes score far below 90.
+CLEAR_MISTAKES = {"rabbit_r_as_w.wav", "spoon_cluster_reduced.wav", "leaf_l_as_w.wav"}
 
 
 @pytest.mark.parametrize("good,bad", PAIRS)
@@ -74,21 +74,20 @@ def test_cluster_reduction_points_at_the_start_of_the_word():
     assert any(i.type in ("deletion", "unclear_articulation", "part_mismatch") for i in r.identified_issues)
 
 
-CORRECT = ["rabbit_correct.wav", "spoon_correct.wav", "butterfly_correct_us.wav", "strawberry_correct.wav",
-           "leaf_correct.wav"]
-# strawberry's /s/ sits right at the minimal-pair threshold (the designed ~5% false-alarm zone), so whether a
-# borderline note appears depends on each machine's generated standards: not part of the no-claims check.
-NO_CLAIMS = [n for n in CORRECT if n != "strawberry_correct.wav"]
+CORRECT = ["rabbit_correct.wav", "spoon_correct.wav", "butterfly_correct_us.wav", "leaf_correct.wav",
+           "banana_correct.wav"]
+# strawberry_correct.wav: the generated voice has a weak /s/ in "str", and the minimal-pair check reproducibly
+# reports "/s/ left out" - one of the ~5% false alarms its threshold allows. It must still be identified.
+IDENTIFIED = CORRECT + ["strawberry_correct.wav", "butterfly_correct_gb.wav", "tomato_gb.wav"]
 
 
 @pytest.mark.parametrize("name", CORRECT)
-def test_correct_recordings_do_well_and_are_identified(name):
+def test_correct_recordings_do_well_without_mistake_claims(name):
     r = run(name)
     assert r.rating in ("mastered", "satisfactory")
-    assert r.signal_analysis.target_rank == 1
-
-
-@pytest.mark.parametrize("name", NO_CLAIMS)
-def test_no_confident_mistake_claims_on_clearly_correct_recordings(name):
-    r = run(name)
     assert not any(i.type in ("substitution", "deletion") for i in r.identified_issues)
+
+
+@pytest.mark.parametrize("name", IDENTIFIED)
+def test_correct_recordings_are_identified(name):
+    assert run(name).signal_analysis.target_rank == 1

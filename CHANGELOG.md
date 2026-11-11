@@ -21,6 +21,8 @@ Contract changes (OpenAPI, `AnalysisResult`, `FeedbackResponse`) must be listed 
 - The neural phoneme model (Allosaurus) is optional, for comparison: `dev.py setup --ml` and
   `SA_ENGINE=allosaurus`. Setup and the Docker image no longer install PyTorch by default, and
   `dev.py setup` switches an untouched `SA_ENGINE=auto` in `.env` to the new default `signal`.
+- Generated standard recordings no longer contain random voice variation, so they (and the scores) are
+  identical on every machine; the "Hear pronunciation" voice keeps its natural variation.
 
 ### Contract
 - `CONTRACT_VERSION` 1.1.0 (additive): `AnalysisResult.signal_analysis`; component names
