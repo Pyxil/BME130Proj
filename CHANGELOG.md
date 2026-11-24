@@ -3,6 +3,15 @@
 All notable changes are documented here (format: [Keep a Changelog](https://keepachangelog.com)).
 Contract changes (OpenAPI, `AnalysisResult`, `FeedbackResponse`) must be listed under **Contract**.
 
+## [Unreleased]
+
+### Fixed
+- A freshly generated standard recording is now identical to its cached copy (both 16-bit), so scores no
+  longer shift slightly after the first restart; cache writes are atomic and the cache is versioned (old
+  standards are regenerated once).
+- `scripts/calibrate_signal.py` is reproducible: the test voices' random variation comes from a fixed seed.
+  Recalibrated: word identification 80% (top 3: 90%), common mistakes AUC 0.75, named in 50%.
+
 ## [0.2.0] - 2026-11-11
 
 ### Added

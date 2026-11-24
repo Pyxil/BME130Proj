@@ -4,7 +4,7 @@ Needs the Piper voices (``python scripts/download_models.py --skip-allosaurus``)
 The fixtures were generated with a voice that is not one of the standards. Assertions are relative
 (a mistake scores lower than the correct word) so they survive recalibration. The vowel error in
 butterfly_vowel_error.wav is not tested: vowel changes are a known blind spot of the signal comparison
-(AUC 0.52 on held-out voices, docs/validation.md).
+(AUC 0.68 on held-out voices even with vowel minimal pairs, docs/validation.md).
 """
 
 import json
