@@ -55,7 +55,7 @@ from speech_analysis.signal_analysis.features import extract, frames_to_seconds 
 from speech_analysis.signal_analysis.minimal_pairs import mistakes_for  # noqa: E402
 from speech_analysis.signal_analysis.report import build_signal_result  # noqa: E402
 from speech_analysis.signal_analysis.segments import syllable_nuclei  # noqa: E402
-from speech_analysis.tts.piper import arpabet_to_espeak_ipa  # noqa: E402
+from speech_analysis.tts.piper import PiperVoice, arpabet_to_espeak_ipa  # noqa: E402
 
 OUT = ROOT / "speech_analysis" / "calibration" / "signal.json"
 US_SPEAKERS = (120, 300, 500)  # en_US-libritts_r-medium speakers not used as standards (0, 40) or fixtures (12)
@@ -150,9 +150,17 @@ def main() -> int:
     t0 = time.perf_counter()
     an.standards.warm()
     print(f"standards ready for {an.standards.words_ready} words ({time.perf_counter() - t0:.0f}s)")
-    us_voice = an.references._voice("en_US-libritts_r-medium")
-    gb_voice = an.references._voice("en_GB-vctk-medium")
-    if us_voice is None or gb_voice is None:
+    # The test voices keep Piper's random variation. onnxruntime takes its seed when a session is created and
+    # each session then draws in call order, so seeded sessions of their own (not the standards' sessions,
+    # whose draws depend on what was cached) make the test material, and these numbers, reproducible.
+    import onnxruntime as ort
+
+    ort.set_seed(args.seed)
+    try:
+        piper_dir = an.config.model_dir / "piper"
+        us_voice = PiperVoice.from_dir(piper_dir / "en_US-libritts_r-medium")
+        gb_voice = PiperVoice.from_dir(piper_dir / "en_GB-vctk-medium")
+    except FileNotFoundError:
         sys.exit("Piper voices missing: run scripts/download_models.py")
 
     noise = np.random.default_rng(args.seed)

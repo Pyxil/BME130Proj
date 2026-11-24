@@ -5779,7 +5779,7 @@
   "rabbit_r_as_w": {
    "analysis": {
     "contract_version": "1.1.0",
-    "analysis_id": "3f6a6ee7-58e9-4f0d-b19f-50a09e1b905d",
+    "analysis_id": "c0d9ab89-126b-43b8-af55-0c5e1b608ef2",
     "word": "rabbit",
     "word_id": 45,
     "status": "assessed",
@@ -5821,7 +5821,7 @@
        "standard": "piper:en_GB-vctk-medium:3",
        "warp": 0.92,
        "standards_compared": 6,
-       "calibration": "Piper voices not used as standards (675 correct recordings of 135 words), 2026-11-11",
+       "calibration": "Piper voices not used as standards (675 correct recordings of 135 words), 2026-11-24",
        "score_cap": "a part of the word was far from the standard"
       }
      },
@@ -5846,7 +5846,7 @@
      },
      {
       "name": "pitch_contour",
-      "score": 83.8,
+      "score": 84.7,
       "weight": 0.05,
       "available": true,
       "details": {
@@ -5880,7 +5880,7 @@
       }
      }
     ],
-    "acoustic_similarity": 0.9458,
+    "acoustic_similarity": 0.9462,
     "syllables": {
      "expected": 2,
      "detected_nuclei": 2,
@@ -5952,7 +5952,7 @@
        "phoneme": "æ",
        "realized_as": "ɛ",
        "position": 1,
-       "probability": 0.228
+       "probability": 0.22
       },
       {
        "description": "/t/ left out at the end of the word",
@@ -6309,10 +6309,10 @@
      "name": "signal-analysis",
      "model": null,
      "phoneme_level": false,
-     "calibration": "Piper voices not used as standards (675 correct recordings of 135 words), 2026-11-11",
+     "calibration": "Piper voices not used as standards (675 correct recordings of 135 words), 2026-11-24",
      "notes": "Scores compare the recording's waveform features (spectrum, loudness, pitch, timing) with standard recordings using signal processing. No speech-recognition model is used, so feedback names parts of the word rather than individual sounds."
     },
-    "processing_ms": 3115,
+    "processing_ms": 947,
     "disclaimer": "Scores are automated estimates intended for practice feedback. They are not a clinical assessment or diagnosis and have not been clinically validated."
    },
    "feedback": {
@@ -6335,7 +6335,7 @@
   "butterfly_correct_us": {
    "analysis": {
     "contract_version": "1.1.0",
-    "analysis_id": "834ee1fc-fcf8-45fb-9b23-38ea23ac4e9b",
+    "analysis_id": "ff88a1bd-5bc0-4f13-959d-deb20cbc1c33",
     "word": "butterfly",
     "word_id": 89,
     "status": "assessed",
@@ -6371,7 +6371,7 @@
     "components": [
      {
       "name": "spectral_similarity",
-      "score": 97.7,
+      "score": 97.8,
       "weight": 0.45,
       "available": true,
       "details": {
@@ -6379,17 +6379,17 @@
        "standard": "piper:en_US-libritts_r-medium:0",
        "warp": 0.92,
        "standards_compared": 6,
-       "calibration": "Piper voices not used as standards (675 correct recordings of 135 words), 2026-11-11"
+       "calibration": "Piper voices not used as standards (675 correct recordings of 135 words), 2026-11-24"
       }
      },
      {
       "name": "minimal_pair_contrast",
-      "score": 97.9,
+      "score": 97.8,
       "weight": 0.2,
       "available": true,
       "details": {
        "mistakes_checked": 3,
-       "highest_probability": 0.021
+       "highest_probability": 0.022
       }
      },
      {
@@ -6403,7 +6403,7 @@
      },
      {
       "name": "pitch_contour",
-      "score": 93.9,
+      "score": 94.7,
       "weight": 0.05,
       "available": true,
       "details": {
@@ -6437,7 +6437,7 @@
       }
      }
     ],
-    "acoustic_similarity": 0.9775,
+    "acoustic_similarity": 0.9778,
     "syllables": {
      "expected": 3,
      "detected_nuclei": 2,
@@ -6516,7 +6516,7 @@
        "phoneme": "ʌ",
        "realized_as": "ɑ",
        "position": 1,
-       "probability": 0.004
+       "probability": 0.005
       },
       {
        "description": "/p/ instead of /f/ in the third syllable",
@@ -6524,7 +6524,7 @@
        "phoneme": "f",
        "realized_as": "p",
        "position": 4,
-       "probability": 0.001
+       "probability": 0.002
       },
       {
        "description": "/w/ instead of /l/ in the third syllable",
@@ -6532,7 +6532,7 @@
        "phoneme": "l",
        "realized_as": "w",
        "position": 5,
-       "probability": 0.021
+       "probability": 0.022
       }
      ],
      "closest_words": [
@@ -6550,7 +6550,7 @@
       }
      ],
      "target_rank": 1,
-     "words_compared": 8,
+     "words_compared": 7,
      "curves": {
       "t": [
        0.0,
@@ -6951,10 +6951,10 @@
      "name": "signal-analysis",
      "model": null,
      "phoneme_level": false,
-     "calibration": "Piper voices not used as standards (675 correct recordings of 135 words), 2026-11-11",
+     "calibration": "Piper voices not used as standards (675 correct recordings of 135 words), 2026-11-24",
      "notes": "Scores compare the recording's waveform features (spectrum, loudness, pitch, timing) with standard recordings using signal processing. No speech-recognition model is used, so feedback names parts of the word rather than individual sounds."
     },
-    "processing_ms": 927,
+    "processing_ms": 768,
     "disclaimer": "Scores are automated estimates intended for practice feedback. They are not a clinical assessment or diagnosis and have not been clinically validated."
    },
    "feedback": {
@@ -6971,7 +6971,7 @@
   "quality_noisy": {
    "analysis": {
     "contract_version": "1.1.0",
-    "analysis_id": "dd41e82f-c41d-4828-a14f-1d1308ace2e6",
+    "analysis_id": "9d8e7b8e-1533-497f-940f-bf91828c4060",
     "word": "rabbit",
     "word_id": 45,
     "status": "retry_required",
@@ -7017,10 +7017,10 @@
      "name": "signal-analysis",
      "model": null,
      "phoneme_level": false,
-     "calibration": "Piper voices not used as standards (675 correct recordings of 135 words), 2026-11-11",
+     "calibration": "Piper voices not used as standards (675 correct recordings of 135 words), 2026-11-24",
      "notes": "Scores compare the recording's waveform features (spectrum, loudness, pitch, timing) with standard recordings using signal processing. No speech-recognition model is used, so feedback names parts of the word rather than individual sounds."
     },
-    "processing_ms": 3,
+    "processing_ms": 2,
     "disclaimer": "Scores are automated estimates intended for practice feedback. They are not a clinical assessment or diagnosis and have not been clinically validated."
    },
    "feedback": {
@@ -7043,7 +7043,7 @@
    "name": "signal-analysis",
    "model": null,
    "phoneme_level": false,
-   "calibration": "Piper voices not used as standards (675 correct recordings of 135 words), 2026-11-11",
+   "calibration": "Piper voices not used as standards (675 correct recordings of 135 words), 2026-11-24",
    "notes": "Scores compare the recording's waveform features (spectrum, loudness, pitch, timing) with standard recordings using signal processing. No speech-recognition model is used, so feedback names parts of the word rather than individual sounds.",
    "weights": {
     "spectral_similarity": 0.45,
@@ -7058,72 +7058,72 @@
     "error_recordings": 948,
     "unusable_skipped": 0,
     "words": 135,
-    "identification_top1": 0.776,
-    "identification_top3": 0.908,
-    "identification_top1_without_syllable_penalty": 0.779,
-    "auc_correct_vs_error": 0.719,
-    "auc_correct_vs_covered": 0.763,
-    "auc_correct_vs_uncovered": 0.593,
-    "mistake_named_covered": 0.526,
-    "mistake_named_uncovered": 0.086,
+    "identification_top1": 0.8,
+    "identification_top3": 0.901,
+    "identification_top1_without_syllable_penalty": 0.79,
+    "auc_correct_vs_error": 0.706,
+    "auc_correct_vs_covered": 0.753,
+    "auc_correct_vs_uncovered": 0.568,
+    "mistake_named_covered": 0.5,
+    "mistake_named_uncovered": 0.082,
     "mistake_false_alarm_correct": 0.05,
     "median_score_correct": 93.0,
     "median_score_error": 86.0,
     "ratings_correct": {
-     "mastered": 0.664,
-     "satisfactory": 0.28,
-     "needs_practice": 0.056,
+     "mastered": 0.671,
+     "satisfactory": 0.265,
+     "needs_practice": 0.064,
      "inconclusive": 0.0
     },
     "ratings_error": {
-     "mastered": 0.326,
-     "satisfactory": 0.39,
-     "needs_practice": 0.284,
+     "mastered": 0.346,
+     "satisfactory": 0.379,
+     "needs_practice": 0.275,
      "inconclusive": 0.0
     },
-    "error_part_flagged": 0.239,
+    "error_part_flagged": 0.251,
     "by_error_type": {
      "cluster reduction (covered)": {
       "n": 52,
       "median_score": 69.0,
-      "auc_vs_correct": 0.809,
-      "part_flagged": 0.462,
-      "mistake_named": 0.75
+      "auc_vs_correct": 0.829,
+      "part_flagged": 0.5,
+      "mistake_named": 0.712
      },
      "consonant substitution (covered)": {
       "n": 232,
       "median_score": 85.0,
-      "auc_vs_correct": 0.752,
+      "auc_vs_correct": 0.724,
       "part_flagged": 0.246,
-      "mistake_named": 0.483
+      "mistake_named": 0.435
      },
      "final consonant deletion (covered)": {
       "n": 150,
       "median_score": 69.0,
-      "auc_vs_correct": 0.903,
-      "part_flagged": 0.313,
-      "mistake_named": 0.767
+      "auc_vs_correct": 0.904,
+      "part_flagged": 0.367,
+      "mistake_named": 0.76
      },
      "other consonant substitution (uncovered)": {
       "n": 208,
-      "median_score": 91.0,
-      "auc_vs_correct": 0.567,
-      "part_flagged": 0.226,
-      "mistake_named": 0.077
+      "median_score": 92.0,
+      "auc_vs_correct": 0.544,
+      "part_flagged": 0.245,
+      "mistake_named": 0.067
      },
      "vowel change (covered)": {
       "n": 270,
-      "median_score": 87.0,
-      "auc_vs_correct": 0.686,
-      "part_flagged": 0.096,
-      "mistake_named": 0.385
+      "median_score": 88.0,
+      "auc_vs_correct": 0.68,
+      "part_flagged": 0.089,
+      "mistake_named": 0.37
      },
      "weak syllable deletion (uncovered)": {
       "n": 36,
-      "median_score": 87.0,
-      "auc_vs_correct": 0.744,
-      "part_flagged": 0.722,
-      "mistake_named": 0.139
+      "median_score": 88.5,
+      "auc_vs_correct": 0.709,
+      "part_flagged": 0.694,
+      "mistake_named": 0.167
      }
     }
    },
@@ -7145,7 +7145,7 @@
     "en_US-libritts_r-medium:40",
     "en_GB-vctk-medium:3"
    ],
-   "espeak": true,
+   "espeak": false,
    "human_recordings": []
   },
   "words": 135

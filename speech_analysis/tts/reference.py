@@ -119,15 +119,23 @@ class ReferenceAudioService:
         accent = "gb" if variant["id"].startswith("gb") or spec.voice.startswith("en_GB") else "us"
         ipa = arpabet_to_espeak_ipa(variant["arpabet"], accent=accent)
         noise = 0.0 if standard else 0.333
-        key = hashlib.sha1(f"{spec}|{ipa}|{length_scale}|noise={noise}".encode()).hexdigest()[:16]
+        key = hashlib.sha1(f"v2|{spec}|{ipa}|{length_scale}|noise={noise}".encode()).hexdigest()[:16]
         path = self.config.reference_cache_dir / f"{self._slug(word)}_{variant['id']}_{key}.wav"
         if path.exists():
             y, sr = sf.read(path, dtype="float32")
             return ReferenceAudio(y, sr, "piper", str(spec), variant["id"])
         y = voice.synthesize_ipa(ipa, speaker_id=spec.speaker_id, length_scale=length_scale,
                                  noise_scale=noise, noise_w=noise)
-        try:
-            sf.write(path, y, voice.sample_rate, subtype="PCM_16")
+        # Return exactly what the 16-bit cache file holds, so a fresh standard and a cached one are identical
+        # (otherwise scores change slightly after the first restart).
+        buf = io.BytesIO()
+        sf.write(buf, y, voice.sample_rate, format="WAV", subtype="PCM_16")
+        buf.seek(0)
+        y, _ = sf.read(buf, dtype="float32")
+        try:  # atomic: another thread may be reading the same standard
+            tmp = path.with_name(f"{path.name}.{threading.get_ident()}.tmp")
+            tmp.write_bytes(buf.getvalue())
+            tmp.replace(path)
         except OSError as exc:
             log.warning("could not cache reference audio: %s", exc)
         return ReferenceAudio(y, voice.sample_rate, "piper", str(spec), variant["id"])

@@ -12,7 +12,8 @@ generated without random voice variation, so they are identical on every machine
 recordings of real learners in this repository yet, so the engine was calibrated and validated on
 **generated voices that are never used as standards**: Piper speakers other than the standards and the
 fixtures, with random speaking rate (0.85-1.25x) and voice variation, and 0.3 s of room noise around
-each word. Every practice word was generated correctly (675 recordings: 3 US and
+each word. That variation is drawn from a fixed seed, so a rerun reproduces these numbers. Every
+practice word was generated correctly (675 recordings: 3 US and
 2 British voices x 135 words) and with mistakes (948 recordings) of two kinds:
 
 * **covered** - mistakes that have a minimal-pair standard: a common consonant substitution
@@ -26,34 +27,34 @@ below is measured, not fitted. Rerun: `python scripts/calibrate_signal.py` (abou
 
 | Question | Answer (unseen generated voices) |
 |---|---|
-| Is a recording closest to its own word, out of all 135? | **78%** first choice, 91% in the top 3 |
-| Do correct recordings score higher than covered mistakes? | **AUC 0.76** |
-| ... than uncovered mistakes? | AUC 0.59 |
-| How often is a covered mistake named at the right sound? | 53% of mistaken recordings |
+| Is a recording closest to its own word, out of all 135? | **80%** first choice, 90% in the top 3 |
+| Do correct recordings score higher than covered mistakes? | **AUC 0.75** |
+| ... than uncovered mistakes? | AUC 0.57 |
+| How often is a covered mistake named at the right sound? | 50% of mistaken recordings |
 | How often is a mistake wrongly named on a correct recording? | 5% (by design) |
-| Ratings of correct recordings | mastered 66%, satisfactory 28%, needs practice 6% |
-| Ratings of mistaken recordings | mastered 33%, satisfactory 39%, needs practice 28% |
+| Ratings of correct recordings | mastered 67%, satisfactory 27%, needs practice 6% |
+| Ratings of mistaken recordings | mastered 35%, satisfactory 38%, needs practice 28% |
 
 | Mistake type | n | median score | AUC vs. correct | named | worst part = mistake's part |
 |---|---|---|---|---|---|
-| cluster reduction (covered) | 52 | 69 | 0.81 | 75% | 46% |
-| consonant substitution (covered) | 232 | 85 | 0.75 | 48% | 25% |
-| final consonant deletion (covered) | 150 | 69 | 0.90 | 77% | 31% |
-| other consonant substitution (uncovered) | 208 | 91 | 0.57 | 8% | 23% |
-| vowel change (covered) | 270 | 87 | 0.69 | 38% | 10% |
-| weak syllable deletion (uncovered) | 36 | 87 | 0.74 | 14% | 72% |
+| cluster reduction (covered) | 52 | 69 | 0.83 | 71% | 50% |
+| consonant substitution (covered) | 232 | 85 | 0.72 | 44% | 25% |
+| final consonant deletion (covered) | 150 | 69 | 0.90 | 76% | 37% |
+| other consonant substitution (uncovered) | 208 | 92 | 0.54 | 7% | 25% |
+| vowel change (covered) | 270 | 88 | 0.68 | 37% | 9% |
+| weak syllable deletion (uncovered) | 36 | 88.5 | 0.71 | 17% | 69% |
 
 What this shows and does not show:
 
 * Template matching tells words apart well from the waveform alone, and catches dropped sounds and
   common substitutions, especially with minimal-pair standards (vowel changes: AUC 0.52 before vowel
-  minimal pairs were added, 0.69 after).
-* It is **lenient**: 33% of mistaken recordings are still rated "mastered", because
+  minimal pairs were added, 0.68 after).
+* It is **lenient**: 35% of mistaken recordings are still rated "mastered", because
   two different voices saying the same word differ more, as waveforms, than one voice saying it right and
   wrong. Mistakes outside the minimal-pair list are mostly missed.
 * Generated voices are cleaner and more alike than real people, microphones and rooms: expect lower
   numbers on real speech. A per-syllable penalty in word identification made no meaningful difference
-  (78% with it, 78% without).
+  (80% with it, 79% without).
 * Not clinically validated; no children with speech-sound disorders.
 
 ## Optional phoneme model (Allosaurus)
